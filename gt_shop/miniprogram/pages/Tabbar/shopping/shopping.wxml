@@ -1,0 +1,37 @@
+<!--miniprogram/pages/Tabbar/shopping/shopping.wxml-->
+<view>
+
+  <!-- 购物车 -->
+  <view>
+    <block wx:for='{{goodsArray}}' wx:key='index'>
+      <view class="item-goods">
+        <view class="info">
+          <image mode="aspectFill" src="{{ item.src}}"></image>
+          <view class="info-number">
+            <view class="theme-font">{{ item.name }}</view>
+            <view class="theme-font number">
+              <view><image src="../../../images/shopping/less.png"></image></view>
+              <view style="background-color:none">{{ item.num}}</view>
+              <view><image src="../../../images/shopping/plus.png"></image></view>
+            </view>
+          </view>
+        </view>
+        <view class="price theme-font">
+          ￥{{item.price}}
+        </view>   
+        <image class="add-remove" src="../../../images/shopping/{{item.select ? 'remove' : 'add'}}.png"></image>  
+      </view>
+    </block>
+  </view>
+
+  <!-- 防止被挡 -->
+  <view style="width:5px;height:5px;margin-bottom:250rpx;"></view>
+  <!-- 最下面 -->
+	<view class="bottom-but">
+		<view class="goods-price">
+			<text class="theme-font-f">实付款</text>
+			<text class="theme-font-f theme-color">￥120</text>
+		</view>
+    <view class="place-order theme-image">下订单</view>
+	</view>
+</view>

@@ -1,0 +1,38 @@
+page {
+  background: #f6f6f6;
+}
+
+/* FF3B7A  512DA8  bfbfbf*/
+
+/* 公共 name 字体 */
+.theme-font{
+  font-size: 13px;
+  color: #333;
+  font-weight: 400;
+}
+.theme-font-f{
+  font-size: 14px;
+  color: #333;
+  font-weight: 400;
+}
+.theme-bold{
+  font-size: 15px;
+  font-weight: 700;
+}
+.theme-price{
+  font-size: 13px;
+  color: #666;
+  font-size: 400;
+}
+
+/* 颜色 */
+.theme-color{
+  color: #FF3B7A;
+  font-weight: 700;
+}
+.theme-image{
+  background-image: linear-gradient(to right, #512Dfd, #512DA8);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+}

@@ -1,0 +1,32 @@
+<!--miniprogram/pages/Tabbar/me/me.wxml-->
+<view>
+	<view class="user-info">
+		<button>登录注册</button>
+		<!-- <image mode="aspectFill" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1709644436,2739756540&fm=26&gp=0.jpg"></image>
+    <view class="theme-bold">ang</view> -->
+	</view>
+
+	<view class="down-fun">
+		<view class="order-all">
+			<block wx:for='{{orderArray}}' wx:key='index'>
+				<view class="order-current">
+           <image src="../../../images/me/{{item.src}}"></image>
+           <view class="theme-font">{{ item.name }}</view>
+       </view>
+			</block>
+		</view>
+
+    <view class="item-fun">
+      <view class="theme-font">我的订单</view>
+      <image src="../../../images/me/arrow-right.png"></image>
+    </view>
+    <view class="item-fun">
+      <view class="theme-font">我的地址</view>
+      <image src="../../../images/me/arrow-right.png"></image>
+    </view>
+     <view class="item-fun">
+      <view class="theme-font">我的客服</view>
+      <image src="../../../images/me/arrow-right.png"></image>
+    </view>
+	</view>
+</view>
