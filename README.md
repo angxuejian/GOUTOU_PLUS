@@ -10,6 +10,8 @@
 - [UI欣赏](https://huaban.com/pins/3112350630/)
 - [木子叶兮](https://huaban.com/pins/3144327938/)
 - [徒步流云](https://huaban.com/pins/2922418769/)
+- [皮卡啾_](https://huaban.com/pins/3103497844/)
+- [懒xuan](https://huaban.com/pins/3191764848/)
 - [图怪兽](https://818ps.com/muban/zitisheji.html)
 - [熊猫办公](https://www.tukuppt.com/)
 - [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)

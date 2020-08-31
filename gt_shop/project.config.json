@@ -54,8 +54,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/Tabbar/shopping/shopping",
-					"pathName": "pages/Tabbar/shopping/shopping",
+					"name": "pages/PageGoods/goodsDetail/goodsDetail",
+					"pathName": "pages/PageGoods/goodsDetail/goodsDetail",
 					"query": "",
 					"scene": null
 				}

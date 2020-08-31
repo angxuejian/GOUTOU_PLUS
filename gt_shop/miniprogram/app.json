@@ -2,7 +2,8 @@
   "pages": [
     "pages/Tabbar/home/home",
     "pages/Tabbar/shopping/shopping",
-    "pages/Tabbar/me/me"
+    "pages/Tabbar/me/me",
+    "pages/PageGoods/goodsDetail/goodsDetail"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",
@@ -15,7 +16,8 @@
     "backgroundColor": "#fff",
     "selectedColor": "#512DA8",
     "color": "#8a8a8a",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/Tabbar/home/home",
         "text": "首页",
         "iconPath": "./images/tabbar/home.png",

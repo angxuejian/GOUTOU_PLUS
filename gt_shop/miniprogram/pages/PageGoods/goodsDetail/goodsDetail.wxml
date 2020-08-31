@@ -1,0 +1,87 @@
+<!--miniprogram/pages/PageGoods/goodsDetail/goodsDetail.wxml-->
+<view>
+	<!-- 轮播 -->
+	<swiper interval='10000' autoplay circular>
+		<block wx:for='{{currentArray}}' wx:key='index'>
+			<swiper-item>
+				<image mode="aspectFill" src="{{ item }}"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+
+	<!-- 商品信息 -->
+	<view class="goods">
+		<!-- 价钱 + 标题 -->
+		<view style="border:none; height: 30rpx;" class="item-box">
+			<view class="theme-font-f theme-color">￥20</view>
+		</view>
+    <view class="item-box">
+			<view class="theme-font-f">美好的风景从第一天开始</view>
+		</view>
+	</view>
+
+	<!-- 规格 -->
+	<view class="item-title theme-price">规格</view>
+	<view class="item-spec">
+		<block wx:for='{{4}}' wx:key='index'>
+			<view class="sub-item-spec {{index === 0 ? 'sub-selected-item-spce theme-font' : 'theme-price'}}">内衬</view>
+		</block>
+	</view>
+
+	<!-- 详情 -->
+	<view style="margin-top:10px" class="item-title theme-price">详情</view>
+	<view class="item-detail">
+		<block wx:for='{{currentArray}}' wx:key='index'>
+			<image mode="aspectFill" src="//img.tukuppt.com/bg_grid/00/08/98/KvKNdvDE53.jpg!/fh/350"></image>
+		</block>
+
+	</view>
+</view>
+
+<!-- 防止被挡 -->
+<view style="width:5px;height:5px;margin-bottom:150rpx"></view>
+
+<!-- 购物车 -->
+<view hover-class="theme-hover" class="add-shopping">
+	<image src="../../../images/goods/add-shopping.png"></image>
+</view>
+<!-- 底部按钮 -->
+<view hover-class="theme-hover" class="place-order theme-image">
+	<view>去下单</view>
+</view>
+
+
+<!--弹出层 -->
+<view wx:if='{{isShowInfo}}' class="goods-box"></view>
+<view wx:if='{{isShowInfo}}' class="goods-info">
+
+	<!-- 商品信息 -->
+	<image class="remove" src="../../../images/goods/remove.png"></image>
+	<view  class="info">
+		<image mode="aspectFill" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1709644436,2739756540&fm=26&gp=0.jpg"></image>
+		<view>
+			<view class="theme-font-f theme-color">￥20</view>
+			<view class="theme-font">已选：内衬</view>
+		</view>
+	</view>
+
+	<!-- 商品规格 -->
+	<view class="item-title theme-price">规格</view>
+	<view style="border:none"  class="item-spec">
+		<block wx:for='{{4}}' wx:key='index'>
+			<view data-index='{{index}}' class="sub-item-spec {{index === 0 ? 'sub-selected-item-spce theme-font' : 'theme-price'}}">内衬</view>
+		</block>
+	</view>
+
+	<!-- 商品数量 -->
+	<view class="item-title theme-price">数量</view>
+	<view style="border:none"  class="pay-number">
+		<view>
+			<image bindtap="onLess" data-index='{{index}}' src="../../../images/shopping/less.png"></image>
+			<view>2</view>
+			<image bindtap="onPlus" data-index='{{index}}' src="../../../images/shopping/plus.png"></image>
+		</view>
+	</view>
+
+	<view hover-class="theme-hover" class="confirm theme-image">确认</view>
+</view>
