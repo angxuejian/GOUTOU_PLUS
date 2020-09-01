@@ -33,14 +33,14 @@ page {
 }
 .theme-image{
   background-image: linear-gradient(to right, #512Dfd, #512DA8);
-  /* color: #fff; */
   font-size: 14px;
-  /* font-weight: 400; */
   color: #eee;
   letter-spacing: 5px;
   font-weight: 600;
 }
-
+.theme-fff{
+  background-color: #fff;
+}
 /* 点击态颜色 */
 .theme-hover{
   background-image: none;

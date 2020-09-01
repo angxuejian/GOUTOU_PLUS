@@ -1,0 +1,22 @@
+<!--miniprogram/pages/PageGoods/userAddress/userAddress.wxml-->
+<!-- <wxs module='filter' src='../../utils/filter.wxs'></wxs> -->
+<view>
+    <!-- 我的收获地址 -->
+    <view class="all-shipping-address">
+      <block wx:for='{{1}}' wx:key='index'>
+        <view class="item-shipping-address">
+          <view bindtap="onSelectIndex" data-index='{{index}}'>
+            <view>YANG MAN</view>
+            <view>浙江省杭州市滨江区长河街道321号</view>
+          </view>
+          <view bindtap="gotoEdit" data-index='{{index}}'>编辑</view>
+          <view wx:if='{{index == selectIndex && selectSA}}' class="right-arrow"></view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 添加新地址 -->
+    <view bindtap="onAddShippingAddress" class="add-shipping-address">去添加新地址</view>
+</view>
+
+

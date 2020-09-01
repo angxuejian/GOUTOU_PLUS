@@ -85,15 +85,18 @@ swiper-item image{
   bottom: 0;
   left: 0;
   display: flex;
-  align-items: flex-end;
+  /* align-items: flex-end; */
+  align-items: center;
   justify-content: center;
 }
 .place-order view{
-  width: 30%;
-  text-align: center;
-  padding-bottom: 10px;
-  border-bottom: 3px solid #2c2c2c;
-  margin-bottom: 20rpx;
+  /* width: 30%; */
+  /* text-align: center; */
+  /* padding-bottom: 10px; */
+  /* border-bottom: 2px solid #2c2c2c; */
+  /* margin-bottom: 20rpx; */
+  /* letter-spacing: 2px; */
+  /* background-color: red; */
 }
 
 .bottom-but {
@@ -219,9 +222,10 @@ swiper-item image{
 .confirm{
   position: fixed;
   bottom: 0px;
-  left: 0;
+  left: 0%;
   width: 100%;
   height: 100rpx;
   text-align: center;
   line-height: 100rpx;
+  border-top: 1px solid #eee;
 }

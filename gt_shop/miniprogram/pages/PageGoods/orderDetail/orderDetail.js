@@ -1,14 +1,11 @@
-// miniprogram/pages/Tabbar/shopping/shopping.js
+// miniprogram/pages/PageGoods/orderDetail/orderDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    goodsArray: [
-      { name: '小城清新网红上衣', src:'//img.tukuppt.com/bg_grid/00/16/70/q8o4CvEef3.jpg!/fh/350', price: 30, num: 2, select: true },
-      { name: '夏日户外跑步鞋', src:'//img.tukuppt.com/bg_grid/00/05/95/6BP2YBopSG.jpg!/fh/350', price: 30, num: 2, select: false },
-    ]
+
   },
 
   /**
@@ -18,10 +15,10 @@ Page({
 
   },
 
-  // 去订单详情页
-  gotoOrderDetail: function() {
+  // 去收货地址页
+  gotoUserAddress: function() {
     wx.navigateTo({
-      url: '../../PageGoods/orderDetail/orderDetail',
+      url: '../userAddress/userAddress',
     })
   },
   /**

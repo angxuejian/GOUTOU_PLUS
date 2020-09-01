@@ -46,8 +46,8 @@
 	<image src="../../../images/goods/add-shopping.png"></image>
 </view>
 <!-- 底部按钮 -->
-<view hover-class="theme-hover" class="place-order theme-image">
-	<view>去下单</view>
+<view bindtap="openGoodsInfoPopBox" hover-class="theme-hover" class="place-order theme-fff">
+	<view class="theme-font-f">去下单</view>
 </view>
 
 
@@ -83,5 +83,5 @@
 		</view>
 	</view>
 
-	<view hover-class="theme-hover" class="confirm theme-image">确认</view>
+	<view  bindtap="gotoOrderDetail" hover-class="theme-hover" class="confirm theme-fff theme-font-f">确认</view>
 </view>

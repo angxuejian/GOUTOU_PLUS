@@ -20,6 +20,24 @@ Page({
 
   },
 
+  //打开规格弹出层
+  openGoodsInfoPopBox: function() {
+    this.data.isShowInfo = true
+    this.setData({
+      isShowInfo: this.data.isShowInfo
+    })
+  },
+
+  // 订单详情页
+  gotoOrderDetail: function() {
+    this.data.isShowInfo = false
+    this.setData({
+      isShowInfo: this.data.isShowInfo
+    })
+    wx.navigateTo({
+      url: '../orderDetail/orderDetail',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

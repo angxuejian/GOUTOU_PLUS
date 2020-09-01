@@ -18,15 +18,16 @@
 
     <view class="item-fun">
       <view class="theme-font">我的订单</view>
-      <image src="../../../images/me/arrow-right.png"></image>
+      <image src="../../../images/arrow-right.png"></image>
     </view>
-    <view class="item-fun">
+    <view bindtap="gotoUserAddress" class="item-fun">
       <view class="theme-font">我的地址</view>
-      <image src="../../../images/me/arrow-right.png"></image>
+      <image src="../../../images/arrow-right.png"></image>
     </view>
      <view class="item-fun">
       <view class="theme-font">我的客服</view>
-      <image src="../../../images/me/arrow-right.png"></image>
+      <image src="../../../images/arrow-right.png"></image>
+      <button class="but-contact" open-type="contact"></button>
     </view>
 	</view>
 </view>

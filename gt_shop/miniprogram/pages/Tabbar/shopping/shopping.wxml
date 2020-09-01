@@ -32,6 +32,6 @@
 			<text class="theme-font-f">实付款</text>
 			<text class="theme-font-f theme-color">￥120</text>
 		</view>
-    <view class="place-order theme-image">下订单</view>
+    <view bindtap="gotoOrderDetail" hover-class="theme-hover" class="place-order theme-fff theme-font-f">下订单</view>
 	</view>
 </view>

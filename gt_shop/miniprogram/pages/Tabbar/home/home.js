@@ -37,6 +37,12 @@ Page({
     })
   },
 
+  gotoGoodsDetail: function() {
+    wx.navigateTo({
+      url: '../../PageGoods/goodsDetail/goodsDetail',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

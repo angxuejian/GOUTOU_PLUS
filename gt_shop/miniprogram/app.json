@@ -3,7 +3,10 @@
     "pages/Tabbar/home/home",
     "pages/Tabbar/shopping/shopping",
     "pages/Tabbar/me/me",
-    "pages/PageGoods/goodsDetail/goodsDetail"
+    "pages/PageGoods/goodsDetail/goodsDetail",
+    "pages/PageGoods/orderDetail/orderDetail",
+    "pages/PageGoods/userAddress/userAddress",
+    "pages/PageGoods/addUserAddress/addUserAddress"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",

@@ -86,7 +86,7 @@ page{
   align-items: center;
   justify-content: space-between;
   padding: 0 2.5%;
-  border-bottom: 1px solid #f5f5f5;
+  /* border-bottom: 1px solid #f5f5f5; */
   margin-bottom: 10rpx;
 }
 .goods-price text{
@@ -97,9 +97,10 @@ page{
 .place-order{
   height: 100rpx;
   width: 100%;
-  border-top: 1px solid #fff;
+  border-top: 1px solid #eee;
   text-align: center;
   line-height: 100rpx;
   text-align: center;
   border-radius: 15px 15px 0 0;
+
 }
