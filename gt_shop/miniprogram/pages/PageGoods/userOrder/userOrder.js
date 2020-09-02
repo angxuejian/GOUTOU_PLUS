@@ -1,16 +1,34 @@
-// miniprogram/pages/PageGoods/goodsDetail/goodsDetail.js
+// miniprogram/pages/PageGoods/userOrder/userOrder.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentArray: [
-      'http://img.tukuppt.com/bg_grid/00/12/12/ROVO8gRNFX.jpg!/fh/350',
-      'http://img.tukuppt.com/bg_grid/00/03/77/qMaJ6zUerz.jpg!/fh/350',
-      'http://img.tukuppt.com/bg_grid/00/21/08/qs3ZrXjJ8a.jpg!/fh/350'
+    // [0,1,2,3,4]
+    //[全部订单,待付款，待发货，待收货，退款/售后]
+    state: '0', // 订单状态码 默认为全部订单
+    orderTile: [{
+        name: '全部订单',
+        state: '0'
+      },
+      {
+        name: '待付款',
+        state: '1'
+      },
+      {
+        name: '待发货',
+        state: '2'
+      },
+      {
+        name: '待收货',
+        state: '3'
+      },
+      {
+        name: '退款/售后',
+        state: '4'
+      }
     ],
-    isShowInfo: false
   },
 
   /**
@@ -20,24 +38,22 @@ Page({
 
   },
 
-  //打开规格弹出层
-  openGoodsInfoPopBox: function() {
-    this.data.isShowInfo = true
+  //选择标题
+  onSelectedTextIndex(e) {
+    let state = e.currentTarget.dataset.state
+    this.data.state = state
     this.setData({
-      isShowInfo: this.data.isShowInfo
+      state: this.data.state
     })
   },
 
-  // 订单详情页
-  gotoOrderDetail: function() {
-    this.data.isShowInfo = false
-    this.setData({
-      isShowInfo: this.data.isShowInfo
-    })
+  // 去订单页
+  gotoDetail: function() {
     wx.navigateTo({
-      url: '../goodsOrderDetail/goodsOrderDetail',
+      url: '../userOrderDetail/userOrderDetail',
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

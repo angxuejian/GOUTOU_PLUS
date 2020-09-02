@@ -20,12 +20,20 @@ Page({
 
   },
 
+  // 我的订单页面
+  gotoUserOrder: function() {
+    wx.navigateTo({
+      url: '../../PageGoods/userOrder/userOrder',
+    })
+  },
+
   // 我的收货页面
   gotoUserAddress: function() {
     wx.navigateTo({
       url: '../../PageGoods/userAddress/userAddress',
     })
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

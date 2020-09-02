@@ -1,16 +1,11 @@
-// miniprogram/pages/PageGoods/goodsDetail/goodsDetail.js
+// miniprogram/pages/PageGoods/userOrderDetail/userOrderDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentArray: [
-      'http://img.tukuppt.com/bg_grid/00/12/12/ROVO8gRNFX.jpg!/fh/350',
-      'http://img.tukuppt.com/bg_grid/00/03/77/qMaJ6zUerz.jpg!/fh/350',
-      'http://img.tukuppt.com/bg_grid/00/21/08/qs3ZrXjJ8a.jpg!/fh/350'
-    ],
-    isShowInfo: false
+
   },
 
   /**
@@ -20,24 +15,6 @@ Page({
 
   },
 
-  //打开规格弹出层
-  openGoodsInfoPopBox: function() {
-    this.data.isShowInfo = true
-    this.setData({
-      isShowInfo: this.data.isShowInfo
-    })
-  },
-
-  // 订单详情页
-  gotoOrderDetail: function() {
-    this.data.isShowInfo = false
-    this.setData({
-      isShowInfo: this.data.isShowInfo
-    })
-    wx.navigateTo({
-      url: '../goodsOrderDetail/goodsOrderDetail',
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

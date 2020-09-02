@@ -1,0 +1,89 @@
+/* miniprogram/pages/PageGoods/userOrder/userOrder.wxss */
+
+.order-title {
+  width: 100%;
+  height: 46px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.order-title view {
+  width: 20%;
+  text-align: center;
+  line-height: 46px;
+  height: 100%;
+}
+
+.order-title-text {
+  font-size: 12px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #999;
+  opacity: 1;
+  padding-bottom: 3px;
+}
+
+.order-title-selected-text {
+  color: #333c4f;
+  font-size: 14px;
+}
+
+.all-order{
+  width: 96%;
+  padding: 0 2%;
+  margin-top: 10px;
+}
+.item-order{
+  width: 95%;
+  margin-bottom: 13px;
+  padding: 0px 2.5%;
+  padding-bottom: 15px;
+  border-radius: 6px;
+}
+.order-number{
+  height: 45px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.goods{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.goods image{
+  width: 60px;
+  height: 60px;
+}
+.goods-info{
+  width: 75%;
+  height: 60px;
+}
+.goods-info > view:nth-of-type(1){
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+.goods-info > view:nth-of-type(1) text:nth-of-type(1){
+  display: inline-block;
+  width: 80%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.goods-info > view:nth-of-type(2){
+  width: 100%;
+  text-align: end;
+  margin-bottom: 5rpx;
+}
+.goods-info > view:nth-of-type(3){
+  width: 100%;
+  margin: 0;
+}

@@ -32,6 +32,7 @@ page{
   border-radius: 6px;
   background-color: #fff;
 }
+
 .item-goods{
   width: 100%;
   display: flex;

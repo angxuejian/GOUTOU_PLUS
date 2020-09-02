@@ -16,15 +16,15 @@
 			</block>
 		</view>
 
-    <view class="item-fun">
-      <view class="theme-font">我的订单</view>
+    <view hover-class="theme-hover" bindtap="gotoUserOrder" class="item-fun theme-fff">
+      <view  class="theme-font">我的订单</view>
       <image src="../../../images/arrow-right.png"></image>
     </view>
-    <view bindtap="gotoUserAddress" class="item-fun">
+    <view hover-class="theme-hover" bindtap="gotoUserAddress" class="item-fun theme-fff">
       <view class="theme-font">我的地址</view>
       <image src="../../../images/arrow-right.png"></image>
     </view>
-     <view class="item-fun">
+     <view hover-class="theme-hover" class="item-fun theme-fff">
       <view class="theme-font">我的客服</view>
       <image src="../../../images/arrow-right.png"></image>
       <button class="but-contact" open-type="contact"></button>

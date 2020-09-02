@@ -4,9 +4,11 @@
     "pages/Tabbar/shopping/shopping",
     "pages/Tabbar/me/me",
     "pages/PageGoods/goodsDetail/goodsDetail",
-    "pages/PageGoods/orderDetail/orderDetail",
+    "pages/PageGoods/goodsOrderDetail/goodsOrderDetail",
     "pages/PageGoods/userAddress/userAddress",
-    "pages/PageGoods/addUserAddress/addUserAddress"
+    "pages/PageGoods/addUserAddress/addUserAddress",
+    "pages/PageGoods/userOrder/userOrder",
+    "pages/PageGoods/userOrderDetail/userOrderDetail"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",
