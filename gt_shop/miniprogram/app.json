@@ -6,7 +6,7 @@
     "pages/PageGoods/goodsDetail/goodsDetail",
     "pages/PageGoods/goodsOrderDetail/goodsOrderDetail",
     "pages/PageGoods/userAddress/userAddress",
-    "pages/PageGoods/addUserAddress/addUserAddress",
+    "pages/PageGoods/userAddAddress/userAddAddress",
     "pages/PageGoods/userOrder/userOrder",
     "pages/PageGoods/userOrderDetail/userOrderDetail"
   ],

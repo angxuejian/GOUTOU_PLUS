@@ -1,4 +1,6 @@
 // miniprogram/pages/PageGoods/userOrder/userOrder.js
+import {CloudFn} from '../../../utils/CloudFn'
+const cloudFn = new CloudFn()
 Page({
 
   /**
@@ -7,35 +9,63 @@ Page({
   data: {
     // [0,1,2,3,4]
     //[全部订单,待付款，待发货，待收货，退款/售后]
-    state: '0', // 订单状态码 默认为全部订单
-    orderTile: [{
+    state: 0, // 订单状态码 默认为全部订单
+    orderTitle: [{
         name: '全部订单',
-        state: '0'
+        state: 0
       },
       {
         name: '待付款',
-        state: '1'
+        state: 1
       },
       {
         name: '待发货',
-        state: '2'
+        state: 2
       },
       {
         name: '待收货',
-        state: '3'
+        state: 3
       },
       {
         name: '退款/售后',
-        state: '4'
+        state: 4
       }
     ],
+    orderArray: [], // 订单列表
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.state = Number(options.state)
+    this.setData({
+      state: this.data.state
+    })
+    wx.showLoading({
+      title: '加载中...',
+      mask:true
+    })
+    this._loadData()
+  },  
 
+  // 请求订单列表
+  _loadData: function() {
+    cloudFn.$callFn({
+      data: {
+        fn: 'get',
+        base: 'user-order',
+        where_data: !this.data.state ? {} : {state:this.data.state},
+        by: 'desc'
+      }
+    }).then(res => {
+      wx.hideLoading()
+      console.log(res, '这是订单信息')
+      this.data.orderArray = res.data
+      this.setData({
+        orderArray: this.data.orderArray
+      })
+    })
   },
 
   //选择标题
@@ -45,12 +75,18 @@ Page({
     this.setData({
       state: this.data.state
     })
+    wx.showLoading({
+      title: '加载中...',
+      mask:true
+    })
+    this._loadData()
   },
 
   // 去订单页
-  gotoDetail: function() {
+  gotoDetail: function(event) {
+    let orderid = event.currentTarget.dataset.orderid
     wx.navigateTo({
-      url: '../userOrderDetail/userOrderDetail',
+      url: '../userOrderDetail/userOrderDetail?orderid=' + orderid,
     })
   },
 

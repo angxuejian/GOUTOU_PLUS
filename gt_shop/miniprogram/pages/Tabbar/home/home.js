@@ -1,4 +1,8 @@
 // miniprogram/pages/Tabbar/home/home.js
+import {
+  CloudFn
+} from '../../../utils/CloudFn'
+const cloudFn = new CloudFn()
 Page({
 
   /**
@@ -11,35 +15,49 @@ Page({
       'http://img.tukuppt.com/bg_grid/00/03/77/qMaJ6zUerz.jpg!/fh/350',
       'http://img.tukuppt.com/bg_grid/00/21/08/qs3ZrXjJ8a.jpg!/fh/350'
     ],
-    goodsArray: [
-      { name: '酒水被子酒吧', src: '//img.tukuppt.com/bg_grid/00/20/48/noQXl2pSFt.jpg!/fh/350', price: '99'},
-      { name: '干果坚果美食零食', src: '//img.tukuppt.com/bg_grid/00/14/10/GGluW41gib.jpg!/fh/350', price: '66'},
-      { name: '手绘彩墨画笔颜料', src: '//img.tukuppt.com/bg_grid/00/18/99/wOFkS4H10S.jpg!/fh/350', price: '88'},
-      { name: '背包旅行', src: '//img.tukuppt.com/bg_grid/00/21/99/ETxpnt8e6s.jpg!/fh/350', price: '33'},
-      { name: '龙猫坐伞上', src: '//img.tukuppt.com/bg_grid/00/17/58/yN5PyIUoAJ.jpg!/fh/350', price: '77'},
-    ]
+    goodsArray: [], // 商品列表
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '加载中...',
+      mask:true
+    })
+    this._loadData()
   },
 
+  // 查询全部数据
+  _loadData: function () {
+    cloudFn.$callFn({
+      data: {
+        fn: 'get',
+        base: 'shop-goods',
+        is_where: false
+      }
+    }).then(res => {
+      wx.hideLoading()
+      this.data.goodsArray = res.data
+      this.setData({
+        goodsArray: this.data.goodsArray
+      })
+    })
+  },
 
   // 获取当前图片的索引
-  getCurrentIndex: function(event) {
-    console.log(event)
+  getCurrentIndex: function (event) {
     this.data.currIndex = event.detail.current
     this.setData({
       currIndex: this.data.currIndex
     })
   },
 
-  gotoGoodsDetail: function() {
+  gotoGoodsDetail: function (event) {
+    let id = event.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../PageGoods/goodsDetail/goodsDetail',
+      url: '../../PageGoods/goodsDetail/goodsDetail?id=' + id,
     })
   },
 

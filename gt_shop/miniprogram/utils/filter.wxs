@@ -1,0 +1,19 @@
+
+function changeState(state) {
+  // 待付款，待发货，待收货，退款/售后
+  if(state == "1") {
+    return '待付款'
+  } else if(state == "2") {
+    return '待发货'
+  }else if(state == "3") {
+    return '待收货'
+  }else if(state == "4") {
+    return '退款/售后'
+  }
+}
+
+
+module.exports = {
+  changeState:changeState
+}
+

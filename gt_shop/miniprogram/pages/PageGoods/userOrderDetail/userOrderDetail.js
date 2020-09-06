@@ -1,18 +1,44 @@
 // miniprogram/pages/PageGoods/userOrderDetail/userOrderDetail.js
+import {CloudFn} from '../../../utils/CloudFn'
+const cloudFn = new CloudFn()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    order_id: '', //订单id
+    order: {}, //订单
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.order_id = options.orderid
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
 
+    this._loadData()
+  },
+
+  // 获取全部数据
+  _loadData: function() {
+    cloudFn.$callFn({
+      data: {
+        fn: 'get',
+        base: 'user-order',
+        where_data: {order_id: this.data.order_id}
+      }
+    }).then(res => {
+      wx.hideLoading()
+      this.data.order = res.data[0]
+      this.setData({
+        order: this.data.order
+      })
+    })
   },
 
   /**

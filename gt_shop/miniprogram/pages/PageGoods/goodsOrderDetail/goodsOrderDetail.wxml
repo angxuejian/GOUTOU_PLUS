@@ -2,28 +2,29 @@
 <view>
 	<!-- 收货地址 -->
 	<view bindtap="gotoUserAddress" hover-class="theme-hover" class="order-address theme-fff">
-		<view class="info">
+		<view wx:if='{{userAddress.shippingTel}}' class="info">
 			<view>
-				<text class="theme-font-f">YANG MAN</text>
-				<text class="theme-font-f">15514866818</text>
+				<text class="theme-font-f">{{userAddress.shippingName}}</text>
+				<text class="theme-font-f">{{userAddress.shippingTel}}</text>
 			</view>
-			<view class="theme-price">浙江省杭州市滨江区长河街道321号</view>
+			<view class="theme-price">{{ userAddress.shippingCity}}{{userAddress.shippingAddress}}</view>
 		</view>
+		<view wx:if='{{!userAddress.shippingTel}}' class="not-address theme-font-f">选择收货地址</view>
 		<image src="../../../images/arrow-right.png" class="arrow"></image>
 	</view>
 
 	<!-- 订单商品 -->
 	<view  class="order">
-		<block wx:for='{{2}}' wx:key='index'>
+		<block wx:for='{{orderArray}}' wx:key='index'>
 			<view class="item-goods">
-				<image mode="aspectFill" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1709644436,2739756540&fm=26&gp=0.jpg"></image>
+				<image mode="aspectFill" src="{{item.goods_spec.cover}}"></image>
 				<view class="goods-info">
 					<view>
-						<text class="theme-price">超级好看的风景超级好看的风景超级好看的风景</text>
-						<text class="theme-font-f">￥120</text>
+						<text class="theme-price">{{item.title}}</text>
+						<text class="theme-font-f">￥{{item.goods_spec.price}}</text>
 					</view>
-					<view class="theme-font-f">x 10</view>
-					<view class="theme-price">规格</view>
+					<view class="theme-font-f">x {{item.goods_number}}</view>
+					<view class="theme-price">{{item.goods_spec.name}}</view>
 				</view>
 			</view>
 		</block>
@@ -31,13 +32,13 @@
 
   <view hover-class="theme-hover" class="all-price theme-fff">
   <text class="theme-font-f">订单总价</text>
-  <text class="theme-color">￥120</text>
+  <text class="theme-color">￥{{allPrice}}</text>
   </view>
 
   <view class="theme-price prompt">下单前请核验收货地址哦！</view>
   <!-- <view class="theme-price prompt">下单后48小时未发货，记得去退款哦！</view> -->
 
-  <view hover-class="theme-hover" class="now-pay theme-fff theme-font-f">
+  <view bindtap="gotoPay" hover-class="theme-hover" class="now-pay theme-fff theme-font-f">
    支付
   </view>
 </view>

@@ -29,6 +29,7 @@
 	"libVersion": "2.8.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -56,7 +57,7 @@
 					"id": 0,
 					"name": "pages/Tabbar/home/home",
 					"pathName": "pages/Tabbar/home/home",
-					"query": "",
+					"query": "id=7498b5fe5f549be60112eea64fc7afb5&index=1",
 					"scene": null
 				}
 			]

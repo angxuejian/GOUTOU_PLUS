@@ -40,12 +40,11 @@
   right: 1px;
   width: 0;
   height: 0;
-  border-top: 15px solid red;
+  border-top: 15px solid #229794;
   border-left: 15px solid transparent;
-  /* padding-left: 10px; */
-  /* padding-top: 10px; */
 }
-.add-shipping-address{
+
+.not-user-address{
   width: 100%;
   height: 30px;
   margin-top: 20px;
@@ -53,4 +52,19 @@
   line-height: 30px;
   font-size: 13px;
   color: #333;
+}
+
+.add-user-address{
+  position: fixed;
+  bottom: 200rpx;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 66;
+}
+.add-user-address image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }

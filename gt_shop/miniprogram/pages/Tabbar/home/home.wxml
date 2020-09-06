@@ -13,10 +13,10 @@
 
   <view class="all-goods">
     <block wx:for='{{goodsArray}}' wx:key='index'>
-      <view bindtap="gotoGoodsDetail" class="current-goods">
-        <image  mode="aspectFill" src="{{item.src}}"></image>
-        <view class="theme-font">{{item.name}}</view>
-        <view class="theme-price">￥{{item.price}}</view>
+      <view bindtap="gotoGoodsDetail" data-id='{{item._id}}' class="current-goods">
+        <image  mode="aspectFill" src="{{item.cover}}"></image>
+        <view class="theme-font">{{item.title}}</view>
+        <view class="theme-price">￥{{item.def_price}}</view>
       </view>
     </block>
   </view>

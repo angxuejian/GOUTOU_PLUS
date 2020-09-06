@@ -6,20 +6,20 @@
     <block wx:for='{{goodsArray}}' wx:key='index'>
       <view class="item-goods">
         <view class="info">
-          <image mode="aspectFill" src="{{ item.src}}"></image>
+          <image mode="aspectFill" src="{{ item.goods_spec.cover}}"></image>
           <view class="info-number">
-            <view class="theme-font">{{ item.name }}</view>
+            <view class="theme-font">{{ item.title }}</view>
             <view class="theme-font number">
-              <view><image src="../../../images/shopping/less.png"></image></view>
-              <view style="background-color:none">{{ item.num}}</view>
-              <view><image src="../../../images/shopping/plus.png"></image></view>
+              <view bindtap="onLess" data-index='{{index}}'><image src="../../../images/shopping/less.png"></image></view>
+              <view style="background-color:none">{{item.goods_number}}</view>
+              <view bindtap="onPlus" data-index='{{index}}'><image src="../../../images/shopping/plus.png"></image></view>
             </view>
           </view>
         </view>
         <view class="price theme-font">
-          ￥{{item.price}}
+          ￥{{item.goods_spec.price}}
         </view>   
-        <image class="add-remove" src="../../../images/shopping/{{item.select ? 'remove' : 'add'}}.png"></image>  
+        <image bindtap="onSelect" data-index='{{index}}' class="add-remove" src="../../../images/shopping/{{item.select ? 'remove' : 'add'}}.png"></image>  
       </view>
     </block>
   </view>
@@ -30,7 +30,7 @@
 	<view class="bottom-but">
 		<view class="goods-price">
 			<text class="theme-font-f">实付款</text>
-			<text class="theme-font-f theme-color">￥120</text>
+			<text class="theme-font-f theme-color">￥{{allPrice}}</text>
 		</view>
     <view bindtap="gotoOrderDetail" hover-class="theme-hover" class="place-order theme-fff theme-font-f">下订单</view>
 	</view>

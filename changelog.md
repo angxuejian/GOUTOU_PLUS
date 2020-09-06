@@ -1,4 +1,9 @@
 
+### 2020/09/06
+- 新增 user、user-address、user-shopping-cart、user-order、 shop-goods数据集合
+- 新增 CloudAPIBase 云函数
+- 接入数据
+
 ### 2020/09/02
 - gt_shop小程序的订单列表、详情UI
 

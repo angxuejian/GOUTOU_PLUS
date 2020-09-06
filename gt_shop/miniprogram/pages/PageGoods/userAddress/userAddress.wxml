@@ -3,20 +3,24 @@
 <view>
     <!-- 我的收获地址 -->
     <view class="all-shipping-address">
-      <block wx:for='{{1}}' wx:key='index'>
+      <block wx:for='{{userAddressArray}}' wx:key='index'>
         <view class="item-shipping-address">
           <view bindtap="onSelectIndex" data-index='{{index}}'>
-            <view>YANG MAN</view>
-            <view>浙江省杭州市滨江区长河街道321号</view>
+            <view>{{item.shippingName}}</view>
+            <view>{{item.shippingCity}}{{item.shippingAddress}}</view>
           </view>
-          <view bindtap="gotoEdit" data-index='{{index}}'>编辑</view>
+          <view bindtap="gotoEdit" data-item='{{item}}'>编辑</view>
           <view wx:if='{{index == selectIndex && selectSA}}' class="right-arrow"></view>
         </view>
       </block>
     </view>
 
+    <view wx:if='{{!userAddressArray.length}}' bindtap="onAddShippingAddress" class="not-user-address">暂无地址，去添加新地址</view>
+
     <!-- 添加新地址 -->
-    <view bindtap="onAddShippingAddress" class="add-shipping-address">去添加新地址</view>
+    <view hover-class="theme-hover" bindtap="onAddShippingAddress" class="add-user-address">
+      <image src="../../../images/goods/add-user-address.png"></image>
+    </view>
 </view>
 
 
