@@ -1,0 +1,22 @@
+<!--miniprogram/pages/PageGoods/goodsSearch/goodsSearch.wxml-->
+<view>
+	<view class="search theme-fff">
+		<view class="input">
+			<image src="../../../images/goods/search.png"></image>
+			<input bindinput="getInputValue" class="theme-font" placeholder="输入商品名称"></input>
+		</view>
+		<view bindconfirm='gotoSearch' bindtap="gotoSearch" hover-class="theme-hover" class="but theme-font">搜索</view>
+	</view>
+
+  <!-- 商品 -->
+
+  <view wx:if='{{goodsArray.length}}' class="all-goods">
+    <block wx:for='{{goodsArray}}' wx:key='index'>
+      <view bindtap="gotoGoodsDetail" data-id='{{item._id}}' class="current-goods">
+        <image  mode="aspectFill" src="{{item.cover}}"></image>
+        <view class="theme-font">{{item.title}}</view>
+        <view class="theme-price">￥{{item.def_price}}</view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -8,7 +8,8 @@
     "pages/PageGoods/userAddress/userAddress",
     "pages/PageGoods/userAddAddress/userAddAddress",
     "pages/PageGoods/userOrder/userOrder",
-    "pages/PageGoods/userOrderDetail/userOrderDetail"
+    "pages/PageGoods/userOrderDetail/userOrderDetail",
+    "pages/PageGoods/goodsSearch/goodsSearch"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",

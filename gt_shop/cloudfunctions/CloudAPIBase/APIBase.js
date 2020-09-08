@@ -60,7 +60,6 @@
             user_id: OPENID
           });
         }
-
         _db = _db.where(wdata).orderBy('create_time', by)
         return _db.get()
       },
@@ -147,6 +146,7 @@
         let _db = db.collection(base).aggregate().lookup(look_data)
 
         if (key) {
+          console.log(match_list, '这是空的？')
           const _ = db.command
           _db = _db.match({
             [key]: _.in(match_list)

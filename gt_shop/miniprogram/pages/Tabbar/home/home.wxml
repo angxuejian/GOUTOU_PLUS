@@ -1,5 +1,11 @@
 <!--miniprogram/pages/Tabbar/home/home.wxml-->
 <view>
+
+<!-- 搜索 -->
+  <view bindtap="gotoSearch" hover-class="theme-hover" class="search theme-fff">
+    <image src="../../../images/goods/search.png"></image>
+    <text class="theme-font">搜索</text>
+  </view>
 <!-- 轮播图 -->
 	<swiper autoplay interval='10000' bindchange='getCurrentIndex' circular current='1'   next-margin="60rpx" previous-margin="60rpx">
 		<block wx:for='{{currentArray}}' wx:key='index'>

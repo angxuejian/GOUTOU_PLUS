@@ -1,4 +1,4 @@
-// miniprogram/pages/Tabbar/home/home.js
+// miniprogram/pages/PageGoods/goodsSearch/goodsSearch.js
 import {
   CloudFn
 } from '../../../utils/CloudFn'
@@ -9,35 +9,63 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currIndex: 1, // 被选中的索引
-    currentArray: [
-      'http://img.tukuppt.com/bg_grid/00/12/12/ROVO8gRNFX.jpg!/fh/350',
-      'http://img.tukuppt.com/bg_grid/00/03/77/qMaJ6zUerz.jpg!/fh/350',
-      'http://img.tukuppt.com/bg_grid/00/21/08/qs3ZrXjJ8a.jpg!/fh/350'
-    ],
-    goodsArray: [], // 商品列表
+    goodsArray: [], // 搜索的商品列表
+    searchValue: '', // 搜索的值
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+  },
+
+  // 获取input 的 值
+  getInputValue: function(event) {
+    this.data.searchValue = event.detail.value
+  },
+
+  // 搜索
+  gotoSearch: function() {
+    if(!this.data.searchValue) {
+      wx.showToast({
+        title: '请输入商品名称',
+        icon: 'none'
+      })
+      return
+    }
     wx.showLoading({
       title: '加载中...',
       mask:true
     })
     this._loadData()
-  },
+  },  
 
-  // 查询全部数据
+
+  // 查询指定数据
   _loadData: function () {
+    const db = wx.cloud.database()
     cloudFn.$callFn({
       data: {
         fn: 'get',
         base: 'shop-goods',
-        is_where: false
+        is_where: false,
+        is_regexp: true,
+        where_data: {
+          title: db.RegExp({
+            regexp: '.*' + this.data.searchValue,
+            options: 'i',
+          })
+        }
       }
     }).then(res => {
+      if(!res.data[0]) {
+        wx.showToast({
+          title: '暂无商品',
+          icon: 'none'
+        })
+        return
+      }
       wx.hideLoading()
       this.data.goodsArray = res.data
       this.setData({
@@ -46,29 +74,13 @@ Page({
     })
   },
 
-  // 获取当前图片的索引
-  getCurrentIndex: function (event) {
-    this.data.currIndex = event.detail.current
-    this.setData({
-      currIndex: this.data.currIndex
-    })
-  },
-
-  // 去商品详情
-  gotoGoodsDetail: function (event) {
+   // 去商品详情
+   gotoGoodsDetail: function (event) {
     let id = event.currentTarget.dataset.id
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../../PageGoods/goodsDetail/goodsDetail?id=' + id,
     })
   },
-
-  // 去搜索页
-  gotoSearch: function(){
-    wx.navigateTo({
-      url: '../../PageGoods/goodsSearch/goodsSearch',
-    })
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

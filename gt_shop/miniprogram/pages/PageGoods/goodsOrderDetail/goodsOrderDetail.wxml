@@ -38,7 +38,7 @@
   <view class="theme-price prompt">下单前请核验收货地址哦！</view>
   <!-- <view class="theme-price prompt">下单后48小时未发货，记得去退款哦！</view> -->
 
-  <view bindtap="gotoPay" hover-class="theme-hover" class="now-pay theme-fff theme-font-f">
+  <view bindtap="onSubmitPay" hover-class="theme-hover" class="now-pay theme-fff theme-font-f">
    支付
   </view>
 </view>

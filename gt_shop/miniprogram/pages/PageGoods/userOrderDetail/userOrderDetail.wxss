@@ -127,8 +127,24 @@
   left: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
-.order-confirm > text:nth-of-type(2){
+.order-confirm > text:nth-of-type(1){
   margin: 0 8px;
+  margin-right: 9px;
+}
+.order-confirm > view{
+  width: 15%;
+  height: 70rpx;
+  /* background-color: red; */
+  line-height: 70rpx;
+  padding: 0px 5px;
+  border-radius: 5px;
+  text-align: center;
+  margin:0 10px;
+
+}
+.border{
+  border: 1px solid #eee;
+  
 }

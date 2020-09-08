@@ -55,8 +55,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/Tabbar/home/home",
-					"pathName": "pages/Tabbar/home/home",
+					"name": "pages/PageGoods/goodsSearch/goodsSearch",
+					"pathName": "pages/PageGoods/goodsSearch/goodsSearch",
 					"query": "id=7498b5fe5f549be60112eea64fc7afb5&index=1",
 					"scene": null
 				}
