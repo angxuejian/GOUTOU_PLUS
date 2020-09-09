@@ -1,8 +1,8 @@
 # GOUTOU_PLUS
 
-#### gt_shop 目录下为用户端小程序源码
+#### [gt_shop](./gt_shop/README.md) 目录下为用户端小程序源码
 
-#### gt_manage 目录下为管理端小程序源码
+#### [gt_manage](./gt_manage/README.md) 目录下为管理端小程序源码
 
 #### 详细项目介绍请看对应目录下的 README.md 文档
 

@@ -1,0 +1,56 @@
+/* miniprogram/pages/Tabbar/me/me.wxss */
+.user-info{
+  width: 100%;
+  height: 300rpx;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* border-bottom: 1px solid #fff; */
+}
+.user-info image{
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.down-fun{
+  width: 95%;
+  margin: 10px auto;
+  /* height: 50px; */
+  /* border-radius: 10px; */
+} 
+
+
+.item-fun{
+  margin-top: 10px;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 2.5%;
+  height: 30px;
+  position: relative;
+}
+.item-fun > picker{
+  /* background-color: red; */
+  width: 90%;
+  height: 30px;
+  line-height: 30px;
+}
+.item-fun > image{
+  width: 15px;
+  height: 18px;
+}
+
+.but-contact{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.but-contact:not([size='mini']){
+  width: 100%;
+  height: 100%;
+}

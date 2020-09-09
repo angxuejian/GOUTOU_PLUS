@@ -16,12 +16,12 @@ Page({
     peopleArr: [{
         name: '姓名',
         key: '请选择',
-        inKey: 'shippingName',
+        inKey: 'shipping_name',
         value: ''
       },
       {
         name: '手机号',
-        inKey: 'shippingTel',
+        inKey: 'shipping_tel',
         isPhone: true,
         value: ''
       },
@@ -35,17 +35,17 @@ Page({
     addressdetailvalue: '', // 详情地址value
     checkedvalue: false, // 默认地址的value
     formData: {
-      shippingName: '', // 收货人姓名
-      shippingTel: '', //收货人手机号码
-      shippingCity: '', // 收货人城市
-      shippingAddress: '', // 收货人详情地址
+      shipping_name: '', // 收货人姓名
+      shipping_tel: '', //收货人手机号码
+      shipping_city: '', // 收货人城市
+      shipping_address: '', // 收货人详情地址
       defaults: false, // 是否设置为默认地址
     },
     checkFormData: {
-      shippingTel: '请输入手机号码',
-      shippingAddress: '请输入详情地址',
-      shippingName: '请输入姓名',
-      shippingCity: '请选择城市'
+      shipping_tel: '请输入手机号码',
+      shipping_address: '请输入详情地址',
+      shipping_name: '请输入姓名',
+      shipping_city: '请选择城市'
     },
     isEdit: false, // 是否是编辑
     editID: '', //编辑时，查找的id
@@ -64,11 +64,11 @@ Page({
     this.data.isEdit = true;
     this.data.editID = item._id;
     this.data.checkedvalue = item.defaults;
-    this.data.addressdetailvalue = item.shippingAddress;
-    this.data.peopleArr[0].value = item.shippingName;
-    this.data.peopleArr[1].value = item.shippingTel;
-    this.data.peopleArr[2].key = item.shippingCity
-    this.data.peopleArr[2].value = item.shippingCity.split(' ')
+    this.data.addressdetailvalue = item.shipping_address;
+    this.data.peopleArr[0].value = item.shipping_name;
+    this.data.peopleArr[1].value = item.shipping_tel;
+    this.data.peopleArr[2].key = item.shipping_city
+    this.data.peopleArr[2].value = item.shipping_city.split(' ')
 
     this.setData({
       checkedvalue: this.data.checkedvalue,
@@ -93,13 +93,13 @@ Page({
   // 获取选择框的值
   onSelectedDate: function (event) {
     this.data.peopleArr[2].key = event.detail.value.join(' ')
-    this.data.formData.shippingCity = this.data.peopleArr[2].key
+    this.data.formData.shipping_city = this.data.peopleArr[2].key
     this.setData({
       ['peopleArr[2].key']: this.data.peopleArr[2].key
     })
     // if(isCity === '重庆市'){
     //       this.data.peopleArr[2].key = event.detail.value.join(' ')
-    //       this.data.formData.shippingCity = this.data.peopleArr[2].key
+    //       this.data.formData.shipping_city = this.data.peopleArr[2].key
     //       this.setData({
     //             ['peopleArr[2].key']:this.data.peopleArr[2].key
     //       })
@@ -118,9 +118,9 @@ Page({
   },
 
   // 保持收货地址
-  gotoAddShippingAddress: function () {
+  gotoAddshipping_address: function () {
     if (checkForm(this.data.formData, this.data.checkFormData)) {
-      if (this.data.formData.shippingTel.length !== 11) {
+      if (this.data.formData.shipping_tel.length !== 11) {
         wx.showToast({
           title: '手机号码错误',
           icon: 'none'

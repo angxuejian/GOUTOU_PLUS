@@ -44,7 +44,7 @@ Page({
   },
 
   // 去添加
-  onAddShippingAddress: function () {
+  onAddshipping_address: function () {
     wx.navigateTo({
       url: '../userAddAddress/userAddAddress',
     })

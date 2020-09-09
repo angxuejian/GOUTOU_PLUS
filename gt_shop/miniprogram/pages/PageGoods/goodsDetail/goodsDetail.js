@@ -116,8 +116,8 @@ Page({
 
   // 订单详情页
   gotoOrderDetail: function () {
-    let sum = this.data.goods.specArray[this.data.specIndex].sum
-    let name = this.data.goods.specArray[this.data.specIndex].name
+    let sum = this.data.goods.spec_array[this.data.specIndex].sum
+    let name = this.data.goods.spec_array[this.data.specIndex].name
     if (sum === 0 || this.data.goods_number > sum) {
       wx.showModal({
         title: '提示',
@@ -130,7 +130,7 @@ Page({
       goods_id: this.data._id, // 商品id
       title: this.data.goods.title, // 商品标题
       goods_number: this.data.goods_number, // 购买数量
-      goods_spec: this.data.goods.specArray[this.data.specIndex], // 购买的商品规格
+      goods_spec: this.data.goods.spec_array[this.data.specIndex], // 购买的商品规格
     }
 
     if (this.data.type === 'cart') {
@@ -162,7 +162,7 @@ Page({
         base: 'user-shopping-cart',
         where_data: {
           goods_id: this.data.goods_id,
-          goods_spec: this.data.goods.specArray[this.data.specIndex]
+          goods_spec: this.data.goods.spec_array[this.data.specIndex]
         },
         is_where: false
       }
@@ -199,7 +199,7 @@ Page({
         base: 'user-shopping-cart',
         where_data: {
           goods_id: this.data.goods_id,
-          goods_spec: this.data.goods.specArray[this.data.specIndex]
+          goods_spec: this.data.goods.spec_array[this.data.specIndex]
         },
         update_data: {
           goods_number: sum

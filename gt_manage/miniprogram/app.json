@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/Tabbar/manage/manage",
+    "pages/Tabbar/me/me"
+  ],
+  "window": {
+    "backgroundColor": "#f6f6f6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6f6f6",
+    "navigationBarTitleText": "狗头管理",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "selectedColor": "#512DA8",
+    "color": "#8a8a8a",
+    "list": [
+      {
+        "pagePath": "pages/Tabbar/manage/manage",
+        "text": "管理",
+        "iconPath": "./images/tabbar/manage.png",
+        "selectedIconPath": "./images/tabbar/manage-selected.png"
+      },
+      {
+        "pagePath": "pages/Tabbar/me/me",
+        "text": "我",
+        "iconPath": "./images/tabbar/me.png",
+        "selectedIconPath": "./images/tabbar/me-selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

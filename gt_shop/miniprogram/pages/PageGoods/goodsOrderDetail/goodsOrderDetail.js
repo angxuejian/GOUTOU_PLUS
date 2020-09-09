@@ -131,7 +131,7 @@ Page({
 
   // 支付
   onSubmitPay: function () {
-    if (!this.data.userAddress.shippingTel) {
+    if (!this.data.userAddress.shipping_tel) {
       wx.showToast({
         title: '请选择收获地址',
         icon: 'none'
@@ -168,12 +168,12 @@ Page({
           base: 'shop-goods',
           where_data: {
             _id: item.goods_id,
-            'specArray.id': item.goods_spec.id
+            'spec_array.id': item.goods_spec.id
           },
           is_where: false
         }
       }).then(res => {
-        const list = res.data[0].specArray
+        const list = res.data[0].spec_array
         for (let i = 0; i < list.length; i++) {
           if (list[i].id === specId) {
             if ((list[i].sum - orderNumber) < 0) {
@@ -225,10 +225,10 @@ Page({
           base: 'shop-goods',
           where_data: {
             _id: item.goods_id,
-            'specArray.id': item.goods_spec.id
+            'spec_array.id': item.goods_spec.id
           },
           update_data: {
-            'specArray.$.sum': self.data.oneTimeSum
+            'spec_array.$.sum': self.data.oneTimeSum
           }
         }
       }).then(res => {

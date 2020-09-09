@@ -1,0 +1,26 @@
+<!--miniprogram/pages/Tabbar/me/me.wxml-->
+<view>
+	<view class="user-info">
+		<button wx:if='{{!userInfo.avatarUrl}}' open-type="getUserInfo" bindgetuserinfo="onUserInfo">登录注册</button>
+
+		<image wx:if='{{userInfo.avatarUrl}}' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+    <view wx:if='{{userInfo.avatarUrl}}' class="theme-bold">{{userInfo.nickName}}</view>
+	</view>
+
+	<view class="down-fun">
+    <view hover-class="theme-hover"  class="item-fun theme-fff">
+      <picker bindchange="gotoCheckout" mode='selector' range="{{pickerRange}}" class="theme-font">身份切换</picker>
+      <image src="../../../images/arrow-right.png"></image>
+    
+    </view>
+    <!-- <view hover-class="theme-hover" bindtap="gotoUserAddress" class="item-fun theme-fff">
+      <view class="theme-font">我的地址</view>
+      <image src="../../../images/arrow-right.png"></image>
+    </view>
+     <view hover-class="theme-hover" class="item-fun theme-fff">
+      <view class="theme-font">我的客服</view>
+      <image src="../../../images/arrow-right.png"></image>
+      <button class="but-contact" open-type="contact"></button>
+    </view> -->
+	</view>
+</view>

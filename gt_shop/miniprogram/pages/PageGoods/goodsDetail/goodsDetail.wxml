@@ -2,7 +2,7 @@
 <view>
 	<!-- 轮播 -->
 	<swiper interval='10000' autoplay circular>
-		<block wx:for='{{goods.swiperArray}}' wx:key='index'>
+		<block wx:for='{{goods.swiper_array}}' wx:key='index'>
 			<swiper-item>
 				<image bindtap="showSrc" data-curr='{{item}}' data-list='{{goods.swiperArray}}' mode="aspectFill" src="{{ item }}"></image>
 			</swiper-item>
@@ -13,7 +13,7 @@
 	<view class="goods">
 		<!-- 价钱 + 标题 -->
 		<view style="border:none; height: 30rpx;" class="item-box">
-			<view class="theme-font-f theme-color">￥{{goods.specArray[specIndex].price}}</view>
+			<view class="theme-font-f theme-color">￥{{goods.spec_array[specIndex].price}}</view>
 		</view>
     <view class="item-box">
 			<view class="theme-font-f">{{goods.title}}</view>
@@ -23,7 +23,7 @@
 	<!-- 规格 -->
 	<view class="item-title theme-price">规格</view>
 	<view class="item-spec">
-		<block wx:for='{{goods.specArray}}' wx:key='sindex'>
+		<block wx:for='{{goods.spec_array}}' wx:key='sindex'>
 			<view bindtap="selectSpec" data-index='{{index}}' class="sub-item-spec {{index === specIndex ? 'sub-selected-item-spce theme-font' : 'theme-price'}}">{{item.name}}</view>
 		</block>
 	</view>
@@ -31,8 +31,8 @@
 	<!-- 详情 -->
 	<view style="margin-top:10px" class="item-title theme-price">详情</view>
 	<view class="item-detail">
-		<block wx:for='{{goods.detailArray}}' wx:key='index'>
-			<image bindtap="showSrc" data-curr='{{item}}' data-list='{{goods.detailArray}}'  mode="aspectFill" src="{{item}}"></image>
+		<block wx:for='{{goods.detail_array}}' wx:key='index'>
+			<image bindtap="showSrc" data-curr='{{item}}' data-list='{{goods.detail_array}}'  mode="aspectFill" src="{{item}}"></image>
 		</block>
 
 	</view>
@@ -58,18 +58,18 @@
 	<!-- 商品信息 -->
 	<image bindtap="closeGoodsInfoPopBox" class="remove" src="../../../images/goods/remove.png"></image>
 	<view  class="info">
-		<image bindtap="showSrc" data-curr='{{item}}' data-list='{{[item]}}'  mode="aspectFill" src="{{goods.specArray[specIndex].cover}}"></image>
+		<image bindtap="showSrc" data-curr='{{item}}' data-list='{{[item]}}'  mode="aspectFill" src="{{goods.spec_array[specIndex].cover}}"></image>
 		<view>
-			<view class="theme-font-f theme-color">￥{{goods.specArray[specIndex].price}}</view>
-			<view class="theme-font">已选：{{goods.specArray[specIndex].name}}</view>
-			<view class="theme-font">库存：{{goods.specArray[specIndex].sum}}</view>
+			<view class="theme-font-f theme-color">￥{{goods.spec_array[specIndex].price}}</view>
+			<view class="theme-font">已选：{{goods.spec_array[specIndex].name}}</view>
+			<view class="theme-font">库存：{{goods.spec_array[specIndex].sum}}</view>
 		</view>
 	</view>
 
 	<!-- 商品规格 -->
 	<view class="item-title theme-price">规格</view>
 	<view style="border:none"  class="item-spec">
-		<block wx:for='{{goods.specArray}}' wx:key='index'>
+		<block wx:for='{{goods.spec_array}}' wx:key='index'>
 			<view bindtap="selectSpec" data-index='{{index}}' data-index='{{index}}' class="sub-item-spec {{index === specIndex ? 'sub-selected-item-spce theme-font' : 'theme-price'}}">{{item.name}}</view>
 		</block>
 	</view>
