@@ -13,7 +13,7 @@
 
     > **gt_manage文件夹为管理端小程序代码**
 
-    ![GOUTOU_PLUS文件夹](./img/a.png)
+    ![GOUTOU_PLUS文件夹](http://m.qpic.cn/psc?/V51tU9Lc3qlSDA40U7Me4LFIuS3nVOWS/ruAMsa53pVQWN7FLK88i5kq5WTilL9azobnCQex7qna*MdLZDU50QntjGbJi.RaAXhum0d93yIkDsmCz8*pmFOz0xtWWjutDMSXr9AuvD10!/b&bo=igJDAQAAAAADB.g!&rf=viewer_4)
 
 5. 恭喜哦！ 你已经拥有的全部源代码了。我们就先来部署 **gt_shop文件夹下的小程序代码**
 
