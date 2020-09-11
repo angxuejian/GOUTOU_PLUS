@@ -1,5 +1,5 @@
 # GOUTOU_PLUS
-
+## 注：项目中的.md文件中，有些需要加载图片，如加载失败，可 clone 到本地查看。图片均在项目包中
 #### [gt_shop](./gt_shop/README.md) 目录下为用户端小程序源码
 
 #### [gt_manage](./gt_manage/README.md) 目录下为管理端小程序源码
