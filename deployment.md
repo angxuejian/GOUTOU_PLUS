@@ -13,7 +13,7 @@
 
     > **gt_manage文件夹为管理端小程序代码**
 
-    ![GOUTOU_PLUS文件夹](http://m.qpic.cn/psc?/V51tU9Lc3qlSDA40U7Me4LFIuS3nVOWS/ruAMsa53pVQWN7FLK88i5kq5WTilL9azobnCQex7qna*MdLZDU50QntjGbJi.RaAXhum0d93yIkDsmCz8*pmFOz0xtWWjutDMSXr9AuvD10!/b&bo=igJDAQAAAAADB.g!&rf=viewer_4)
+    ![GOUTOU_PLUS文件夹](./img/a.png)
 
 5. 恭喜哦！ 你已经拥有的全部源代码了。我们就先来部署 **gt_shop文件夹下的小程序代码**
 
@@ -21,20 +21,20 @@
 ---
 1. 将项目导入至微信开发工具中; 别忘了把 **APPID替换了哦** 要不然会提示你没有权限打开哦！
 
-    ![导入项目](http://m.qpic.cn/psc?/V51tU9Lc3qlSDA40U7Me4LFIuS3nVOWS/ruAMsa53pVQWN7FLK88i5p2FrB14*5hAkZHLA.dgObYsLjbXja7R3IJHH5Qnm0OI0tpYYnW5rYWWjSqprL.8OLzdKXP*NXrYj5mSr4n1MGs!/b&bo=KgMmAgAAAAADBy8!&rf=viewer_4)
+    ![导入项目](./img/d.png)
 
 2. 在 **miniprogram > app.js** 中 替换 云开发环境id；([不知道云开发环境id，戳这里](./wxCloudDevelopment))
 
-    ![替换云开发环境id](http://m.qpic.cn/psc?/V51tU9Lc3qlSDA40U7Me4LFIuS3nVOWS/ruAMsa53pVQWN7FLK88i5tBpDo5mHuMCrkUY5yCRHSaK3gq61cRJT88o9XP8cy2ZEOXpwmrnBxjEOtNQFk.5Q75*9iLOl60id45CLtXMeYs!/b&bo=ZAMaAgAAAAADB10!&rf=viewer_4)
+    ![替换云开发环境id](./img/g.png)
 
 3. 部署**cloudfunctions目录下的**云函数
     - CloudAPIBase >> 统一请求操作数据库函数;
 
-    ![云函数](http://m.qpic.cn/psc?/V51tU9Lc3qlSDA40U7Me4LFIuS3nVOWS/ruAMsa53pVQWN7FLK88i5tBpDo5mHuMCrkUY5yCRHSaT6A32197ypYdUWVsYJDH7PmzrOLi05j4afd1ULOCTfltlO33aHSFwXOuSm5k3vxM!/b&bo=awJ4AgAAAAADBzE!&rf=viewer_4)
+    ![云函数](./img/h.png)
 
     > 创建并部署完成后，打开云开发，查询是否成功,出现**已部署**则部署成功
 
-    ![部署云函数](http://m.qpic.cn/psc?/V51tU9Lc3qlSDA40U7Me4LFIuS3nVOWS/ruAMsa53pVQWN7FLK88i5p0KHNj4zkGTk5yuiwnIWvewJdhO4NQ7XEd4pdfIQa0ET0PD4tR2FU3kspTdUlkrrBWmu3AQ4wOkwHsSrYyadaU!/b&bo=nATNAgAAAAADB3U!&rf=viewer_4)
+    ![部署云函数](./img/i.png)
 
 4. 创建数据库集合; [数据库详情字段信息戳这里](./wxDatabaseInfo)
     - user               >> 用户表集合
@@ -44,7 +44,7 @@
     - user-shopping-cart >> 用户购物车表集合
     - shop-goods         >> 商品表集合
 
-    ![创建数据库](http://m.qpic.cn/psc?/V51tU9Lc3qlSDA40U7Me4LFIuS3nVOWS/ruAMsa53pVQWN7FLK88i5p0KHNj4zkGTk5yuiwnIWvdEntrzAdDLgRejrhKxEASLUJdnYsHo1yBh6cUQ6XS.2tuJYrVNQbOE9IKSxT*LoiU!/b&bo=kQSUAgAAAAADByE!&rf=viewer_4)
+    ![创建数据库](./img/j.png)
 
     > 将上面的集合名称全部创建即可; 
 
