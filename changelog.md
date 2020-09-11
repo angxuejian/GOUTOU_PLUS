@@ -1,3 +1,9 @@
+### 2020/09/11
+- 添加img， wxCloudDevelopment.md, wxDatabaseInfo.md
+- 更新 deployment.md
+
+### 2020/09/10
+- 添加 code-of-conduct.md
 
 ### 2020/09/09
 - 添加 contributing.md
