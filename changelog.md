@@ -1,3 +1,6 @@
+### 2020/09/12
+- 更新README.md
+
 ### 2020/09/11
 - 添加img， wxCloudDevelopment.md, wxDatabaseInfo.md
 - 更新 deployment.md
