@@ -126,11 +126,13 @@ Page({
       })
       return
     }
+    let spec = this.data.goods.spec_array[this.data.specIndex]
+    delete spec.sum
     const data = {
       goods_id: this.data._id, // 商品id
       title: this.data.goods.title, // 商品标题
       goods_number: this.data.goods_number, // 购买数量
-      goods_spec: this.data.goods.spec_array[this.data.specIndex], // 购买的商品规格
+      goods_spec: spec, // 购买的商品规格
     }
 
     if (this.data.type === 'cart') {

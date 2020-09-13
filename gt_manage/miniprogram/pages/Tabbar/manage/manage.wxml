@@ -5,7 +5,7 @@
 		<view class="theme-bold">商品管理</view>
 		<view class="manage-content">
 			<block wx:for='{{shopArray}}' wx:key='index'>
-				<view class="item">
+				<view bindtap="gotoNext" data-url='{{item.url}}' class="item">
 					<image src="../../../images/manage/{{item.src}}"></image>
 					<view class="theme-font">{{item.name}}</view>
 				</view>
@@ -17,7 +17,7 @@
 		<view class="theme-bold">订单管理</view>
 		<view class="manage-content">
 			<block wx:for='{{orderArray}}' wx:key='index'>
-				<view wx:if='{{item.authority}}' class="item">
+				<view bindtap="gotoNext" data-url='{{item.url}}' class="item">
 					<image src="../../../images/manage/{{item.src}}"></image>
 					<view class="theme-font">{{item.name}}</view>
 				</view>
@@ -25,7 +25,7 @@
 		</view>
 	</view>
 
-	<view class="manage">
+	<!-- <view class="manage">
 		<view class="theme-bold">身份管理</view>
 		<view class="manage-content">
 			<block wx:for='{{1}}' wx:key='index'>
@@ -35,5 +35,5 @@
 				</view>
 			</block>
 		</view>
-	</view>
+	</view> -->
 </view>

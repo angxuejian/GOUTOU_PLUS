@@ -1,0 +1,210 @@
+/* pages/PageMan/addShop/addShop.wxss */
+
+.head{
+  background-color: #fff;
+  padding-bottom: 10px;
+}
+swiper{
+  width: 95%;
+  height: 45vh;
+  z-index: -1;
+  margin: 0 auto;
+}
+swiper-item{
+  width: 100%;
+  height: 100%;
+}
+swiper-item > image{
+  width: 100%;
+  height: 100%;
+}
+swiper-item .add-view{
+  width: 95%;
+  height: 90%;
+  margin: 5% auto;
+
+  position: relative;
+}
+.add-view view{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-view  .add{
+  width: 40px;
+  height: 40px;
+}
+swiper-item view .remove{
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 18px;
+  height: 18px;
+}
+.item-input{
+  width: 95%;
+  margin: 10px auto;
+  /* background-color: #fff; */
+ 
+  /* height: 40px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item-input > text{
+  width: 20%;
+  display: inline-block;
+}
+.item-input > input{
+  width: 78%;
+  height: 40px;
+  border-bottom: 1px solid #cdcdcd;
+  /* padding-bottom: px; */
+  /* background-color: red; */
+}
+.item-input > .item-input-price{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 78%;
+}
+.item-input > .item-input-price .input-price{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.item-input  > .item-input-price .input-price input{
+  width: 35%;
+  text-align: center;
+  height: 40px;
+  border-bottom: 1px solid #cdcdcd;
+  /* padding-bottom: 10px; */
+}
+.item-input > .item-input-price .input-price text{
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.body{
+  background-color: #fff;
+  margin-top: 15px;
+  padding: 10px 0;
+}
+
+.item-spec{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 95%;
+  margin:10px auto;
+  /* background-color: red; */
+}
+.item-spec > .remove{
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: -6px;
+  right: -6px;
+}
+.item-spec > .cover{
+  width: 25%;
+  height: 0;
+  position: relative;
+  padding-bottom: 25%;
+  /* background-color: red; */
+}
+.item-spec > .cover view{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.item-spec > .cover .show-img{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.item-spec > .cover  .cover-img{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  left: calc((100% - 25px) / 2);
+  top: calc((100% - 25px )/ 2)
+} 
+.item-spec > .cover > .remove{
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+}
+
+.item-spec > .info{
+  width: 70%;
+  /* background-color: yellow; */
+}
+.item-spec > .info >.item-input > input{
+  height: 20px;
+  width: 85%;
+}
+.add-spec {
+  width: 95%;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  border: 1px solid #eee;
+  margin: 0px auto;
+}
+.detail{
+  margin-top: 15px;
+  /* height: 100px; */
+  width: 100%;
+  background-color: #fff;
+}
+.item-detail{
+  width: 95%;
+  margin: 0 auto;
+  height: 600rpx;
+  position: relative;
+}
+.item-detail > .remove{
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 18px;
+  height: 18px;
+}
+.item-detail > view{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-detail > view > .add-image{
+  width: 40px;
+  height: 40px;
+}
+
+.bottom{
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  line-height: 50px;
+  box-shadow: 0 0 2px 2px #eee;
+}

@@ -1,3 +1,9 @@
+### 2020/09/13
++ gt_shop小程序
+  - update goodsDetail.js, goodsOrderDetail.js
++ gt_manage小程序
+  - add Goods, order UI
+
 ### 2020/09/12
 - 更新README.md
 

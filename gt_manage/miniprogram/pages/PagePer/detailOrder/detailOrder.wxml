@@ -1,0 +1,66 @@
+<!--miniprogram/pages/PagePer/detailOrder/detailOrder.wxml-->
+<!-- <wxs src='../../../utils/filter.wxs' module='filter'></wxs> -->
+<view>
+	<!-- 商品信息 -->
+	<view>
+		<view class="goods">
+			<image mode="aspectFill" src="{{order.goods_spec.cover}}"></image>
+			<view class="goods-info">
+				<view>
+					<text class="theme-price">{{order.title}}</text>
+					<text class="theme-font-f">￥{{order.goods_spec.price}}</text>
+				</view>
+				<view class="theme-font-f">x {{order.goods_number}}</view>
+				<view class="theme-price">{{order.goods_spec.name}}</view>
+			</view>
+		</view>
+		<view hover-class="theme-hover" class="all-price theme-fff">
+			<text class="theme-font-f">实付款</text>
+			<text class="theme-color">￥{{order.goods_price}}</text>
+		</view>
+	</view>
+
+	<!-- 物流信息 -->
+	<view hover-class="theme-hover">
+		<view class="item-title theme-price">物流信息</view>
+		<view class="matter-log-msg theme-font-f">
+			商家已发出
+		</view>
+	</view>
+
+
+	<!-- 订单信息 -->
+	<view class="order-msg">
+		<!-- <view class="item-title theme-price">订单信息</view> -->
+		<view class="order-number-msg">
+			<text class="theme-price">订单编号</text>
+			<text style="color:#333;" class="theme-price">{{order.order_id}}</text>
+		</view>
+		<view class="order-number-msg">
+			<text class="theme-price">下单时间</text>
+			<text style="color:#333;" class="theme-price">{{filter.changeTime(order.create_time)}}</text>
+		</view>
+	</view>
+	<view class="theme-price prompt">点击物流信息可以刷新哦！</view>
+
+	<view hover-class="theme-hover" class="serve">
+		<image src="../../../images/goods/serve.png"></image>
+		<button class="serve-but" open-type="contact"></button>
+	</view>
+
+	<!-- 订单状态 + 功能 -->
+	<!-- 1,2,3,4 -->
+	<view class="order-confirm theme-fff">
+		<view wx:if='{{order.state === 1}}' hover-class="theme-hover" class="theme-font-f border">去付款</view>
+
+		<view wx:if='{{order.state === 2}}' hover-class="theme-hover" class="theme-font-f border">去退款</view>
+
+		<view wx:if='{{order.state === 3}}' hover-class="theme-hover" class="theme-font-f border">去退款</view>
+		<view wx:if='{{order.state === 3}}' hover-class="theme-hover" class="theme-font-f border">去收货</view>
+
+		<!-- <view wx:if='{{order.state === 2}}' hover-class="theme-hover" class="theme-font-f border">去退款</view> -->
+
+	</view>
+
+
+</view>

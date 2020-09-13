@@ -1,4 +1,4 @@
-/* miniprogram/pages/PageGoods/goodsDetail/goodsDetail.wxss */
+/* miniprogram/pages/PageMan/detailGoods/detailGoods.wxss */
 
 swiper{
   width: 100%;
@@ -88,7 +88,6 @@ swiper-item image{
   align-items: center;
   justify-content: center;
 }
-
 .bottom-but {
   height: 70px;
   width: 100%;

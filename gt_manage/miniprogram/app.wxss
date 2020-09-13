@@ -41,6 +41,9 @@ page {
 .theme-fff{
   background-color: #fff;
 }
+.theme-eee{
+  background-color: #eee;
+}
 /* 点击态颜色 */
 .theme-hover{
   background-image: none;

@@ -1,0 +1,6 @@
+<!--miniprogram/pages/PageMan/editGoods/editGoods.wxml-->
+<view>
+
+   <list-goods type='edit'></list-goods>
+
+</view>

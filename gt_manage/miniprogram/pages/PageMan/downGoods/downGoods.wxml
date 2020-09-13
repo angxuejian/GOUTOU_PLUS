@@ -1,0 +1,6 @@
+<!--miniprogram/pages/PageMan/downGoods/downGoods.wxml-->
+<view>
+
+   <list-goods type='down'></list-goods>
+
+</view>

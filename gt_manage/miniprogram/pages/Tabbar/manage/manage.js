@@ -9,41 +9,41 @@ Page({
       {
         src: 'add-shop.png',
         name: '新增商品',
-        url: ''
+        url: '/pages/PageMan/addGoods/addGoods'
       },
       {
         src: 'up-shop.png',
         name: '上架商品',
-        url: ''
+        url: '/pages/PageMan/upGoods/upGoods'
       },
       {
         src: 'down-shop.png',
         name: '下架商品',
-        url: ''
+        url: '/pages/PageMan/downGoods/downGoods'
       },
       {
         src: 'edit-shop.png',
         name: '编辑商品',
-        url: ''
+        url: '/pages/PageMan/editGoods/editGoods'
       },
     ], // 商品管理
     orderArray: [
       {
         src: 'delivery-order.png',
         name: '配送订单',
-        url:'',
+        url:'/pages/PagePer/devliveryOrder/devliveryOrder',
         authority: true
       },
       {
         src: 'search-order.png',
         name: '查询订单',
-        url:'',
+        url:'/pages/PagePer/searchOrder/searchOrder',
         authority: true
       },
       {
         src: 'refund-order.png',
         name: '退款订单',
-        url:'',
+        url:'/pages/PageMan/refundOrder/refundOrder',
         authority: true
       },
     ]
@@ -54,6 +54,14 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+
+  // 去对应页
+  gotoNext: function(event){
+    const {url} = event.currentTarget.dataset
+    wx.navigateTo({
+      url,
+    })
   },
 
   /**

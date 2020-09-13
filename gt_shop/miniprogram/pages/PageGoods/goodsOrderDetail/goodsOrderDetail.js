@@ -199,9 +199,9 @@ Page({
       delete item.goods_spec.sum
       const data = {
         goods_spec: item.goods_spec, // 商品规格
-        goods_id: item._id, // 商品id
+        goods_id: item.goods_id, // 商品id
         title: item.title, // 商品标题
-        goods_number: item.goods_number, // 商品购买数量
+        goods_number: item.googoodsds_number, // 商品购买数量
         goods_price: item.goods_number * item.goods_spec.price, // 商品价钱
         state: 2 // 订单状态 详情在 util.js中
       }

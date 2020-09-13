@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/Tabbar/manage/manage",
-    "pages/Tabbar/me/me"
+    "pages/Tabbar/me/me",
+    "pages/PagePer/devliveryOrder/devliveryOrder",
+    "pages/PagePer/searchOrder/searchOrder",
+    "pages/PagePer/detailOrder/detailOrder"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",
@@ -29,6 +32,19 @@
       }
     ]
   },
+  "subpackages": [
+    {
+      "root": "pages/PageMan",
+      "pages": [
+        "addGoods/addGoods",
+        "editGoods/editGoods",
+        "downGoods/downGoods",
+        "upGoods/upGoods",
+        "detailGoods/detailGoods",
+        "refundOrder/refundOrder"
+      ]
+    }
+  ],
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 }
