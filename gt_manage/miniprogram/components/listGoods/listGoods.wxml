@@ -1,25 +1,27 @@
 <!--components/listGoods/listGoods.wxml-->
 <view>
 
-	<block wx:for='{{2}}' wx:key='index'>
+	<block wx:for='{{list}}' wx:key='index'>
 		<view class="item-goods">
-			<view class="goods">
-				<image mode="aspectFill" src="http://img.tukuppt.com/bg_grid/00/21/08/qs3ZrXjJ8a.jpg!/fh/350"></image>
-				<view class="info">
-					<view>这是商品名称</view>
-					<view>￥120</view>
+			<view bindtap="gotoDetail" data-id='{{item._id}}'>
+				<view class="goods">
+					<image mode="aspectFill" src="{{item.cover}}"></image>
+					<view class="info">
+						<view>{{item.title}}</view>
+						<view>￥{{item.def_price}}</view>
+					</view>
+				</view>
+				<view class="spec">
+					<block wx:for='{{item.spec_array}}' wx:for-index='sIndex' wx:for-item='sItem' wx:key='sIndex'>
+						<text>{{sItem.name}}</text>
+					</block>
 				</view>
 			</view>
-      <view class="spec">
-        <block wx:for='{{6}}' wx:for-index='sIndex' wx:for-item='sItem' wx:key='sIndex'>
-          <text>规格</text>
-        </block>
-      </view>
-      <view class="button">
-        <view wx:if='{{type === "up"}}' hover-class="theme-hover">上架</view>
-         <view wx:if='{{type === "down"}}' hover-class="theme-hover">下架</view>
-          <view wx:if='{{type === "edit"}}' hover-class="theme-hover">编辑</view>
-      </view>
+			<view class="button">
+				<view bindtap="gotoUp" data-id='{{item._id}}' wx:if='{{type === "up"}}' hover-class="theme-hover">下架</view>
+				<view bindtap="gotoDown" data-id='{{item._id}}' wx:if='{{type === "down"}}' hover-class="theme-hover">上架</view>
+				<view wx:if='{{type === "edit"}}' hover-class="theme-hover">编辑</view>
+			</view>
 		</view>
 	</block>
 </view>

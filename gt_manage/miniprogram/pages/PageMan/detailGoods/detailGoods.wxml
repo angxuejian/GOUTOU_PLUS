@@ -38,16 +38,10 @@
 	</view>
 </view>
 
-<!-- 防止被挡 -->
-<view style="width:5px;height:5px;margin-bottom:150rpx"></view>
 
 <!-- 购物车 -->
-<view data-type='cart' bindtap="openGoodsInfoPopBox" hover-class="theme-hover" class="add-shopping">
-	<image src="../../../images/goods/add-shopping.png"></image>
-</view>
-<!-- 底部按钮 -->
-<view data-type='order' bindtap="openGoodsInfoPopBox" hover-class="theme-hover" class="place-order theme-fff">
-	<view class="theme-font-f">去下单</view>
+<view data-type='cart' bindtap="openGoodsInfoPopBox" hover-class="theme-hover" class="show-spec">
+	<image src="../../../images/goods/show-spec.png"></image>
 </view>
 
 
@@ -58,7 +52,7 @@
 	<!-- 商品信息 -->
 	<image bindtap="closeGoodsInfoPopBox" class="remove" src="../../../images/goods/remove.png"></image>
 	<view  class="info">
-		<image bindtap="showSrc" data-curr='{{item}}' data-list='{{[item]}}'  mode="aspectFill" src="{{goods.spec_array[specIndex].cover}}"></image>
+		<image bindtap="showSrc" data-curr='{{goods.spec_array[specIndex].cover}}' data-list='{{[goods.spec_array[specIndex].cover]}}'  mode="aspectFill" src="{{goods.spec_array[specIndex].cover}}"></image>
 		<view>
 			<view class="theme-font-f theme-color">￥{{goods.spec_array[specIndex].price}}</view>
 			<view class="theme-font">已选：{{goods.spec_array[specIndex].name}}</view>
@@ -73,16 +67,4 @@
 			<view bindtap="selectSpec" data-index='{{index}}' data-index='{{index}}' class="sub-item-spec {{index === specIndex ? 'sub-selected-item-spce theme-font' : 'theme-price'}}">{{item.name}}</view>
 		</block>
 	</view>
-
-	<!-- 商品数量 -->
-	<view class="item-title theme-price">数量</view>
-	<view style="border:none"  class="pay-number">
-		<view>
-			<image bindtap="onLess" data-index='{{index}}' src="../../../images/shopping/less.png"></image>
-			<view>{{goods_number}}</view>
-			<image bindtap="onPlus" data-index='{{index}}' src="../../../images/shopping/plus.png"></image>
-		</view>
-	</view>
-
-	<view  bindtap="gotoOrderDetail" hover-class="theme-hover" class="confirm theme-fff theme-font-f">确认</view>
 </view>

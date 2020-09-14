@@ -58,7 +58,7 @@
 	<!-- 商品信息 -->
 	<image bindtap="closeGoodsInfoPopBox" class="remove" src="../../../images/goods/remove.png"></image>
 	<view  class="info">
-		<image bindtap="showSrc" data-curr='{{item}}' data-list='{{[item]}}'  mode="aspectFill" src="{{goods.spec_array[specIndex].cover}}"></image>
+		<image bindtap="showSrc" data-curr='{{goods.spec_array[specIndex].cover}}' data-list='{{[goods.spec_array[specIndex].cover]}}'  mode="aspectFill" src="{{goods.spec_array[specIndex].cover}}"></image>
 		<view>
 			<view class="theme-font-f theme-color">￥{{goods.spec_array[specIndex].price}}</view>
 			<view class="theme-font">已选：{{goods.spec_array[specIndex].name}}</view>

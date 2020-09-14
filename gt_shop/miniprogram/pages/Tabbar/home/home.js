@@ -35,7 +35,8 @@ Page({
       data: {
         fn: 'get',
         base: 'shop-goods',
-        is_where: false
+        is_where: false,
+        where_data: {shelf:true}
       }
     }).then(res => {
       wx.hideLoading()

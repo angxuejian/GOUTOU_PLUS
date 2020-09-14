@@ -62,7 +62,7 @@ swiper-item image{
   display: block;
 }
 
-.add-shopping{
+.show-spec{
   position: fixed;
   bottom: 200rpx;
   right: 20px;
@@ -71,66 +71,13 @@ swiper-item image{
   border-radius: 50%;
   z-index: 66;
 }
-.add-shopping image {
+.show-spec image {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
-.place-order{
-  z-index: 66;
-  height: 120rpx;
-  width: 100%;
-  border-top: 1px solid #fff;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.bottom-but {
-  height: 70px;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  z-index: 3;
-}
 
 
-
-
-.shop-service-but {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-
-.shop-service-but:not([size='mini']) {
-  width: 100%;
-  height: 100%;
-}
-
-.bottom-circle{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.bottom-circle > view{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  line-height: 60px;
-  text-align: center;
-  font-size: 13px;
-  color: #fff;
-  background-color: #FF3B7A;
-}
 
 
 .goods-box{
@@ -182,39 +129,4 @@ swiper-item image{
 }
 .info > view >view:nth-of-type(1){
   margin-bottom: 5px;
-}
-
-.pay-number{
-  display: flex;
-  align-items: center;
-  width: 95%;
-  padding: 0 2.5%;
-  margin-top: 10px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
-}
-.pay-number > view:nth-of-type(1){
-  display: flex;
-  align-items: center;
-}
-.pay-number > view:nth-of-type(1) image{
-  width: 10px;
-  height: 10px;
-  border: 1px solid #999;
-  padding: 3px;
-}
-.pay-number > view:nth-of-type(1) view{
-  margin: 0 20px;
-  font-size: 14px;
-  color: #2c2c2c;
-}
-.confirm{
-  position: fixed;
-  bottom: 0px;
-  left: 0%;
-  width: 100%;
-  height: 100rpx;
-  text-align: center;
-  line-height: 100rpx;
-  border-top: 1px solid #eee;
 }

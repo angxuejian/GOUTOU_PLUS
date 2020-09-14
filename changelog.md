@@ -1,7 +1,13 @@
+### 2020/09/14
+- gt_shop小程序
+  - update goodsDetail.wxml, home.js
+- gt_manage小程序
+  - upGoods, downGoods, detailGoods接入数据库
+
 ### 2020/09/13
-+ gt_shop小程序
+- gt_shop小程序
   - update goodsDetail.js, goodsOrderDetail.js
-+ gt_manage小程序
+- gt_manage小程序
   - add Goods, order UI
 
 ### 2020/09/12
