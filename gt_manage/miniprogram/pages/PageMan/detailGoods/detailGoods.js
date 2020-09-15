@@ -42,7 +42,7 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
-      this.data.goods = JSON.parse(res.resp_data).data[0]
+      this.data.goods = res.obj[0]
       this.setData({
         goods: this.data.goods
       })

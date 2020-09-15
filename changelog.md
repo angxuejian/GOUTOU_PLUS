@@ -1,3 +1,12 @@
+
+
+### 2020/09/15
+- gt_shop小程序
+  - update goodsOrderDetail.js, userOrder.js, userOrderDerail.js
+- gt_manage小程序
+  - add deliveryOrder页面, me页面, myDeliveryOrder页面, detailOrder页面; CloudSendMsg云函数, CloudAPIBase云函数
+  - update CloudFunAPI,upGoods.js,detailGoods.js, downGoods.js
+
 ### 2020/09/14
 - gt_shop小程序
   - update goodsDetail.wxml, home.js

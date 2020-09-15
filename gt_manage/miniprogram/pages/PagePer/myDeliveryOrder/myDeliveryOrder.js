@@ -1,5 +1,7 @@
-// miniprogram/pages/PageMan/upGoods/upGoods.js
-import { CloudFn } from '../../../utils/CloudFn'
+// miniprogram/pages/PagePer/myDeliveryOrder/myDeliveryOrder.js
+import {
+  CloudFn
+} from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
 Page({
 
@@ -7,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    upGoodsArray: [], // 上架商品列表
+    myDeliveryArray: [], // 我的配送列表
   },
 
   /**
@@ -17,55 +19,34 @@ Page({
     this._loadData()
   },
 
-
-  // 获取全部上架商品
-  _loadData: function() {
+  // 获取全部数据
+  _loadData: function () {
     wx.showLoading({
       title: '加载中...',
-      icon:'none'
+      icon: 'none'
     })
     cloudFn.$callFn({
       data: {
         name: 'CloudAPIBase',
         body: {
           fn: 'get',
-          base: 'shop-goods',
+          base: 'user-order',
           is_where: false,
-          where_data: {shelf:true}
-        }
-      }
-    }).then(res => {
-      wx.hideLoading()
-      this.data.upGoodsArray = res.obj
-      this.setData({
-        upGoodsArray: this.data.upGoodsArray
-      })
-    })
-  },
-
-
-  // 收到下架通知， 下架
-  onShelf: function(event) {
-    const { id } = event.detail
-    wx.showLoading({
-      title: '下架中...',
-      icon:'none'
-    })
-    cloudFn.$callFn({
-      data: {
-        name: 'CloudAPIBase',
-        body: {
-          fn: 'update',
-          base: 'shop-goods',
-          where_data: {_id:id},
-          update_data: {
-            shelf: false
+          by:'desc',
+          where_data: {
+            state: 3,
+            delivery_info: {
+              d_id: wx.getStorageSync('userInfo').user_id
+            }
           }
         }
       }
     }).then(res => {
       wx.hideLoading()
-      this._loadData()
+      this.data.myDeliveryArray = res.obj
+      this.setData({
+        myDeliveryArray: this.data.myDeliveryArray
+      })
     })
   },
 

@@ -9,18 +9,29 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   /*
     event: {
-      name: string => 云函数名称
+      touser: string => 用户的openid
+      orderid: string => 订单编号
       invalid: boolean => 是否重新请求token
-      body: object => 云函数的参数 具体参数详看gt_shop小程序CloudAPIBase函数
     }
   */
-  const {name, invalid, body} = event
+  const {touser, orderid, invalid} = event
   invalid && await getAccessToken() // token失效 就重新请求
   const _TOKEN = await getBaseAccessToken() // 从数据库中 获取 token
   return await $request({
     method:'POST',
-    url:`${$config._FURL}&name=${name}&access_token=${_TOKEN.data[0].token}`,
-    body: body,
+    url:`${$config._SEND_URL}${_TOKEN.data[0].token}`,
+    body: {
+      touser: touser,
+      template_id: $config._SUBSCRBE_ID,
+      data: {
+        character_string2:{
+          value: orderid
+        },
+        phrase1:{
+          value: '已送达'
+        }
+      }
+    },
     json: true
   })
 }

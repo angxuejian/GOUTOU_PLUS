@@ -60,7 +60,6 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
-      // console.log(res, '这是订单信息')
       this.data.orderArray = res.data
       this.setData({
         orderArray: this.data.orderArray

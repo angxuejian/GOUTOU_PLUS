@@ -3,20 +3,25 @@
 <view>
 	<!-- 商品信息 -->
 	<view>
-		<view class="goods">
-			<image mode="aspectFill" src="{{order.goods_spec.cover}}"></image>
-			<view class="goods-info">
-				<view>
-					<text class="theme-price">{{order.title}}</text>
-					<text class="theme-font-f">￥{{order.goods_spec.price}}</text>
+		<view>
+			<block wx:for='{{order.goods_array}}'>
+				<view class="goods">
+					<image mode="aspectFill" src="{{item.goods_spec.cover}}"></image>
+					<view class="goods-info">
+						<view>
+							<text class="theme-price">{{item.title}}</text>
+							<text class="theme-font-f">￥{{item.goods_spec.price}}</text>
+						</view>
+						<view class="theme-font-f">x {{item.goods_number}}</view>
+						<view class="theme-price">{{item.goods_spec.name}}</view>
+					</view>
 				</view>
-				<view class="theme-font-f">x {{order.goods_number}}</view>
-				<view class="theme-price">{{order.goods_spec.name}}</view>
-			</view>
+
+			</block>
 		</view>
 		<view hover-class="theme-hover" class="all-price theme-fff">
 			<text class="theme-font-f">实付款</text>
-			<text class="theme-color">￥{{order.goods_price}}</text>
+			<text class="theme-color">￥{{order.allPrice}}</text>
 		</view>
 	</view>
 

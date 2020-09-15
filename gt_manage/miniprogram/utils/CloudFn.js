@@ -7,8 +7,9 @@
          if(res.result.errcode === 42001) {
            // token失效，请求token,在执行函数
            data.invalid = true
-           resolve(this.$callFn({data}))
+           resolve(this.$callFn({name, data}))
          } else {
+          res.result.obj = res.result.resp_data && JSON.parse(res.result.resp_data).data
           resolve(res.result)
          }
          

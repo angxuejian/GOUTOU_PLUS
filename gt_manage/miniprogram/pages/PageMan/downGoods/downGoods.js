@@ -36,7 +36,7 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
-      this.data.upGoodsArray = JSON.parse(res.resp_data).data
+      this.data.upGoodsArray = res.obj
       this.setData({
         upGoodsArray: this.data.upGoodsArray
       })

@@ -33,7 +33,7 @@ Page({
       {
         src: 'delivery-order.png',
         name: '配送订单',
-        url:'/pages/PagePer/devliveryOrder/devliveryOrder',
+        url:'/pages/PagePer/deliveryOrder/deliveryOrder',
         authority: true
       },
       {

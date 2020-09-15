@@ -2,9 +2,10 @@
   "pages": [
     "pages/Tabbar/manage/manage",
     "pages/Tabbar/me/me",
-    "pages/PagePer/devliveryOrder/devliveryOrder",
+    "pages/PagePer/deliveryOrder/deliveryOrder",
     "pages/PagePer/searchOrder/searchOrder",
-    "pages/PagePer/detailOrder/detailOrder"
+    "pages/PagePer/detailOrder/detailOrder",
+    "pages/PagePer/myDeliveryOrder/myDeliveryOrder"
   ],
   "window": {
     "backgroundColor": "#f6f6f6",

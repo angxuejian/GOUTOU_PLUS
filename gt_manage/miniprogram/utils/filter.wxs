@@ -1,0 +1,37 @@
+
+function changeState(state) {
+  // 待付款，待发货，待收货，退款/售后
+  if(state == "1") {
+    return '待付款'
+  } else if(state == "2") {
+    return '待发货'
+  }else if(state == "3") {
+    return '待收货'
+  }else if(state == "4") {
+    return '退款/售后'
+  }
+}
+
+function changeTime(date) {
+  if(date) {
+    var d = getDate(date)
+    var year = d.getFullYear()
+    var month = changeStr(d.getMonth())
+    var day = changeStr(d.getDate())
+    var hours = changeStr(d.getHours())
+    var minutes = changeStr(d.getMinutes())
+    var seconds = changeStr(d.getSeconds())
+    return [year, month, day].join('-') + ' ' + [hours,minutes, seconds].join(':')
+  }
+}
+
+function changeStr(s) {
+  s = s.toString()
+  return s[1] ? s : '0' + s
+}
+
+module.exports = {
+  changeState:changeState,
+  changeTime: changeTime
+}
+

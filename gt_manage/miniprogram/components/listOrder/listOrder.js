@@ -7,9 +7,9 @@ Component({
     addGlobalClass: true,
   },
   properties: {
-    orderArray:{
+    list:{
       type: Array,
-      value: [1, 2]
+      value: []
     }
   },
 
@@ -24,6 +24,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    // 去详情页
+    gotoDetail: function(event) {
+      const {orderid} = event.currentTarget.dataset
+      wx.navigateTo({
+        url: '/pages/PagePer/detailOrder/detailOrder?orderid=' + orderid,
+      })
+    },
   }
 })

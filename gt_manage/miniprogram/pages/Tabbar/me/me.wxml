@@ -11,8 +11,12 @@
     <view hover-class="theme-hover"  class="item-fun theme-fff">
       <picker bindchange="gotoCheckout" mode='selector' range="{{pickerRange}}" class="theme-font">身份切换</picker>
       <image src="../../../images/arrow-right.png"></image>
-    
     </view>
+    <view bindtap="gotoMyDelivery" hover-class="theme-hover"  class="item-fun theme-fff">
+      <view class="theme-font">我的配送</view>
+      <image src="../../../images/arrow-right.png"></image>
+    </view>
+
     <!-- <view hover-class="theme-hover" bindtap="gotoUserAddress" class="item-fun theme-fff">
       <view class="theme-font">我的地址</view>
       <image src="../../../images/arrow-right.png"></image>

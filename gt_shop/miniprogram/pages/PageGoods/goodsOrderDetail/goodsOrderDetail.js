@@ -6,6 +6,7 @@ import {
   nowPay
 } from '../../../utils/util'
 const cloudFn = new CloudFn()
+import {SUBSCRBE_ID} from '../../../utils/config'
 Page({
 
   /**
@@ -19,9 +20,9 @@ Page({
     obj: {}, // 上一个页面传过来的值
     allPrice: 0, // 总价钱
     remove_ids: [], //要删除的购物车
-    oneTimeIndex: null, // 临时下标，走下单时用到
-    oneTimeSum: null, // 修改后的 库存
-    payNumber: 0, // 检查是否执行完毕
+    stockIndex: 0, // 检查库存是否执行完毕
+    lessStockIndex: 0, // 检查删除已下单的库存是否执行完毕
+    acceptMsg: false, // 是否订阅推送消息
   },
 
   /**
@@ -34,7 +35,7 @@ Page({
       title: '加载中...',
       mask: true
     })
-    
+
     this.getUserAddress()
 
     if (this.data.obj.goods_id) {
@@ -138,21 +139,32 @@ Page({
       })
       return
     }
-    wx.showLoading({
-      title: '支付中...',
-      mask: true
+    // 订阅消息
+    wx.requestSubscribeMessage({
+      tmplIds: [SUBSCRBE_ID],
+      success: res => {
+        if (res[SUBSCRBE_ID] === 'accept') {
+          this.data.acceptMsg = true
+        }
+        wx.showLoading({
+          title: '创建订单...',
+          mask: true
+        })
+
+        this.checkOrderSum()
+      },
+      fail: err => {
+        console.log(err, '失败')
+      }
     })
 
-    this.gotoNowPay()
 
   },
 
-  // 下单队列，一次只能下一单， 有异常则终止
-  gotoNowPay: async function () {
+  // 校验队列，一次只能下校验一单， 有异常则终止
+  checkOrderSum: async function () {
     for await (const item of this.data.orderArray) {
-      await this.getOrderSum(item) // 校验商品是否存在，库存是否充足
-      await this.getOrderPay(item) // 下单
-      await this.updateOrderSum(item) // 减去已下单的库存
+      this.getOrderSum(item) // 校验商品是否存在，库存是否充足
     }
   },
 
@@ -161,97 +173,118 @@ Page({
     let orderNumber = item.goods_number
     let specId = item.goods_spec.id
     const self = this
-    return new Promise((resolve, reject) => {
-      cloudFn.$callFn({
-        data: {
-          fn: 'get',
-          base: 'shop-goods',
-          where_data: {
-            _id: item.goods_id,
-            'spec_array.id': item.goods_spec.id
-          },
-          is_where: false
-        }
-      }).then(res => {
-        const list = res.data[0].spec_array
-        for (let i = 0; i < list.length; i++) {
-          if (list[i].id === specId) {
-            if ((list[i].sum - orderNumber) < 0) {
-              self.onShowModal(`${list[i].name}库存不足`)
-            } else {
-              // 这是 库存 正常， 可以下单
-              // 保存当前下标，在更新库存时使用
-              self.data.oneTimeSum = list[i].sum - orderNumber
-              resolve('成功一')
-              break
+    cloudFn.$callFn({
+      data: {
+        fn: 'get',
+        base: 'shop-goods',
+        where_data: {
+          _id: item.goods_id,
+          'spec_array.id': item.goods_spec.id
+        },
+        is_where: false
+      }
+    }).then(res => {
+      const list = res.data[0].spec_array
+      for (let i = 0; i < list.length; i++) {
+        if (list[i].id === specId) {
+          if ((list[i].sum - orderNumber) < 0) {
+            self.onShowModal(`${list[i].name}库存不足`)
+          } else {
+            // 这是 库存 正常， 可以下单
+            // 保存当前最新库存，在更新库存时使用
+            self.data.orderArray[i].oneTimeSum = list[i].sum - orderNumber
+            self.data.stockIndex++
+            if (self.data.stockIndex === self.data.orderArray.length) {
+              // 库存正常，下单
+              self.getOrderPay()
             }
+            break
           }
         }
-      })
+      }
     })
-    
+
   },
 
   // 下单
-  getOrderPay: function (item) {
+  getOrderPay: function () {
     const self = this
-    return new Promise((resolve, reject) => {
-      delete item.goods_spec.sum
-      const data = {
+    const goodsArray = []
+    this.data.orderArray.forEach(item => {
+      goodsArray.push({
         goods_spec: item.goods_spec, // 商品规格
         goods_id: item.goods_id, // 商品id
         title: item.title, // 商品标题
-        goods_number: item.googoodsds_number, // 商品购买数量
-        goods_price: item.goods_number * item.goods_spec.price, // 商品价钱
-        state: 2 // 订单状态 详情在 util.js中
-      }
-      nowPay(data).then(() => {
-        resolve('成功二')
-      }).catch(err => {
-        self.onShowModal('下单失败')
-      }) // 统一下单 支付 入口
-  
+        goods_number: item.goods_number, // 商品购买数量
+        goods_price: item.goods_number * item.goods_spec.price, // 单个商品价钱
+      })
     })
+    const user_ad = {
+      shipping_name: this.data.userAddress.shipping_name,
+      shipping_tel: this.data.userAddress.shipping_tel,
+      shipping_address: `${this.data.userAddress.shipping_city} ${this.data.userAddress.shipping_address}`
+    }
+    const data = {
+      state: 2, // 订单状态 详情在 util.js中
+      ...user_ad, // 收货人
+      accept_msg: this.data.acceptMsg, // 是否接收订阅消息
+      goods_array: goodsArray, // 订单列表
+      allPrice: this.data.allPrice, // 订单总价
+    }
+    nowPay(data).then(res => {
+      console.log(res, '成功')
+      wx.hideLoading()
+      wx.showLoading({
+        title: '检查支付环境...',
+        mask: true
+      })
+      this.removeOrderSum()
+    }).catch(err => {
+      self.onShowModal('下单失败')
+    }) // 统一下单 支付 入口
   },
+
+  // 更新已下单的库存信息 一次更新一单
+  removeOrderSum: async function () {
+    for await (const item of this.data.orderArray) {
+      this.updateOrderSum(item)
+    }
+  },
+
 
   // 减少商品库存
   updateOrderSum: function (item) {
-    // this.data.oneTimeIndex 
     const self = this
-    return new Promise((resolve, reject) => {
-      cloudFn.$callFn({
-        data: {
-          fn: 'update',
-          base: 'shop-goods',
-          where_data: {
-            _id: item.goods_id,
-            'spec_array.id': item.goods_spec.id
-          },
-          update_data: {
-            'spec_array.$.sum': self.data.oneTimeSum
-          }
+    cloudFn.$callFn({
+      data: {
+        fn: 'update',
+        base: 'shop-goods',
+        where_data: {
+          _id: item.goods_id,
+          'spec_array.id': item.goods_spec.id
+        },
+        update_data: {
+          'spec_array.$.sum': item.oneTimeSum
         }
-      }).then(res => {
-        self.data.payNumber++
-        // 重置 为 null
-        self.data.oneTimeSum = null
-        resolve('成功三')
-        if (self.data.payNumber === self.data.orderArray.length) {
-          wx.hideLoading()
-          wx.showModal({
-            title: '支付成功',
-            showCancel: false,
-            success: () => {
-              if (self.data.obj.allPrice) {
-                // 存在 即 购物车下单成功，删除支付过的订单
-                self.removeCart()
-              } else {
-                wx.navigateBack()
-              }
+      }
+    }).then(res => {
+      self.data.lessStockIndex++ // 检查删除已下单的库存是否执行完毕
+
+      if (self.data.lessStockIndex === self.data.orderArray.length) {
+        wx.hideLoading()
+        wx.showModal({
+          title: '支付成功',
+          showCancel: false,
+          success: () => {
+            if (self.data.obj.allPrice) {
+              // 存在 即 购物车下单成功，删除支付过的订单
+              self.removeCart()
+            } else {
+              wx.navigateBack()
             }
-          })
-        }
-      })
+          }
+        })
+      }
     })
   },
 

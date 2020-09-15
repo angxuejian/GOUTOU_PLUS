@@ -1,8 +1,8 @@
 // miniprogram/pages/Tabbar/me/me.js
-// import {
-//   CloudFn
-// } from '../../../utils/CloudFn'
-// const cloudFn = new CloudFn()
+import {
+  CloudFn
+} from '../../../utils/CloudFn'
+const cloudFn = new CloudFn()
 Page({
 
   /**
@@ -28,13 +28,14 @@ Page({
   onUserInfo: function (event) {
     const {userInfo} = event.detail
     cloudFn.$callFn({
+      name:'CloudAPIBase',
       data:{
         fn: 'get',
         base: 'user'
       }
     }).then(res => {
-      console.log(res, '成功')
       if(res.data[0]) {
+        userInfo.user_id = res.data[0].user_id
         this.setStorageUser(userInfo)
       } else {
         this.addUser(userInfo)
@@ -45,6 +46,7 @@ Page({
   // 注册新用户
   addUser: function(userInfo) {
     cloudFn.$callFn({
+      name:'CloudAPIBase',
       data: {
         fn: 'add',
         base: 'user',
@@ -69,7 +71,12 @@ Page({
    console.log(this.data.pickerRange[event.detail.value])
   },
 
-
+  // 去我的配送页
+  gotoMyDelivery: function() {
+    wx.navigateTo({
+      url: '../../PagePer/myDeliveryOrder/myDeliveryOrder',
+    })
+  },
 
 
   /**
