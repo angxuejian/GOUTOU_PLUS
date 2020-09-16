@@ -1,5 +1,5 @@
   // 生成订单号
-  const getOrderId = function () {
+  const getOrderNumber = function () {
     let random_one = Math.ceil(Math.random() * 10); //随机数 1
     let random_two = Math.ceil(Math.random() * 10); //随机数 2
     let year = new Date().getFullYear(); // 获取当前年份
@@ -29,7 +29,7 @@
           user_id: OPENID,
           create_time: db.serverDate()
         })
-        is_order && (adata.order_id = getOrderId())
+        is_order && (adata.order_number = getOrderNumber())
         return db.collection(base).add({
           data: adata
         })

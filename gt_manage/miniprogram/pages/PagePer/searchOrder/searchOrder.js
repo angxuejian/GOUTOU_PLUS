@@ -1,20 +1,76 @@
 // miniprogram/pages/PagePer/searchOrder/searchOrder.js
+import {
+  CloudFn
+} from '../../../utils/CloudFn'
+const cloudFn = new CloudFn()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    goodsArray: [], // 搜索订单列表
+    searchValue: '', // 搜索的值
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
+  },
+  // 获取input 的 值
+  getInputValue: function (event) {
+    this.data.searchValue = event.detail.value
   },
 
+  // 搜索
+  gotoSearch: function () {
+    if (!this.data.searchValue) {
+      wx.showToast({
+        title: '请输入订单号',
+        icon: 'none'
+      })
+      return
+    }
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    this._loadData()
+  },
+
+
+  // 查询指定数据
+  _loadData: function () {
+    cloudFn.$callFn({
+      data: {
+        name: 'CloudAPIBase',
+        body: {
+          fn: 'get',
+          base: 'user-order',
+          is_where: false,
+          where_data: {
+            order_number: this.data.searchValue
+          }
+        }
+      }
+    }).then(res => {
+      if (!res.obj[0]) {
+        wx.showToast({
+          title: '暂未搜索到此订单',
+          icon: 'none'
+        })
+        return
+      }
+      wx.hideLoading()
+
+      this.data.goodsArray = res.obj
+      this.setData({
+        goodsArray: this.data.goodsArray
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

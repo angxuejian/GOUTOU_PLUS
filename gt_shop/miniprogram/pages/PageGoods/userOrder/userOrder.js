@@ -42,15 +42,16 @@ Page({
     this.setData({
       state: this.data.state
     })
-    wx.showLoading({
-      title: '加载中...',
-      mask:true
-    })
+
     this._loadData()
   },  
 
   // 请求订单列表
   _loadData: function() {
+    wx.showLoading({
+      title: '加载中...',
+      mask:true
+    })
     cloudFn.$callFn({
       data: {
         fn: 'get',
@@ -59,6 +60,7 @@ Page({
         by: 'desc'
       }
     }).then(res => {
+      wx.stopPullDownRefresh()
       wx.hideLoading()
       this.data.orderArray = res.data
       this.setData({
@@ -83,9 +85,9 @@ Page({
 
   // 去订单页
   gotoDetail: function(event) {
-    let orderid = event.currentTarget.dataset.orderid
+    let orderNumber = event.currentTarget.dataset.ordernumber
     wx.navigateTo({
-      url: '../userOrderDetail/userOrderDetail?orderid=' + orderid,
+      url: '../userOrderDetail/userOrderDetail?orderNumber=' + orderNumber,
     })
   },
 
@@ -121,7 +123,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this._loadData()
   },
 
   /**

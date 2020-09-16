@@ -26,9 +26,9 @@ Component({
   methods: {
     // 去详情页
     gotoDetail: function(event) {
-      const {orderid} = event.currentTarget.dataset
+      const {ordernumber} = event.currentTarget.dataset
       wx.navigateTo({
-        url: '/pages/PagePer/detailOrder/detailOrder?orderid=' + orderid,
+        url: '/pages/PagePer/detailOrder/detailOrder?orderNumber=' + ordernumber,
       })
     },
   }

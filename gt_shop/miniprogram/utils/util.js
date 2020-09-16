@@ -51,7 +51,7 @@
 
 
  // 查询订单号
- const getOrderId = function (_id) {
+ const getorderNumber = function (_id) {
    _request({
      name: 'CloudBase',
      data: {
@@ -63,10 +63,10 @@
      },
      _then: res => {
        const {
-         order_id,
+         order_number,
          sumPrice
        } = res.data[0]
-       nowPay(order_id, sumPrice)
+       nowPay(order_number, sumPrice)
      }
    })
  }
@@ -93,8 +93,8 @@
  /*  订单状态：state:{
    1: 待付款，
    2：待发货，
-   3: 待收货,
-   4: 退款/售后 { 1: 申请退款中, 2: '退款成功', 3: '拒绝退款' }
+   3: 待收货, { 1:正在配送, 2: 已送达 }
+   4: 退款 { 1: 申请退款中, 2: '退款成功', 3: '拒绝退款', 4: 取消退款 }
    5：完成订单
  }
  */
@@ -126,7 +126,7 @@
  module.exports = {
    checkForm,
    debounce,
-   getOrderId,
+   getorderNumber,
    loginCheck,
    showMsg,
    nowPay

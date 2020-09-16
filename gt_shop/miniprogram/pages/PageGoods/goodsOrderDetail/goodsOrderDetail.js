@@ -6,7 +6,9 @@ import {
   nowPay
 } from '../../../utils/util'
 const cloudFn = new CloudFn()
-import {SUBSCRBE_ID} from '../../../utils/config'
+import {
+  SUBSCRBE_ID
+} from '../../../utils/config'
 Page({
 
   /**
@@ -159,6 +161,7 @@ Page({
     })
 
 
+
   },
 
   // 校验队列，一次只能下校验一单， 有异常则终止
@@ -185,14 +188,17 @@ Page({
       }
     }).then(res => {
       const list = res.data[0].spec_array
+      let index = 0
       for (let i = 0; i < list.length; i++) {
         if (list[i].id === specId) {
           if ((list[i].sum - orderNumber) < 0) {
             self.onShowModal(`${list[i].name}库存不足`)
           } else {
+            
             // 这是 库存 正常， 可以下单
             // 保存当前最新库存，在更新库存时使用
-            self.data.orderArray[i].oneTimeSum = list[i].sum - orderNumber
+            self.data.orderArray[index]['oneTimeSum'] = list[i].sum - orderNumber
+            index++
             self.data.stockIndex++
             if (self.data.stockIndex === self.data.orderArray.length) {
               // 库存正常，下单
@@ -226,7 +232,7 @@ Page({
     }
     const data = {
       state: 2, // 订单状态 详情在 util.js中
-      ...user_ad, // 收货人
+      shipping_info: user_ad,// 收货人
       accept_msg: this.data.acceptMsg, // 是否接收订阅消息
       goods_array: goodsArray, // 订单列表
       allPrice: this.data.allPrice, // 订单总价

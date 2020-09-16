@@ -3,9 +3,9 @@
 <view>
 	<view class="all-order">
 		<block wx:for='{{list}}' wx:key='index'>
-			<view hover-class="theme-hover" data-orderid='{{item.order_id}}' bindtap="gotoDetail" class="item-order theme-fff">
+			<view hover-class="theme-hover" data-ordernumber='{{item.order_number}}' bindtap="gotoDetail" class="item-order theme-fff">
 				<view class="order-number">
-					<view class="theme-price">订单号：{{item.order_id}}</view>
+					<view class="theme-price">订单号：{{item.order_number}}</view>
 					<view wx:if='{{!item.delivery_info.d_id}}' class="theme-font-f">{{filter.changeState(item.state)}}</view>
 					<view wx:if='{{item.delivery_info.d_id}}' class="theme-font-f">{{item.delivery_info.d_state === 1 ? '配送中' : '已送达'}}</view>
 				</view>

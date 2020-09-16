@@ -10,11 +10,11 @@ exports.main = async (event, context) => {
   /*
     event: {
       touser: string => 用户的openid
-      orderid: string => 订单编号
+      orderNumber: string => 订单编号
       invalid: boolean => 是否重新请求token
     }
   */
-  const {touser, orderid, invalid} = event
+  const {touser, orderNumber, invalid} = event
   invalid && await getAccessToken() // token失效 就重新请求
   const _TOKEN = await getBaseAccessToken() // 从数据库中 获取 token
   return await $request({
@@ -25,7 +25,7 @@ exports.main = async (event, context) => {
       template_id: $config._SUBSCRBE_ID,
       data: {
         character_string2:{
-          value: orderid
+          value: orderNumber
         },
         phrase1:{
           value: '已送达'

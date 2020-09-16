@@ -1,0 +1,23 @@
+<!--miniprogram/pages/PageGoods/userOrderRefund/userOrderRefund.wxml-->
+<view>
+
+	<view class="refund-title">
+		退款理由
+	</view>
+	<view class="refund-reason">
+		<picker class="theme-price" bindchange="onSelctRefValue" range="{{refundArray}}" mode='selector'>
+			{{refValue}}
+		</picker>
+		<image src="../../../images/arrow-right.png"></image>
+	</view>
+
+	<view class="refund-title">
+		退款说明
+	</view>
+	<view class="refund-remark">
+		<textarea class="theme-price" bindinput="onChangeRefRemark" maxlength="280" placeholder="请根据商品情况来详述退款原因..."></textarea>
+	</view>
+
+
+  <view bindtap="onRRefund" hover-class="theme-hover" class="req-ref theme-fff theme-font-f">申请退款</view>
+</view>

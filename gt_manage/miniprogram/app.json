@@ -42,7 +42,8 @@
         "downGoods/downGoods",
         "upGoods/upGoods",
         "detailGoods/detailGoods",
-        "refundOrder/refundOrder"
+        "refundOrder/refundOrder",
+        "refuseRefundOrder/refuseRefundOrder"
       ]
     }
   ],

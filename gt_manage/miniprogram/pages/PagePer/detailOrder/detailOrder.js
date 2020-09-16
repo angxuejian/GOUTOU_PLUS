@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order_id: '', //订单id
+    orderNumber: '', //订单id
     order: {}, //订单
   },
 
@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.order_id = options.orderid
+    this.data.orderNumber = options.orderNumber
     wx.showLoading({
       title: '加载中...',
       mask: true
@@ -36,7 +36,7 @@ Page({
           base: 'user-order',
           is_where: false,
           where_data: {
-            order_id: this.data.order_id
+            order_number: this.data.orderNumber
           }
         }
       }
@@ -70,7 +70,7 @@ Page({
           fn: 'update',
           base: 'user-order',
           where_data: {
-            order_id: this.data.order_id
+            order_number: this.data.orderNumber
           },
           update_data: data
         }
@@ -80,7 +80,6 @@ Page({
     })
 
   },
-
 
   // 已送达
   gotoUserMsg: function() {
@@ -95,7 +94,7 @@ Page({
           fn: 'update',
           base: 'user-order',
           where_data: {
-            order_id: this.data.order_id
+            order_number: this.data.orderNumber
           },
           update_data: {
             delivery_info: {
@@ -121,10 +120,72 @@ Page({
       name: 'CloudSendMsg',
       data: {
         touser: this.data.order.user_id,
-        orderid: this.data.order_id
+        orderNumber: this.data.orderNumber
       }
     }).then(res => {
       console.log(res, '成功')
+    })
+  },
+
+  // 同意退款
+  onCanfirmRefund: function() {
+    cloudFn.$callFn({
+      data: {
+        name: 'CloudAPIBase',
+        body: {
+          fn: 'update',
+          base: 'user-order',
+          is_where: false,
+          where_data: {
+            order_number: this.data.orderNumber
+          },
+          update_data:{
+            refund_info: {
+              r_state:3
+            }
+          }
+        }
+      }
+    }).then(res => {
+      wx.showModal({
+        title: '提示',
+        content: '退款成功',
+        showCancel: false,
+        success: res => {
+          this._loadData()
+        }
+      })
+    })
+  },
+
+
+  // 去拒绝退款页
+  gotoRefuseRefund: function() {
+    wx.navigateTo({
+      url: '/pages/PageMan/refuseRefundOrder/refuseRefundOrder?orderNumber=' + this.data.orderNumber + '&r_refuse=' + this.data.order.refund_info.r_refuse,
+    })
+  },
+
+  // 复制订单编号
+  onCopyOrderNumber: function() {
+    wx.setClipboardData({
+      data: this.data.orderNumber
+    })
+  },
+
+  // 拨打电话
+  onCallPhoneNumber: function() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.order.shipping_info.shipping_tel
+    })
+  },
+
+  // 查看退款原因
+  onShowRefundInfo: function() {
+    wx.showModal({
+      title: this.data.order.refund_info.r_reason,
+      content: this.data.order.refund_info.r_remark,
+      showCancel: false,
     })
   },
 

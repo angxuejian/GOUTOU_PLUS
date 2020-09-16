@@ -57,6 +57,7 @@
 .all-price > text:nth-of-type(1){
   margin-right: 15px;
 }
+
 .item-title{
   width: 96%;
   margin: 0 auto;
@@ -68,11 +69,15 @@
   margin: 0 auto;
   padding: 10px 0;
   /* border-bottom: 1px solid #eee; */
-  margin-bottom: 20px;
+}
+.item-msg .matter-log-msg:nth-last-of-type(1){
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 .order-msg{
-  border-top: 1px solid #eee;
+  /* border-top: 1px solid #eee; */
   border-bottom: 1px solid #eee;
   padding: 10px 0;
   width: 96%;
@@ -134,7 +139,7 @@
   margin-right: 9px;
 }
 .order-confirm > view{
-  width: 15%;
+  /* width: 15%; */
   height: 70rpx;
   /* background-color: red; */
   line-height: 70rpx;

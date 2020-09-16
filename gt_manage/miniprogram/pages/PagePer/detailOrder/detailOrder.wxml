@@ -24,11 +24,36 @@
 		</view>
 	</view>
 
+	<!-- 退款信息 -->
+	<view class="item-msg" wx:if='{{order.refund_info}}' bindtap="onShowRefundInfo" hover-class="theme-hover">
+		<view class="item-title theme-price">退款信息</view>
+		
+		<view wx:if='{{order.refund_info.r_state === 1 || order.refund_info.r_state === 3}}' class="matter-log-msg theme-font-f">
+			{{order.refund_info.r_state === 1 ? '申请退款中' : '同意退款'}}
+		</view>
+		<view wx:if='{{order.refund_info.r_state === 2 || order.refund_info.r_state === 4}}' class="matter-log-msg theme-font-f">
+			{{order.refund_info.r_state === 2 ? '拒绝退款原因：' + order.refund_info.r_refuse : '取消退款'}}
+		</view>
+	</view>
+
+
 	<!-- 物流信息 -->
-	<view hover-class="theme-hover">
+	<view class="item-msg">
 		<view class="item-title theme-price">物流信息</view>
+		<view wx:if='{{!order.delivery_info}}' class="matter-log-msg theme-font-f">
+			备货中
+		</view>
+			<view wx:else class="matter-log-msg theme-font-f">
+			{{order.delivery_info.d_state === 1 ? '正在配送' : '已送达收货地址'}}
+		</view>
+	</view>
+
+	<!-- 收货人信息 -->
+		<view  bindtap="onCallPhoneNumber" hover-class="theme-hover" class="item-msg">
+		<view class="item-title theme-price">{{order.shipping_info.shipping_name}} {{order.shipping_info.shipping_tel}}</view>
 		<view class="matter-log-msg theme-font-f">
-			商家已发出
+			
+			{{order.shipping_info.shipping_address}}
 		</view>
 	</view>
 
@@ -38,30 +63,29 @@
 		<!-- <view class="item-title theme-price">订单信息</view> -->
 		<view class="order-number-msg">
 			<text class="theme-price">订单编号</text>
-			<text style="color:#333;" class="theme-price">{{order.order_id}}</text>
+			<text style="color:#333;" class="theme-price">{{order.order_number}}</text>
+			<text bindtap="onCopyOrderNumber" style="margin-left:10px" class="theme-price">复制</text>
 		</view>
 		<view class="order-number-msg">
 			<text class="theme-price">下单时间</text>
 			<text style="color:#333;" class="theme-price">{{filter.changeTime(order.create_time)}}</text>
 		</view>
 	</view>
-	<view class="theme-price prompt">点击物流信息可以刷新哦！</view>
+
+		<!-- 防止被挡 -->
+	<view style="width:5px; height:4px; margin-bottom:150rpx"></view>
 
 
 	<!-- 订单状态 + 功能 -->
-	<!-- 1,2,3,4 -->
 	<view class="order-confirm theme-fff">
-		<!-- <view wx:if='{{order.state === 1}}' hover-class="theme-hover" class="theme-font-f border">去付款</view> -->
 
 		<view bindtap="gotoDelivery" wx:if='{{order.state === 2}}' hover-class="theme-hover" class="theme-font-f border">去配送</view>
 
 		<view bindtap="gotoUserMsg" wx:if='{{order.state === 3 && order.delivery_info.d_state === 1}}' hover-class="theme-hover" class="theme-font-f border">已送达</view>
 
+		<view bindtap="onCanfirmRefund" wx:if='{{order.state === 4 && order.refund_info.r_state === 1}}' hover-class="theme-hover" class="theme-font-f border">同意退款</view>
 
-		<!-- <view wx:if='{{order.state === 3}}' hover-class="theme-hover" class="theme-font-f border">去退款</view>
-		<view wx:if='{{order.state === 3}}' hover-class="theme-hover" class="theme-font-f border">去收货</view> -->
-
-		<!-- <view wx:if='{{order.state === 2}}' hover-class="theme-hover" class="theme-font-f border">去退款</view> -->
+		<view bindtap="gotoRefuseRefund" wx:if='{{order.state === 4 && order.refund_info.r_state === 1}}' hover-class="theme-hover" class="theme-font-f border">拒绝退款</view>
 
 	</view>
 

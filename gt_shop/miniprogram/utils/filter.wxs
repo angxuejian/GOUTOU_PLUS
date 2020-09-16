@@ -8,7 +8,9 @@ function changeState(state) {
   }else if(state == "3") {
     return '待收货'
   }else if(state == "4") {
-    return '退款/售后'
+    return '退款'
+  }else if(state == "5") {
+    return '完成交易'
   }
 }
 
