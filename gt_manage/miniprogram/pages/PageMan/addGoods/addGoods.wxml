@@ -1,6 +1,40 @@
 <!--miniprogram/pages/PageMan/addShop/addShop.wxml-->
 <view>
 
+
+	<!-- 商品 -->
+	<view class="goods">
+		<view class="cover">
+			<view bindtap="addCover" hover-class="theme-hover" class="theme-eee">
+				<image mode="aspectFill"  class="{{cover ? 'show-image' : 'add-image'}}" src="{{cover || '../../../images/manage/add-img.png'}}"></image>
+			</view>
+			<image bindtap="removeImage" data-key='cover' data-index='{{null}}' wx:if='{{cover}}' class="remove" src="../../../images/manage/remove.png"></image>
+		</view>
+		<view class="info">
+			<!-- 标题 -->
+			<view class="info-input">
+				<view class="theme-font">商品名称</view>
+				<input bindinput="getValue" data-key='title' data-index='{{null}}' class="theme-price" placeholder="请输入商品名称"></input>
+			</view>
+			<!-- 价格区间 -->
+			<view class="info-input">
+				<view class="theme-font">价格区间</view>
+				<view class="info-input-price">
+					<view class="info-price">
+						<input bindinput="getValue" data-key='arrPrice' data-subkey='{{null}}' data-index='{{0}}' type="number" class="theme-price" placeholder="10"></input>
+						<text class="theme-price">-</text>
+						<input bindinput="getValue" data-key='arrPrice' data-subkey='{{null}}' data-index='{{1}}' type="number" class="theme-price" placeholder="20"></input>
+					</view>
+					<text class="theme-price">￥</text>
+				</view>
+			</view>
+
+		</view>
+	</view>
+
+
+
+
 	<view class="head">
 		<!-- 添加轮播图 -->
 		<swiper indicator-dots circular>
@@ -8,7 +42,7 @@
 				<swiper-item>
 					<!-- <image mode="aspectFill" src="{{ item }}"></image> -->
 					<view class="add-view">
-						<view hover-class="theme-hover" class="theme-eee">
+						<view bindtap="addSwiper" data-index='{{index}}' hover-class="theme-hover" class="theme-eee">
 							<image class="add" src="../../../images/manage/add-img.png"></image>
 						</view>
 						<image wx:if='{{index !== 0}}' class="remove" src="../../../images/manage/remove.png"></image>
@@ -17,54 +51,32 @@
 				</swiper-item>
 			</block>
 		</swiper>
-
-		<!-- 标题 -->
-		<view class="item-input">
-			<text class="theme-font">商品名称</text>
-			<input class="theme-price" placeholder="请输入商品名称"></input>
-		</view>
-		<!-- 价格区间 -->
-		<view class="item-input">
-			<text class="theme-font">价格区间</text>
-			<view class="item-input-price">
-				<view class="input-price">
-					<input type="number" class="theme-price" placeholder="例：10"></input>
-					<text class="theme-price">-</text>
-					<input type="number" class="theme-price" placeholder="20"></input>
-				</view>
-				<text class="theme-price">￥</text>
-			</view>
-		</view>
-
-
 	</view>
 
 	<view class="body">
 		<!-- 规格 -->
 		<view>
-			<block wx:for='{{1}}' wx:key='index'>
+			<block wx:for='{{arrSpec}}' wx:key='index'>
 				<view class="item-spec">
 					<view class="cover">
-						<view hover-class="theme-hover" class="theme-eee">
-							<image class="cover-img" src="../../../images/manage/add-img.png"></image>
-
-							<!-- <image class="show-img" mode="aspectFill" src="http://img.tukuppt.com/bg_grid/00/21/08/qs3ZrXjJ8a.jpg!/fh/350"></image> -->
+						<view bindtap="addSpecCover" data-index='{{index}}' hover-class="theme-hover" class="theme-eee">
+							<image mode="aspectFill" class="{{item.cover ? 'show-img' : 'cover-img'}}" src="{{item.cover || '../../../images/manage/add-img.png'}}"></image>
 						</view>
 
-						<image class="remove" src="../../../images/manage/remove.png"></image>
+						<image bindtap="removeImage" data-key='arrSpec' data-index='{{index}}' data-subkey='cover' wx:if='{{item.cover}}' class="remove" src="../../../images/manage/remove.png"></image>
 					</view>
 					<view class="info">
 						<view class="item-input">
-							<text class="theme-font">名称</text>
-							<input class="theme-price" placeholder="请输入规格名称"></input>
+							<text class="theme-font">名称{{index}}</text>
+							<input value="{{item.name}}" bindinput="getValue" data-key='arrSpec' data-subkey='name' data-index='{{index}}' class="theme-price" placeholder="请输入规格名称"></input>
 						</view>
 						<view class="item-input">
 							<text class="theme-font">价格</text>
-							<input type="number" class="theme-price" placeholder="请输入规格价格"></input>
+							<input value="{{item.price}}" bindinput="getValue" data-key='arrSpec' data-subkey='price' data-index='{{index}}' type="number" class="theme-price" placeholder="请输入规格价格"></input>
 						</view>
 						<view class="item-input">
 							<text class="theme-font">库存</text>
-							<input type="number" class="theme-price" placeholder="请输入规格库存"></input>
+							<input value="{{item.sum}}" bindinput="getValue" data-key='arrSpec' data-subkey='sum' data-index='{{index}}' type="number" class="theme-price" placeholder="请输入规格库存"></input>
 						</view>
 
 					</view>
@@ -72,26 +84,26 @@
 				</view>
 			</block>
 		</view>
-    <view hover-class="theme-hover" class="add-spec theme-font">添加规格</view>
+		<view hover-class="theme-hover" class="add-spec theme-font">添加规格</view>
 	</view>
 
-  <view class="detail">
-    <block wx:for='{{1}}' wx:key='index'>
-      <view class="item-detail">
-        <view hover-class="theme-hover" class="theme-eee">
-          <image class="add-image" src="../../../images/manage/add-img.png"></image>
-        </view>
-        <image wx:if='{{index !== 0}}' class="remove" src="../../../images/manage/remove.png"></image>
-      </view>
-    </block>
-  
-  </view>
+	<view class="detail">
+		<block wx:for='{{1}}' wx:key='index'>
+			<view class="item-detail">
+				<view hover-class="theme-hover" class="theme-eee">
+					<image class="add-image" src="../../../images/manage/add-img.png"></image>
+				</view>
+				<image wx:if='{{index !== 0}}' class="remove" src="../../../images/manage/remove.png"></image>
+			</view>
+		</block>
 
-  <!-- 防止被挡 -->
-  <view style='width:5px;height:5px;margin-bottom:60px'></view>
+	</view>
 
-  <!-- 最后的保存 -->
-  <view hover-class="theme-hover" class="bottom theme-blod theme-fff">
-    保存
-  </view>
+	<!-- 防止被挡 -->
+	<view style='width:5px;height:5px;margin-bottom:60px'></view>
+
+	<!-- 最后的保存 -->
+	<view hover-class="theme-hover" class="bottom theme-blod theme-fff">
+		保存
+	</view>
 </view>

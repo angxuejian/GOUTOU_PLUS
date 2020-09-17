@@ -123,6 +123,7 @@ Page({
         orderNumber: this.data.orderNumber
       }
     }).then(res => {
+      this.onShowModal('已通知，感谢您的配送')
       this._loadData()
     })
   },

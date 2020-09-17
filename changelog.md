@@ -3,7 +3,7 @@
 - 添加 wxSubscribeMessage.md
 - gt_shop小程序 与 gt_manage小程序
   - 修改 云函数初始化，订单字段修改
-
+  - 更新 addGoods 页面
 ### 2020/09/16
 - gt_shop小程序 与 gt_manage小程序
   - 更新 user order module;

@@ -59,8 +59,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/Tabbar/manage/manage",
-					"pathName": "pages/Tabbar/manage/manage",
+					"name": "pages/PageMan/addGoods/addGoods",
+					"pathName": "pages/PageMan/addGoods/addGoods",
 					"query": "",
 					"scene": null
 				}

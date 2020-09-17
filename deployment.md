@@ -6,7 +6,7 @@
 0. 都需要开通云开发哦！([不会开通云开发功能戳这里](./wxCloudDevelopment))
 1. A小程序需要准备
     - APPID, APPSecret
-    - 订阅消息ID ([订阅消息模板ID的选择](./wxSubscribeMessage))
+    - 订阅消息ID ([订阅消息模板ID的选择](./wxSubscribeMessage.md))
     - 云开发环境ID
 2. B小程序需要准备
     - APPID
