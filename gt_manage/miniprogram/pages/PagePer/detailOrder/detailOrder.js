@@ -117,13 +117,13 @@ Page({
   // 发送订阅消息
   sendMsg: function() {
     cloudFn.$callFn({
-      name: 'CloudSendMsg',
       data: {
+        fn: 'SendMsg',
         touser: this.data.order.user_id,
         orderNumber: this.data.orderNumber
       }
     }).then(res => {
-      console.log(res, '成功')
+      this._loadData()
     })
   },
 

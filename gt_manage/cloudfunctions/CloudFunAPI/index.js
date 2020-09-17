@@ -1,28 +1,22 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-const $request = require('request-promise');
+const $APIFun = require('APIFun')
 const $config = require('config')
-cloud.init({env:'gt-manage-h9o9w'})
+cloud.init({env: cloud.DYNAMIC_CURRENT_ENV})
 
 const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   /*
     event: {
-      name: string => 云函数名称
+      fn: string => CloudAPIBase:获取A小程序的数据， SendMsg: 发送订阅消息
       invalid: boolean => 是否重新请求token
-      body: object => 云函数的参数 具体参数详看gt_shop小程序CloudAPIBase函数
     }
   */
-  const {name, invalid, body} = event
+  const { fn = 'CloudAPIBase', invalid } = event
   invalid && await getAccessToken() // token失效 就重新请求
   const _TOKEN = await getBaseAccessToken() // 从数据库中 获取 token
-  return await $request({
-    method:'POST',
-    url:`${$config._FURL}&name=${name}&access_token=${_TOKEN.data[0].token}`,
-    body: body,
-    json: true
-  })
+  return await $APIFun[fn](event, _TOKEN.data[0].token)
 }
 
 

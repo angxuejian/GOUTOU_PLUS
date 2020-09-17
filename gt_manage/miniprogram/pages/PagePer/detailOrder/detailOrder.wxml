@@ -20,7 +20,7 @@
 		</view>
 		<view hover-class="theme-hover" class="all-price theme-fff">
 			<text class="theme-font-f">实付款</text>
-			<text class="theme-color">￥{{order.allPrice}}</text>
+			<text class="theme-color">￥{{order.all_price}}</text>
 		</view>
 	</view>
 

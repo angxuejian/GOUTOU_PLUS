@@ -21,8 +21,12 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"nodeModules": false,
+		"uglifyFileName": false,
+		"compileHotReLoad": false,
+		"useIsolateContext": true
 	},
 	"appid": "wx84ca45db2e45386c",
 	"projectname": "gt_manage",

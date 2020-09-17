@@ -1,14 +1,25 @@
 ## 部署说明
 ---
+### 下面小程序均简称为 A小程序和 B小程序
 ### 准备阶段
 ---
-1. 请先准备好 APPID, APPSecret; **(APPID, APPSecret 各两份哦)**
-2. 请先在准备好的 APPID 中**开通云开发功能并且获取到云开发的环境ID哦！**([不会开通云开发功能戳这里](./wxCloudDevelopment))
-3. clone 项目到本地
+0. 都需要开通云开发哦！([不会开通云开发功能戳这里](./wxCloudDevelopment))
+1. A小程序需要准备
+    - APPID, APPSecret
+    - 订阅消息ID ([订阅消息模板ID的选择](./wxSubscribeMessage))
+    - 云开发环境ID
+2. B小程序需要准备
+    - APPID
+    - 云开发环境ID
+
+
+### Clone项目
+---
+1. clone 项目到本地
     ```
     git clone https://github.com/angxuejian/GOUTOU_PLUS.git
     ```
-4. clone 成功后会看到 **GOUTOU_PLUS** 文件夹，进入文件夹后会有以下文件;
+2. clone 成功后会看到 **GOUTOU_PLUS** 文件夹，进入文件夹后会有以下文件;
     > **gt_shop文件夹为用户端小程序代码**
 
     > **gt_manage文件夹为管理端小程序代码**
@@ -17,7 +28,7 @@
 
 5. 恭喜哦！ 你已经拥有的全部源代码了。我们就先来部署 **gt_shop文件夹下的小程序代码**
 
-### gt_shop小程序部署
+### gt_shop文件夹 > A小程序部署
 ---
 1. 将项目导入至微信开发工具中; 别忘了把 **APPID替换了哦** 要不然会提示你没有权限打开哦！
 
@@ -27,8 +38,12 @@
 
     ![替换云开发环境id](./img/g.png)
 
-3. 部署**cloudfunctions目录下的**云函数
-    - CloudAPIBase >> 统一请求操作数据库函数;
+3. 在 **miniprogram > utils > config.js** 中 找到 **SUBSCRBE_ID变量** 替换 订阅消息模板 ID ([订阅消息模板ID的选择](./wxSubscribeMessage))
+
+    ![替换订阅消息模板ID](./img/o.png)
+
+4. 部署**cloudfunctions目录下的**云函数
+    - CloudAPIBase >> 统一请求操作数据库函数; 
 
     ![云函数](./img/h.png)
 
@@ -36,7 +51,7 @@
 
     ![部署云函数](./img/i.png)
 
-4. 创建数据库集合; [数据库详情字段信息戳这里](./wxDatabaseInfo)
+5. 创建数据库集合; [数据库详情字段信息戳这里](./wxDatabaseInfo)
     - user               >> 用户表集合
 
     - user-address       >> 用户地址表集合
@@ -48,27 +63,66 @@
 
     > 将上面的集合名称全部创建即可; 
 
-5. 完成？
-    - 这时候gt_shop 小程序就已经全部部署完成了，保存后重新编译即可，但是打开之后应该是没有商品的，因为**shop-goods表中并没有数据**
+6. 完成？
+    - 这时候 A小程序就已经全部部署完成了，保存后重新编译即可，但是打开之后应该是没有商品的，因为**shop-goods表中并没有数据**
         1. 自己手动在shop-goods表中添加数据。([添加字段详情信息, 戳这里]())
         2. 将 gt_manage小程序部署好，在gt_manage小程序中的**添加商品页面中**添加商品
 
-### gt_manage小程序部署
+### gt_manage文件夹 > B小程序部署
 ----
 
-1. 重复上文 **gt_shop小程序部署中的第1，第2条**  更改APPID，更改云环境ID; 还记得 **准备阶段的第1，第2条吗？** 这是第二套的小程序APPID，云环境ID。不要和 **gt_shop小程序的一样哦**
+1. 重复上文 **A小程序部署中的第1，第2条**  更改APPID，更改云环境ID; 还记得 **准备阶段的第2条吗？** 这是第二套的小程序APPID，云环境ID。不要和 **A小程序的一样哦**
 
-2. 部署云函数与gt_shop小程序部署中的 第3条一样的方法部署; 
-    - **这里要注意**
-    - 在 **cloudfunctions目录下的 > function > index.js** 中的**APPID和APPSecret**替换成**gt_shop小程序的 APPID和APPSecret**
+2. 创建 **wx-secret数据库集合表**,  **wx-token数据库集合表**
+    1. wx-secret >> A小程序的 APPID和APPSecret 表
+        - 创建 wx-sectet 表之后，添加一条记录，如下图，如下表(_id会自动生成)
 
-    - 替换成功后，我们就可以**通过云函数操作gt_shop小程序中的数据库了**，这样就可以实现**管理**的作用了
+            key       | value               | type  
+            ---       | ---                 | ---   
+            app_id    | A小程序的APPID       | string
+            app_secret| A小程序的 APPSecret  | string 
+            
+            ![创建wx-secret](./img/s.png)
+            ![添加字段](./img/u.png)
+            ![wx-secret](./img/p.png)
+        - 添加记录成功, 取出 **_id**
 
-3. 创建数据库集合与gt_shop小程序部署中的 第4条一样的方法创建； [数据库详情字段信息戳这里](./wxDatabaseInfo)
+    2. wx-token >> 请求A小程序的 access_token 表
+        - 创建 wx-token 表之后，添加一条记录，如下图，如下表(_id会自动生成)
+          
+          key       | value| type  
+          ---       | ---  | ---   
+          token     | ""   | string
+
+            > token 字段 为空即可, 之后代码会自动添加 token
+
+            ![创建wx-token](./img/t.png)
+            ![添加字段](./img/v.png)
+            ![wx-token](./img/q.png)
+        - 添加记录成功, 取出 **_id**
+
+3. 替换 订阅模板消息，第 2 步 取出的 _id， A小程序的环境ID
+
+    - 在 **gt_manage > cloudfunctions > CloudFunAPI > config.js 中** 替换以下字段
+        key          | value
+        ---          | ---  
+        _ENV         | A小程序的环境 ID
+        _ID          | 第 2 步 中 第 1 条 wx-secret 表中 取出的 _id
+        _TID         | 第 2 步 中 第 2 条 wx-token 表中 取出的 _id
+        _SUBSCRBE_ID | A小程序的 订阅模板消息 ID
+
+        ![替换配置](./img/r.png)
+
+4. 部署云函数与A小程序部署中的 第3条一样的方法部署; 
+    - CloudAPIBase >> 统一请求操作数据库函数;
+    - CloudFunAPI >> 统一操作A小程序的数据库函数(数据库, 订阅消息, 文件上传与下载)
+    - 第1, 2, 3条 替换成功后，我们就可以**通过云函数操作A小程序中的数据库了**，这样就可以实现**管理**的作用了
+
+5. 创建数据库集合与A小程序部署中的 第4条一样的方法创建； [数据库详情字段信息戳这里](./wxDatabaseInfo)
     - user >> 用户表
 
 4. 完成？
-    - 进行到这里，就已经gt_manage小程序就已经全部部署完成了，快去**添加商品**吧！
+    - 进行到这里，就已经B小程序就已经全部部署完成了，快去**添加商品**吧！
 
 
 ### 写的什么，完全看不懂

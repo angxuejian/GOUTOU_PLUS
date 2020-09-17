@@ -141,6 +141,7 @@ Page({
       })
       return
     }
+
     // 订阅消息
     wx.requestSubscribeMessage({
       tmplIds: [SUBSCRBE_ID],
@@ -219,7 +220,7 @@ Page({
     this.data.orderArray.forEach(item => {
       goodsArray.push({
         goods_spec: item.goods_spec, // 商品规格
-        goods_id: item.goods_id, // 商品id
+        goods_id: item._id, // 商品id
         title: item.title, // 商品标题
         goods_number: item.goods_number, // 商品购买数量
         goods_price: item.goods_number * item.goods_spec.price, // 单个商品价钱
@@ -235,10 +236,9 @@ Page({
       shipping_info: user_ad,// 收货人
       accept_msg: this.data.acceptMsg, // 是否接收订阅消息
       goods_array: goodsArray, // 订单列表
-      allPrice: this.data.allPrice, // 订单总价
+      all_price: this.data.allPrice, // 订单总价
     }
     nowPay(data).then(res => {
-      console.log(res, '成功')
       wx.hideLoading()
       wx.showLoading({
         title: '检查支付环境...',

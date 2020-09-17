@@ -1,26 +1,31 @@
+### 2020/09/16
+- 更新 deployment.md, wxDatabaseInfo.md
+- 添加 wxSubscribeMessage.md
+- gt_shop小程序 与 gt_manage小程序
+  - 修改 云函数初始化，订单字段修改
 
 ### 2020/09/16
 - gt_shop小程序 与 gt_manage小程序
-  - update user order module;
+  - 更新 user order module;
 
 ### 2020/09/15
 - gt_shop小程序
-  - update goodsOrderDetail.js, userOrder.js, userOrderDerail.js
+  - 更新 goodsOrderDetail.js, userOrder.js, userOrderDerail.js
 - gt_manage小程序
-  - add deliveryOrder页面, me页面, myDeliveryOrder页面, detailOrder页面; CloudSendMsg云函数, CloudAPIBase云函数
-  - update CloudFunAPI,upGoods.js,detailGoods.js, downGoods.js
+  - 添加 deliveryOrder页面, me页面, myDeliveryOrder页面, detailOrder页面; CloudSendMsg云函数, CloudAPIBase云函数
+  - 更新 CloudFunAPI,upGoods.js,detailGoods.js, downGoods.js
 
 ### 2020/09/14
 - gt_shop小程序
-  - update goodsDetail.wxml, home.js
+  - 更新 goodsDetail.wxml, home.js
 - gt_manage小程序
   - upGoods, downGoods, detailGoods接入数据库
 
 ### 2020/09/13
 - gt_shop小程序
-  - update goodsDetail.js, goodsOrderDetail.js
+  - 更新 goodsDetail.js, goodsOrderDetail.js
 - gt_manage小程序
-  - add Goods, order UI
+  - 添加 Goods, order UI
 
 ### 2020/09/12
 - 更新README.md

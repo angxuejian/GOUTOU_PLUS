@@ -26,7 +26,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.data._id = options.id
     wx.showLoading({
       title: '加载中...',
@@ -47,7 +46,6 @@ Page({
         is_where: false
       }
     }).then(res => {
-      console.log(res, '这是商品详情')
       wx.hideLoading()
       this.data.goods = res.data[0]
       this.setData({
