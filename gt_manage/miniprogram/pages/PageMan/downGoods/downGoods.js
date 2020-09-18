@@ -36,6 +36,7 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
+      console.log(res, '这是神吗')
       this.data.upGoodsArray = res.obj
       this.setData({
         upGoodsArray: this.data.upGoodsArray

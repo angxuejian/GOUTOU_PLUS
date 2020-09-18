@@ -1,10 +1,9 @@
 const $request = require('request-promise');
 const $config = require('config')
-
 const APIFun = function () {
   return {
 
-    CloudAPIBase: async function (event, _TOKEN) {
+    cloudAPIBase: async function (event, _TOKEN) {
       /*
         event: {
           name: string => 云函数名称
@@ -18,12 +17,12 @@ const APIFun = function () {
       } = event
       return $request({
         method: 'POST',
-        url: `${$config._FURL}&name=${name}&access_token=${_TOKEN}`,
+        url: `${$config._FUN_URL}&name=${name}&access_token=${_TOKEN}`,
         body: body,
         json: true
       })
     },
-    SendMsg: async function (event, _TOKEN) {
+    sendMsg: async function (event, _TOKEN) {
       /*
         event: {
           touser: string => 用户的openid
@@ -52,7 +51,44 @@ const APIFun = function () {
         },
         json: true
       })
-    }
+    },
+    // getPath: async function (event, _TOKEN) {
+    //   /*
+    //     _TOKEN: string => access_token
+    //   */
+    //   return $request({
+    //     method: 'POST',
+    //     url: `${$config._UPLOADFILE_URL}${_TOKEN}`,
+    //     body: {
+    //       env:$config._ENV,
+    //       path: 'goods-cover/' +  new Date().getTime()
+    //     },
+    //     json: true
+    //   })
+    // },
+    // uploadImage: async function(event, _TOKEN){
+    //   /*
+    //     event: {
+    //       post: object => 上传图片的 参数
+    //       file: string => 本地图片路径
+    //     },
+    //     _TOKEN: string => access_token
+    //   */
+    //   const {post, file} = event
+    //   const key = `goods-cover${post.url.split('goods-cover')[1]}`
+    //   return await $request({
+    //     method: 'POST',
+    //     url: post.url,
+    //     body: {
+    //       "key": key,
+    //       "Signature": post.authorization,
+    //       "x-cos-security-token": post.token,
+    //       "x-cos-meta-fileid": post.file_id,
+    //       "file": file
+    //     },
+    //     json: true
+    //   })
+    // }
   }
 }
 

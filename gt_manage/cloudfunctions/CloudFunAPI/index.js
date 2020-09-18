@@ -2,6 +2,7 @@
 const cloud = require('wx-server-sdk')
 const $APIFun = require('APIFun')
 const $config = require('config')
+const $request = require('request-promise');
 cloud.init({env: cloud.DYNAMIC_CURRENT_ENV})
 
 const db = cloud.database()
@@ -9,11 +10,11 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   /*
     event: {
-      fn: string => CloudAPIBase:获取A小程序的数据， SendMsg: 发送订阅消息
+      fn: string => cloudAPIBase:获取A小程序的数据， sendMsg: 发送订阅消息
       invalid: boolean => 是否重新请求token
     }
   */
-  const { fn = 'CloudAPIBase', invalid } = event
+  const { fn = 'cloudAPIBase', invalid } = event
   invalid && await getAccessToken() // token失效 就重新请求
   const _TOKEN = await getBaseAccessToken() // 从数据库中 获取 token
   return await $APIFun[fn](event, _TOKEN.data[0].token)
@@ -34,7 +35,7 @@ const getAccessToken = async () => {
   const {app_id:ID, app_secret:SECRET} = app.data[0]
   $request({
     method:'GET',
-    url:`https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${ID}&secret=${SECRET}`
+    url:`${$config._TOKEN_URL}&appid=${ID}&secret=${SECRET}`
   }).then(res => {
     let { access_token:TOKEN } = JSON.parse(res)
     db.collection('wx-token').where({_id:$config._TID}).update({

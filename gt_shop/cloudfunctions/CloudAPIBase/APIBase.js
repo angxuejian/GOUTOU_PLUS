@@ -10,6 +10,7 @@
   const APIBase = function () {
     return {
 
+      // 添加
       add: function (db, event, OPENID) {
         /*
           db: 数据库操作实例
@@ -17,24 +18,30 @@
             base: string => 要查询的数据库 集合
             is_order: boolean => 是否添加订单
             add_data: object => 添加的数据
+            is_add: boolean => 是否添加用户
           },
           OPENID: 用户的openid
         */
         const {
           base,
           add_data = {},
-          is_order = false
+          is_order = false,
+          is_add = true
         } = event;
-        const adata = Object.assign(add_data, {
-          user_id: OPENID,
-          create_time: db.serverDate()
-        })
+        var adata = add_data
+        if(is_add) {
+          adata = Object.assign(add_data, {
+            user_id: OPENID
+          })
+        }
+        adata.create_time = db.serverDate()
         is_order && (adata.order_number = getOrderNumber())
         return db.collection(base).add({
           data: adata
         })
       },
 
+      // 获取
       get: function (db, event, OPENID) {
         /*
           db: 数据库操作实例
@@ -89,6 +96,7 @@
         }).get()
       },
 
+      // 删除
       remove: function (db, event) {
         /*
         db:  数据库操作实例
@@ -107,6 +115,7 @@
         }).remove()
       },
 
+      // 更新
       update: function (db, event) {
         /*
           db: 数据库操作实例
@@ -154,7 +163,7 @@
         }
 
         return _db.end()
-      }
+      },
     }
   }
 

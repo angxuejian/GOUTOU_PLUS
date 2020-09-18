@@ -14,16 +14,16 @@
 			<!-- 标题 -->
 			<view class="info-input">
 				<view class="theme-font">商品名称</view>
-				<input bindinput="getValue" data-key='title' data-index='{{null}}' class="theme-price" placeholder="请输入商品名称"></input>
+				<input value="{{title}}" bindinput="getValue" data-key='title' data-index='{{null}}' class="theme-price" placeholder="请输入商品名称"></input>
 			</view>
 			<!-- 价格区间 -->
 			<view class="info-input">
 				<view class="theme-font">价格区间</view>
 				<view class="info-input-price">
 					<view class="info-price">
-						<input bindinput="getValue" data-key='arrPrice' data-subkey='{{null}}' data-index='{{0}}' type="number" class="theme-price" placeholder="10"></input>
+						<input bindinput="getValue" data-key='arrPrice' data-subkey='{{null}}' data-index='{{0}}' value="{{arrPrice[0]}}" type="number" class="theme-price" placeholder="10"></input>
 						<text class="theme-price">-</text>
-						<input bindinput="getValue" data-key='arrPrice' data-subkey='{{null}}' data-index='{{1}}' type="number" class="theme-price" placeholder="20"></input>
+						<input bindinput="getValue" data-key='arrPrice' data-subkey='{{null}}' data-index='{{1}}' value="{{arrPrice[1]}}" type="number" class="theme-price" placeholder="20"></input>
 					</view>
 					<text class="theme-price">￥</text>
 				</view>
@@ -38,14 +38,14 @@
 	<view class="head">
 		<!-- 添加轮播图 -->
 		<swiper indicator-dots circular>
-			<block wx:for='{{swiperArray}}' wx:key='index'>
+			<block wx:for='{{!arrSwiper.length ? 1 : arrSwiper}}' wx:key='index'>
 				<swiper-item>
 					<!-- <image mode="aspectFill" src="{{ item }}"></image> -->
 					<view class="add-view">
-						<view bindtap="addSwiper" data-index='{{index}}' hover-class="theme-hover" class="theme-eee">
-							<image class="add" src="../../../images/manage/add-img.png"></image>
+						<view bindtap="addSDCover" data-key='arrSwiper' data-index='{{index}}' hover-class="theme-hover" class="theme-eee">
+							<image class="{{item ? 'show-imag' : 'add'}}" src="{{item || '../../../images/manage/add-img.png'}}"></image>
 						</view>
-						<image wx:if='{{index !== 0}}' class="remove" src="../../../images/manage/remove.png"></image>
+						<image bindtap="removeImage" data-key='arrSwiper' data-index='{{index}}' data-subkey='{{null}}'  wx:if='{{item}}' class="remove" src="../../../images/manage/remove.png"></image>
 					</view>
 
 				</swiper-item>
@@ -67,7 +67,7 @@
 					</view>
 					<view class="info">
 						<view class="item-input">
-							<text class="theme-font">名称{{index}}</text>
+							<text class="theme-font">名称</text>
 							<input value="{{item.name}}" bindinput="getValue" data-key='arrSpec' data-subkey='name' data-index='{{index}}' class="theme-price" placeholder="请输入规格名称"></input>
 						</view>
 						<view class="item-input">
@@ -80,20 +80,20 @@
 						</view>
 
 					</view>
-					<image wx:if='{{index !== 0}}' class="remove" src="../../../images/manage/remove.png"></image>
+					<image bindtap="removeImage" data-key='arrSpec' data-index='{{index}}' data-subkey='{{null}}' wx:if='{{index !== 0}}'  class="remove" src="../../../images/manage/remove.png"></image>
 				</view>
 			</block>
 		</view>
-		<view hover-class="theme-hover" class="add-spec theme-font">添加规格</view>
+		<view bindtap="addItemSpec" hover-class="theme-hover" class="add-spec theme-font">添加规格</view>
 	</view>
 
 	<view class="detail">
-		<block wx:for='{{1}}' wx:key='index'>
+		<block wx:for='{{!arrDetail.length ? 1 : arrDetail}}' wx:key='index'>
 			<view class="item-detail">
-				<view hover-class="theme-hover" class="theme-eee">
-					<image class="add-image" src="../../../images/manage/add-img.png"></image>
+				<view bindtap="addSDCover" data-key='arrDetail' data-index='{{index}}' hover-class="theme-hover" class="theme-eee">
+					<image mode="aspectFill" class="{{item ? 'show-image' : 'add-image'}}" src="{{item || '../../../images/manage/add-img.png'}}"></image>
 				</view>
-				<image wx:if='{{index !== 0}}' class="remove" src="../../../images/manage/remove.png"></image>
+				<image bindtap="removeImage" data-key='arrDetail' data-index='{{index}}' data-subkey='{{null}}' wx:if='{{item}}' class="remove" src="../../../images/manage/remove.png"></image>
 			</view>
 		</block>
 
@@ -103,7 +103,7 @@
 	<view style='width:5px;height:5px;margin-bottom:60px'></view>
 
 	<!-- 最后的保存 -->
-	<view hover-class="theme-hover" class="bottom theme-blod theme-fff">
+	<view bindtap="beforeSave" hover-class="theme-hover" class="bottom theme-blod theme-fff">
 		保存
 	</view>
 </view>

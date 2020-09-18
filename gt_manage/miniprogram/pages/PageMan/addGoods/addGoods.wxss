@@ -122,6 +122,10 @@ swiper-item .add-view{
   width: 40px;
   height: 40px;
 }
+.add-view view .show-image{
+  width: 100%;
+  height: 100%;
+}
 swiper-item view .remove{
   position: absolute;
   right: -6px;
@@ -165,14 +169,14 @@ swiper-item view .remove{
   position: relative;
   width: 95%;
   margin:10px auto;
-  /* background-color: red; */
 }
 .item-spec > .remove{
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   top: -6px;
   right: -6px;
+  z-index: 66;
 }
 .item-spec > .cover{
   width: 25%;
@@ -242,8 +246,8 @@ swiper-item view .remove{
   position: absolute;
   right: -6px;
   top: -6px;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 .item-detail > view{
   position: absolute;
@@ -259,7 +263,10 @@ swiper-item view .remove{
   width: 40px;
   height: 40px;
 }
-
+.item-detail > view > .show-image{
+  width: 100%;
+  height: 100%;
+}
 .bottom{
   position: fixed;
   bottom: 0;

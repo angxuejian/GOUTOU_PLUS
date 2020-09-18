@@ -118,7 +118,7 @@ Page({
   sendMsg: function() {
     cloudFn.$callFn({
       data: {
-        fn: 'SendMsg',
+        fn: 'sendMsg',
         touser: this.data.order.user_id,
         orderNumber: this.data.orderNumber
       }

@@ -1,3 +1,7 @@
+### 2020/09/17
+- gt_manage小程序
+  更新 addGoods页面
+
 ### 2020/09/16
 - 更新 deployment.md, wxDatabaseInfo.md
 - 添加 wxSubscribeMessage.md
