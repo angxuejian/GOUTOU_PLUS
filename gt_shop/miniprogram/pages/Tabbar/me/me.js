@@ -3,6 +3,7 @@ import {
   CloudFn
 } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {loginCheck} from '../../../utils/util'
 Page({
 
   /**
@@ -46,6 +47,10 @@ Page({
 
   // 获取用户信息
   onUserInfo: function (event) {
+    wx.showLoading({
+      title: '登录中...',
+      mask: true
+    })
     const {userInfo} = event.detail
     cloudFn.$callFn({
       data:{
@@ -53,7 +58,6 @@ Page({
         base: 'user'
       }
     }).then(res => {
-      console.log(res, '成功')
       if(res.data[0]) {
         this.setStorageUser(userInfo)
       } else {
@@ -81,21 +85,27 @@ Page({
     this.setData({
       userInfo: this.data.userInfo
     })
+    wx.hideLoading()
     wx.setStorageSync('userInfo', userInfo)
   },
 
   // 我的订单页面
   gotoUserOrder: function (event) {
-    const state = event.currentTarget.dataset.state
+    loginCheck().then(res => {
+      const state = event.currentTarget.dataset.state
     wx.navigateTo({
       url: '../../PageGoods/userOrder/userOrder?state=' + state,
     })
+    })
+    
   },
 
   // 我的收货页面
   gotoUserAddress: function () {
-    wx.navigateTo({
-      url: '../../PageGoods/userAddress/userAddress',
+    loginCheck().then(() => {
+      wx.navigateTo({
+        url: '../../PageGoods/userAddress/userAddress',
+      })
     })
   },
 

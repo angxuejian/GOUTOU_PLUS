@@ -12,7 +12,7 @@
 				<view>
 					<block wx:for='{{item.goods_array}}' wx:for-item='aItem' wx:for-index='aIndex' wx:key='aIndex'>
 						<view class="goods">
-							<image mode="aspectFill" src="{{aItem.goods_spec.cover}}"></image>
+							<image mode="aspectFill" src="{{aItem.goods_spec.man_cover}}"></image>
 							<view class="goods-info">
 								<view>
 									<text class="theme-price">{{aItem.title || ''}}</text>

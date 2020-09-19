@@ -33,6 +33,18 @@
 ![思维导图](https://mmbiz.qpic.cn/mmbiz_png/xoIzuYKVBOysHymgKylRcZYianNuIOj9MOv0crTtPBzTG6fsqicYTo3fSOqEBrBYHy0ia0RYziaicic2Fkm3FFVIaejw/0?wx_fmt=png)
 ### 效果截图
 ---
+- A小程序截图
+
+    ![狗头的店](https://mmbiz.qpic.cn/mmbiz_png/xoIzuYKVBOyE0bg6xibFCCzia4WiaXsaBicCN596k5mTKfmEhicZo6iaO85PhergbrrQvYg6Ll5pQQN35vOtFQicluqRg/0?wx_fmt=png)
+        
+- B小程序截图
+
+    ![狗头管理](https://mmbiz.qpic.cn/mmbiz_png/xoIzuYKVBOyE0bg6xibFCCzia4WiaXsaBicCDGcPoWYl6hRgE3q3TRvKMmib35ibTiaZ1cZAoXwX1ibR7SzAyUdTHpHl3Q/0?wx_fmt=png)
+
+### 视频介绍及使用
+---
+
+> https://v.qq.com/x/page/o3153pxavtk.html
 
 ### 代码链接
 ---
@@ -46,7 +58,13 @@ $ git clone https://github.com/angxuejian/GOUTOU_PLUS.git
 
 ### 作品
 ---
+- A小程序(审核未通过, 附上体验版)
 
+	![狗头的店](https://mmbiz.qpic.cn/mmbiz_png/xoIzuYKVBOyE0bg6xibFCCzia4WiaXsaBicCr2wuWo9Et5zuYLa9uCFZYuAcITeDCWGSAEFns8a0J5AZryoB6A1JQg/0?wx_fmt=png)
+
+- B小程序(审核通过, 附上正式版)
+
+    ![狗头管理](https://mmbiz.qpic.cn/mmbiz_png/xoIzuYKVBOyE0bg6xibFCCzia4WiaXsaBicCvibCF40QsPYxQGjbSarhs5OEzzU6ibVpPrHaauQOfI68uaicMNbnZjDkg/0?wx_fmt=png)
 
 ### 作者
 ---
@@ -70,3 +88,6 @@ $ git clone https://github.com/angxuejian/GOUTOU_PLUS.git
 - 微信小商店
 - 阿里巴巴图标库
 
+### 一点小建议
+---
+- 希望官方以后出现关联小程序的权限, **多个小程序关联后可以只开通一个云数据库**，这样开发的花样会不会更多呢？

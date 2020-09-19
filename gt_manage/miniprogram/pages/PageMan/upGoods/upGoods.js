@@ -1,6 +1,8 @@
 // miniprogram/pages/PageMan/upGoods/upGoods.js
 import { CloudFn } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {dataModal} from '../../../utils/util'
+
 Page({
 
   /**
@@ -36,6 +38,10 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
+      if(!this.data.upGoodsArray.length && !res.obj.length) {
+        dataModal('暂无上架商品。请上架商品或添加商品')
+        return
+      }
       this.data.upGoodsArray = res.obj
       this.setData({
         upGoodsArray: this.data.upGoodsArray

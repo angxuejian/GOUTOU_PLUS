@@ -1,6 +1,7 @@
 // miniprogram/pages/PageMan/refundOrder/refundOrder.js
 import { CloudFn } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {dataModal} from '../../../utils/util'
 Page({
 
   /**
@@ -41,6 +42,10 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
+      if(!this.data.refundArray.length && !res.obj.length){
+        dataModal('暂无退款订单')
+        return
+      }
       this.data.refundArray = res.obj
       this.setData({
         refundArray: this.data.refundArray

@@ -3,6 +3,7 @@ import {
   CloudFn
 } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {dataModal} from '../../../utils/util'
 Page({
 
   /**
@@ -34,7 +35,6 @@ Page({
           is_where: false,
           by:'desc',
           where_data: {
-            state: 3,
             delivery_info: {
               d_id: wx.getStorageSync('userInfo').user_id
             }
@@ -43,6 +43,10 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
+      if(!this.data.myDeliveryArray.length && !res.obj.length) {
+        dataModal('您没有配送过订单')
+        return
+      }
       this.data.myDeliveryArray = res.obj
       this.setData({
         myDeliveryArray: this.data.myDeliveryArray

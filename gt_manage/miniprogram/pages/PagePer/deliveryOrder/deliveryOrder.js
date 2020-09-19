@@ -3,6 +3,7 @@ import {
   CloudFn
 } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {dataModal} from '../../../utils/util'
 Page({
 
   /**
@@ -39,6 +40,10 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
+      if(!this.data.deliveryArray.length && !res.obj.length) {
+        dataModal('暂无可配送商品')
+        return
+      }
       this.data.deliveryArray = res.obj
       this.setData({
         deliveryArray: this.data.deliveryArray

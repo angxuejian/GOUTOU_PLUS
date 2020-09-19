@@ -60,10 +60,10 @@
 				<view class="item-spec">
 					<view class="cover">
 						<view bindtap="addSpecCover" data-index='{{index}}' hover-class="theme-hover" class="theme-eee">
-							<image mode="aspectFill" class="{{item.cover ? 'show-img' : 'cover-img'}}" src="{{item.cover || '../../../images/manage/add-img.png'}}"></image>
+							<image mode="aspectFill" class="{{item.man_cover ? 'show-img' : 'cover-img'}}" src="{{item.man_cover || '../../../images/manage/add-img.png'}}"></image>
 						</view>
 
-						<image bindtap="removeImage" data-key='arrSpec' data-index='{{index}}' data-subkey='cover' wx:if='{{item.cover}}' class="remove" src="../../../images/manage/remove.png"></image>
+						<image bindtap="removeImage" data-key='arrSpec' data-index='{{index}}' data-subkey='man_cover' wx:if='{{item.man_cover}}' class="remove" src="../../../images/manage/remove.png"></image>
 					</view>
 					<view class="info">
 						<view class="item-input">

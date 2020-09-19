@@ -66,7 +66,10 @@ Page({
         wx.showToast({
           title: '收货成功',
         })
+        
+       setTimeout(() => {
         this._loadData()
+       }, 1000)
       })
     } else {
       wx.showModal({

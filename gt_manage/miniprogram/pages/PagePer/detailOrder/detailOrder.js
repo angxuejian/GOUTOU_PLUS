@@ -163,7 +163,7 @@ Page({
   // 去拒绝退款页
   gotoRefuseRefund: function() {
     wx.navigateTo({
-      url: '/pages/PageMan/refuseRefundOrder/refuseRefundOrder?orderNumber=' + this.data.orderNumber + '&r_refuse=' + this.data.order.refund_info.r_refuse,
+      url: '/pages/PageMan/refuseRefundOrder/refuseRefundOrder?orderNumber=' + this.data.orderNumber + '&r_refuse=' + this.data.order.refund_info.r_refuse || '',
     })
   },
 

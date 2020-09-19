@@ -6,7 +6,7 @@
 		<view>
 			<block wx:for='{{order.goods_array}}'>
 				<view class="goods">
-			<image mode="aspectFill" src="{{item.goods_spec.cover}}"></image>
+			<image mode="aspectFill" src="{{item.goods_spec.man_cover}}"></image>
 			<view class="goods-info">
 				<view>
 					<text class="theme-price">{{item.title}}</text>

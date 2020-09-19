@@ -3,6 +3,9 @@ import {
   CloudFn
 } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {
+  loginCheck
+} from '../../../utils/util'
 Page({
 
   /**
@@ -10,7 +13,13 @@ Page({
    */
   data: {
     userInfo: {}, // 用户信息
-    pickerRange: ['快递员', '管理员']
+    pickerRange: [{
+      name: '快递员',
+      value: 'Per'
+    }, {
+      name: '管理员',
+      value: 'Man'
+    }]
   },
 
   /**
@@ -68,14 +77,20 @@ Page({
 
   // 切换身份
   gotoCheckout: function (event) {
-   console.log(this.data.pickerRange[event.detail.value])
+    wx.setStorageSync('userAuth', this.data.pickerRange[event.detail.value].value)
+    wx.showToast({
+      title: '身份切换成功',
+    })
   },
 
   // 去我的配送页
   gotoMyDelivery: function() {
-    wx.navigateTo({
-      url: '../../PagePer/myDeliveryOrder/myDeliveryOrder',
+    loginCheck().then(() => {
+      wx.navigateTo({
+        url: '../../PagePer/myDeliveryOrder/myDeliveryOrder',
+      })
     })
+    
   },
 
 

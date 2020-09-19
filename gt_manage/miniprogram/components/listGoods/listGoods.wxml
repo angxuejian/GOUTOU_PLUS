@@ -5,7 +5,7 @@
 		<view class="item-goods">
 			<view bindtap="gotoDetail" data-id='{{item._id}}'>
 				<view class="goods">
-					<image mode="aspectFill" src="{{item.cover}}"></image>
+					<image mode="aspectFill" src="{{item.man_cover}}"></image>
 					<view class="info">
 						<view>{{item.title}}</view>
 						<view>￥{{item.def_price}}</view>
@@ -20,7 +20,7 @@
 			<view class="button">
 				<view bindtap="gotoUp" data-id='{{item._id}}' wx:if='{{type === "up"}}' hover-class="theme-hover">下架</view>
 				<view bindtap="gotoDown" data-id='{{item._id}}' wx:if='{{type === "down"}}' hover-class="theme-hover">上架</view>
-				<view wx:if='{{type === "edit"}}' hover-class="theme-hover">编辑</view>
+				<view bindtap="gotoEdit" data-id='{{item._id}}' wx:if='{{type === "edit"}}' hover-class="theme-hover">编辑</view>
 			</view>
 		</view>
 	</block>

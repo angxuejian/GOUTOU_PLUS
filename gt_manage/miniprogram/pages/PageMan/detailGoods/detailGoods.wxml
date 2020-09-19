@@ -2,9 +2,9 @@
 <view>
 	<!-- 轮播 -->
 	<swiper interval='10000' autoplay circular>
-		<block wx:for='{{goods.swiper_array}}' wx:key='index'>
+		<block wx:for='{{goods.man_swiper_array}}' wx:key='index'>
 			<swiper-item>
-				<image bindtap="showSrc" data-curr='{{item}}' data-list='{{goods.swiperArray}}' mode="aspectFill" src="{{ item }}"></image>
+				<image bindtap="showSrc" data-curr='{{item}}' data-list='{{goods.man_swiper_array}}' mode="aspectFill" src="{{ item }}"></image>
 			</swiper-item>
 		</block>
 	</swiper>
@@ -31,8 +31,8 @@
 	<!-- 详情 -->
 	<view style="margin-top:10px" class="item-title theme-price">详情</view>
 	<view class="item-detail">
-		<block wx:for='{{goods.detail_array}}' wx:key='index'>
-			<image bindtap="showSrc" data-curr='{{item}}' data-list='{{goods.detail_array}}'  mode="aspectFill" src="{{item}}"></image>
+		<block wx:for='{{goods.man_detail_array}}' wx:key='index'>
+			<image bindtap="showSrc" data-curr='{{item}}' data-list='{{goods.man_detail_array}}'  mode="aspectFill" src="{{item}}"></image>
 		</block>
 
 	</view>
@@ -52,7 +52,7 @@
 	<!-- 商品信息 -->
 	<image bindtap="closeGoodsInfoPopBox" class="remove" src="../../../images/goods/remove.png"></image>
 	<view  class="info">
-		<image bindtap="showSrc" data-curr='{{goods.spec_array[specIndex].cover}}' data-list='{{[goods.spec_array[specIndex].cover]}}'  mode="aspectFill" src="{{goods.spec_array[specIndex].cover}}"></image>
+		<image bindtap="showSrc" data-curr='{{goods.spec_array[specIndex].man_cover}}' data-list='{{[goods.spec_array[specIndex].man_cover]}}'  mode="aspectFill" src="{{goods.spec_array[specIndex].man_cover}}"></image>
 		<view>
 			<view class="theme-font-f theme-color">￥{{goods.spec_array[specIndex].price}}</view>
 			<view class="theme-font">已选：{{goods.spec_array[specIndex].name}}</view>

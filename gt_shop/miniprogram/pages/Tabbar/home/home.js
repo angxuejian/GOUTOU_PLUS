@@ -11,9 +11,9 @@ Page({
   data: {
     currIndex: 1, // 被选中的索引
     currentArray: [
-      'http://img.tukuppt.com/bg_grid/00/12/12/ROVO8gRNFX.jpg!/fh/350',
-      'http://img.tukuppt.com/bg_grid/00/03/77/qMaJ6zUerz.jpg!/fh/350',
-      'http://img.tukuppt.com/bg_grid/00/21/08/qs3ZrXjJ8a.jpg!/fh/350'
+      'https://img.alicdn.com/tfs/TB1HdU6lBBh1e4jSZFhXXcC9VXa-520-280.jpg_q90_.webp',
+      'https://aecpm.alicdn.com/simba/img/TB183NQapLM8KJjSZFBSutJHVXa.jpg',
+      'https://aecpm.alicdn.com/simba/img/TB1XotJXQfb_uJkSnhJSuvdDVXa.jpg'
     ],
     goodsArray: [], // 商品列表
   },

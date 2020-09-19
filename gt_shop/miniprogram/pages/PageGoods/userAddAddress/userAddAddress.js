@@ -118,7 +118,7 @@ Page({
   },
 
   // 保持收货地址
-  gotoAddshipping_address: function () {
+  gotoAddshippingAddress: function () {
     if (checkForm(this.data.formData, this.data.checkFormData)) {
       if (this.data.formData.shipping_tel.length !== 11) {
         wx.showToast({
@@ -127,6 +127,10 @@ Page({
         })
         return;
       }
+      wx.showLoading({
+        title: '保存地址中...',
+        mask:true
+      })
       if (this.data.formData.defaults) {
         // 不管编辑还是新增，只要设置默认地址，都要将数据库已有的改变
         this.updateSA()
@@ -152,6 +156,7 @@ Page({
         add_data: this.data.formData
       }
     }).then(res => {
+      wx.hideLoading()
       showMsg('添加成功')
     })
   },
@@ -167,6 +172,7 @@ Page({
         update_data: this.data.formData
       }
     }).then(res => {
+      wx.hideLoading()
       showMsg('修改成功')
     })
   },

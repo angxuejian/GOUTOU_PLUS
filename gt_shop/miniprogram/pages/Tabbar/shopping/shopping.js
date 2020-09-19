@@ -3,6 +3,7 @@ import {
   CloudFn
 } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {loginCheck} from '../../../utils/util'
 Page({
 
   /**
@@ -17,11 +18,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中',
-      mask: true
+    
+    loginCheck().then(() => {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      this._loadData()
     })
-    this._loadData()
+   
   },
 
   // 获取购物车数据
@@ -239,11 +244,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.showLoading({
-      title: '加载中',
-      mask: true
+    loginCheck().then(() => {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      this._loadData()
     })
-    this._loadData()
   },
 
   /**

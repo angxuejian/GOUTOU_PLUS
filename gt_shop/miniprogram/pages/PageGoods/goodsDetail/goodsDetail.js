@@ -3,6 +3,9 @@ import {
   CloudFn
 } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {
+  loginCheck
+} from '../../../utils/util'
 Page({
 
   /**
@@ -114,44 +117,47 @@ Page({
 
   // 订单详情页
   gotoOrderDetail: function () {
-    let sum = this.data.goods.spec_array[this.data.specIndex].sum
-    let name = this.data.goods.spec_array[this.data.specIndex].name
-    if (sum === 0 || this.data.goods_number > sum) {
-      wx.showModal({
-        title: '提示',
-        content: `"${name}" 库存不足`,
-        showCancel: false
-      })
-      return
-    }
-    let spec = this.data.goods.spec_array[this.data.specIndex]
-    delete spec.sum
-    const data = {
-      goods_id: this.data._id, // 商品id
-      title: this.data.goods.title, // 商品标题
-      goods_number: this.data.goods_number, // 购买数量
-      goods_spec: spec, // 购买的商品规格
-    }
+    loginCheck().then(() => {
+      let sum = this.data.goods.spec_array[this.data.specIndex].sum
+      let name = this.data.goods.spec_array[this.data.specIndex].name
+      if (sum === 0 || this.data.goods_number > sum) {
+        wx.showModal({
+          title: '提示',
+          content: `"${name}" 库存不足`,
+          showCancel: false
+        })
+        return
+      }
+      let spec = this.data.goods.spec_array[this.data.specIndex]
+      delete spec.sum
+      const data = {
+        goods_id: this.data._id, // 商品id
+        title: this.data.goods.title, // 商品标题
+        goods_number: this.data.goods_number, // 购买数量
+        goods_spec: spec, // 购买的商品规格
+      }
 
-    if (this.data.type === 'cart') {
+      if (this.data.type === 'cart') {
 
-      // 添加购物车
-      wx.showLoading({
-        title: '添加到购物车...',
-        mask: true
-      })
-      this.getSCart(data)
-    } else if (this.data.type === 'order') {
-      // 去下单
-      this.data.isShowInfo = false
-      this.setData({
-        isShowInfo: this.data.isShowInfo
-      })
-      let item = encodeURIComponent(JSON.stringify(data))
-      wx.navigateTo({
-        url: '../goodsOrderDetail/goodsOrderDetail?item=' + item
-      })
-    }
+        // 添加购物车
+        wx.showLoading({
+          title: '添加到购物车...',
+          mask: true
+        })
+        this.getSCart(data)
+      } else if (this.data.type === 'order') {
+        // 去下单
+        this.data.isShowInfo = false
+        this.setData({
+          isShowInfo: this.data.isShowInfo
+        })
+        let item = encodeURIComponent(JSON.stringify(data))
+        wx.navigateTo({
+          url: '../goodsOrderDetail/goodsOrderDetail?item=' + item
+        })
+      }
+    })
+
   },
 
   // 查询购物车中是否有当前商品

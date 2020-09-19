@@ -9,7 +9,6 @@
            data.invalid = true
            resolve(this.$callFn({name, data}))
          } else {
-          console.log(res)
           res.result.obj = (res.result.resp_data && JSON.parse(res.result.resp_data)) || {}
           
           if(res.result.obj.data) {
@@ -23,6 +22,7 @@
          
        }).catch(err => {
          console.log(err.errCode, '开发阶段错误')
+         console.log(err)
          if(name === 'ImgCheck' && err.errCode === -404011){
            resolve({errCode: err.errCode, msg: '图片过大'})
          } else {

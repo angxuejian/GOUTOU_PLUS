@@ -64,6 +64,9 @@ swiper-item{
   height: 80rpx;
   line-height: 80rpx;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   /* background-color: blue; */
 }
 .current-goods view:nth-of-type(2) {

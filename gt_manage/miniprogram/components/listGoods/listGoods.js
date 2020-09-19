@@ -28,6 +28,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    /*
+      triggerEvent：{
+        bindedit => 编辑 回调方法
+        bindshelf => 上架或下架 回调方法
+      }
+    */
+
     gotoDetail: function(event) {
       const {id} = event.currentTarget.dataset
       wx.navigateTo({
@@ -61,6 +68,12 @@ Component({
           }
         }
       })
+    },
+
+    // 去编辑页面
+    gotoEdit: function(event) {
+      const id = event.currentTarget.dataset
+      this.triggerEvent('edit', id)
     }
   }
 })

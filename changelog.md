@@ -1,8 +1,14 @@
-### 2020/09/17
+
+### 2020/09/19
+- 更新 editGoods页面
+- 优化 小程序提示和处理
+- 1.0.0 完成😎😎
+
+### 2020/09/18
 - gt_manage小程序
   更新 addGoods页面
 
-### 2020/09/16
+### 2020/09/17
 - 更新 deployment.md, wxDatabaseInfo.md
 - 添加 wxSubscribeMessage.md
 - gt_shop小程序 与 gt_manage小程序

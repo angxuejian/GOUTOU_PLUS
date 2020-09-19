@@ -7,6 +7,8 @@
 <br>
 
 > 下面声明的变量, 仅适用于下面集合 value 列 的 值 
+
+> 下面声明的字段前有 man_ 字段 均为目前开发缺陷，自行添加即可（文件 云id 只能在当前的小程序中使用，并不能跨程序使用，所以关于图片的上传，均在A，B小程序都上传）
 ```
 const $img = http://img.xx.jpg 或 云文件 ID
 const $date = db.serverDate() 或 集合中创建 date 类型
@@ -22,6 +24,7 @@ const $spec = [
         name: "规格一", >> 规格名称 >> string
         price: 120, >> 规格的价钱 >> number
         sum: 50, >>  规格的库存 >> number
+        man_cover:  $img, >> 规格图片 >> string
     },
     ....
 ]
@@ -94,16 +97,19 @@ const $d_state = 1
 
 1. shop-goods表集合 >> 商品表
 
-    key         | value      | type   | desc      
-    ---         | ---        | ---    | ---       
-    cover       | $img       | string | 商品封面图片
-    create_time | $date      | date   | 创建时间
-    def_price   | 189-389    | string | 商品价格区间
-    detail_array| $list      | arrry  | 商品详情图片
-    spec_array  | $spec      | array  | 商品规格
-    swiper_array| $list      | array  | 商品的轮播图
-    shelf       | true       | boolean| 商品的是否上架
-    title       | 超好吃的坚果| string | 商品的名称
+    key             | value      | type   | desc      
+    ---             | ---        | ---    | ---       
+    cover           | $img       | string | 商品封面图片
+    create_time     | $date      | date   | 创建时间
+    def_price       | 189-389    | string | 商品价格区间
+    detail_array    | $list      | arrry  | 商品详情图片
+    spec_array      | $spec      | array  | 商品规格
+    swiper_array    | $list      | array  | 商品的轮播图
+    shelf           | true       | boolean| 商品的是否上架
+    title           | 超好吃的坚果| string | 商品的名称
+    man_cover       | $img       | string | B小程序图片
+    man_detail_array| $list      | arrry  | B小程序图片
+    man)swiper_array| $list      | array  | B小程序图片
 
 <br>
 

@@ -18,8 +18,8 @@ Page({
   onLoad: function (options) {
     console.log(options, '')
     this.data.orderNumber = options.orderNumber
-    if(options.r_refuse){
-      this.data.r_refuse = options.r_refuse
+    if(options.r_refuse !== "undefined"){
+      this.data.r_refuse = options.r_refuse || ''
       this.setData({
         refValue: '上次拒绝退款理由：' + this.data.r_refuse
       })

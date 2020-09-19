@@ -1,6 +1,6 @@
 <!--miniprogram/pages/PageMan/editGoods/editGoods.wxml-->
 <view>
 
-   <list-goods type='edit'></list-goods>
+   <list-goods bindedit='gotoEdit' list='{{editGoodsArray}}' type='edit'></list-goods>
 
 </view>

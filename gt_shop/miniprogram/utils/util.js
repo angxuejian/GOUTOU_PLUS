@@ -103,9 +103,9 @@
  const loginCheck = function () {
    return new Promise((resolve, reject) => {
      const {
-       userid
+       avatarUrl
      } = wx.getStorageSync('userInfo')
-     if (userid) {
+     if (avatarUrl) {
        resolve()
      } else {
        wx.showModal({
@@ -114,7 +114,7 @@
          success: res => {
            if (res.confirm) {
              wx.switchTab({
-               url: '/pages/Tabbar/personal/personal',
+               url: '/pages/Tabbar/me/me',
              })
            }
          }

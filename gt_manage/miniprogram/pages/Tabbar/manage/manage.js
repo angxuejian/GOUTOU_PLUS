@@ -1,14 +1,14 @@
 // miniprogram/pages/Tabbar/manmage/manage.js
-import { CloudFn } from '../../../utils/CloudFn'
-const cloudFn = new CloudFn()
+import {
+  loginCheck
+} from '../../../utils/util'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shopArray: [
-      {
+    shopArray: [{
         src: 'add-shop.png',
         name: '新增商品',
         url: '/pages/PageMan/addGoods/addGoods'
@@ -29,41 +29,28 @@ Page({
         url: '/pages/PageMan/editGoods/editGoods'
       },
     ], // 商品管理
-    orderArray: [
-      {
-        src: 'delivery-order.png',
-        name: '配送订单',
-        url:'/pages/PagePer/deliveryOrder/deliveryOrder',
-        authority: true
-      },
-      {
-        src: 'search-order.png',
-        name: '查询订单',
-        url:'/pages/PagePer/searchOrder/searchOrder',
-        authority: true
-      },
-      {
-        src: 'refund-order.png',
-        name: '退款订单',
-        url:'/pages/PageMan/refundOrder/refundOrder',
-        authority: true
-      },
-    ]
+    orderArray: [],
+    userAuth: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+
   },
 
   // 去对应页
-  gotoNext: function(event){
-    const {url} = event.currentTarget.dataset
-    wx.navigateTo({
-      url,
+  gotoNext: function (event) {
+    loginCheck().then(() => {
+      const {
+        url
+      } = event.currentTarget.dataset
+      wx.navigateTo({
+        url,
+      })
     })
+
   },
 
   /**
@@ -77,7 +64,42 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let userAuth = wx.getStorageSync('userAuth') || 'Per'
+    if(userAuth === 'Man') {
+      this.data.orderArray = [{
+        src: 'delivery-order.png',
+        name: '配送订单',
+        url: '/pages/PagePer/deliveryOrder/deliveryOrder',
+      },
+      {
+        src: 'search-order.png',
+        name: '查询订单',
+        url: '/pages/PagePer/searchOrder/searchOrder',
+      }, {
+        src: 'refund-order.png',
+        name: '退款订单',
+        url: '/pages/PageMan/refundOrder/refundOrder',
+        authority: true
+      }]
+      this.data.userAuth = true
+    } else {
+      this.data.orderArray = [{
+        src: 'delivery-order.png',
+        name: '配送订单',
+        url: '/pages/PagePer/deliveryOrder/deliveryOrder',
+      },
+      {
+        src: 'search-order.png',
+        name: '查询订单',
+        url: '/pages/PagePer/searchOrder/searchOrder',
+      }]
+      this.data.userAuth = false
+    }
+    this.setData({
+      userAuth: this.data.userAuth,
+      orderArray: this.data.orderArray
+    })
+    
   },
 
   /**

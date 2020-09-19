@@ -8,8 +8,8 @@
 	</view>
 
 	<view class="down-fun">
-    <view hover-class="theme-hover"  class="item-fun theme-fff">
-      <picker bindchange="gotoCheckout" mode='selector' range="{{pickerRange}}" class="theme-font">身份切换</picker>
+    <view wx:if='{{userInfo.avatarUrl}}' hover-class="theme-hover"  class="item-fun theme-fff">
+      <picker bindchange="gotoCheckout" mode='selector' range-key="name" range="{{pickerRange}}" class="theme-font">身份切换</picker>
       <image src="../../../images/arrow-right.png"></image>
     </view>
     <view bindtap="gotoMyDelivery" hover-class="theme-hover"  class="item-fun theme-fff">

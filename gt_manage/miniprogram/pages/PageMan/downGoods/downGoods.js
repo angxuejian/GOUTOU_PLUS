@@ -1,6 +1,8 @@
 // miniprogram/pages/PageMan/downGoods/downGoods.js
 import { CloudFn } from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
+import {dataModal} from '../../../utils/util'
+
 Page({
 
   /**
@@ -18,7 +20,7 @@ Page({
   },
 
 
-  // 获取全部上架商品
+  // 获取全部下架商品
   _loadData: function() {
     wx.showLoading({
       title: '加载中...',
@@ -36,7 +38,10 @@ Page({
       }
     }).then(res => {
       wx.hideLoading()
-      console.log(res, '这是神吗')
+      if(!this.data.upGoodsArray.length && !res.obj.length) {
+        dataModal('暂无下架商品，请先在上架商品中下架商品')
+        return
+      }
       this.data.upGoodsArray = res.obj
       this.setData({
         upGoodsArray: this.data.upGoodsArray
