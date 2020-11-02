@@ -11,6 +11,8 @@ function changeState(state) {
     return '退款'
   }else if(state == "5") {
     return '完成交易'
+  }else if(state == "6") {
+    return '取消订单'
   }
 }
 

@@ -1,7 +1,7 @@
 // miniprogram/pages/PageGoods/userOrderDetail/userOrderDetail.js
 import {CloudFn} from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
-import {debounce, nowPay} from '../../../utils/util'
+import {debounce, nowPay, getDatetemp} from '../../../utils/util'
 Page({
 
   /**
@@ -39,6 +39,7 @@ Page({
     }).then(res => {
       wx.hideLoading()
       this.data.order = res.data[0]
+
       if(this.data.order.shipping_info.shipping_loc && this.data.order.delivery_info) {
         this.data.order.shipping_info.shipping_loc.icon = 'shipping.png'
         this.data.order.delivery_info.d_loc.icon = 'delivery.png'
@@ -70,8 +71,47 @@ Page({
           order: this.data.order
         })
       }
+
+      const createTime = new Date(res.data[0].create_time).getTime() + 900000
+      const nowTime = getDatetemp()
+      // 6: 订单状态 取消订单
+      if (createTime < nowTime && res.data[0].state != 6) {
+        wx.showModal({
+          title: '提示',
+          content: '已超过支付时间，订单已取消',
+          showCancel: false,
+          success: res => {
+            this.onCancelOrder()
+          }
+        })
+      }
     })
   },
+
+  // 已超过支付时间，取消订单
+  onCancelOrder: function() {
+    wx.showLoading({
+      title: '取消订单中...',
+      mask: true
+    })
+    cloudFn.$callFn({
+      data: {
+        fn: 'update',
+        base: 'user-order',
+        where_data: {order_number: this.data.orderNumber},
+        update_data: {
+          state: 6
+        }
+      }
+    }).then(res => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '订单已取消',
+      })
+      this._loadData()
+    })
+  },
+
 
   // 去支付
   gotoPay: function() {
@@ -155,6 +195,7 @@ Page({
   getDeliveryInfo: debounce(function() {
     this._loadData()
   }, 1000),
+
 
   // 复制订单编号
   onCopyOrderNumber: function() {

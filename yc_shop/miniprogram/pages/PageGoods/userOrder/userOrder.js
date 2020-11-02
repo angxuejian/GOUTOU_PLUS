@@ -1,7 +1,11 @@
 // miniprogram/pages/PageGoods/userOrder/userOrder.js
-import {CloudFn} from '../../../utils/CloudFn'
+import {
+  CloudFn
+} from '../../../utils/CloudFn'
 const cloudFn = new CloudFn()
-import {onSetData} from '../../../utils/util'
+import {
+  onSetData
+} from '../../../utils/util'
 Page({
 
   /**
@@ -47,19 +51,21 @@ Page({
     })
 
     this._loadData()
-  },  
+  },
 
   // 请求订单列表
-  _loadData: function() {
+  _loadData: function () {
     wx.showLoading({
       title: '加载中...',
-      mask:true
+      mask: true
     })
     cloudFn.$callFn({
       data: {
         fn: 'get',
         base: 'user-order',
-        where_data: !this.data.state ? {} : {state:this.data.state},
+        where_data: !this.data.state ? {} : {
+          state: this.data.state
+        },
         by: 'desc',
         page: this.data.page
       }
@@ -88,7 +94,7 @@ Page({
   },
 
   // 去订单页
-  gotoDetail: function(event) {
+  gotoDetail: function (event) {
     let orderNumber = event.currentTarget.dataset.ordernumber
     wx.navigateTo({
       url: '../userOrderDetail/userOrderDetail?orderNumber=' + orderNumber,
@@ -135,7 +141,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    if(this.data.page) {
+    if (this.data.page) {
       this.data.page++
       this._loadData()
     }

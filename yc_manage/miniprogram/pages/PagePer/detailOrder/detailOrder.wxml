@@ -20,7 +20,8 @@
 		</view>
 		<view hover-class="theme-hover" class="all-price theme-fff">
 			<text wx:if='{{order.mail_price}}' class="theme-price">（邮费{{order.mail_price}}元，商品{{order.all_price}}元）</text>
-			<text class="theme-font-f">{{order.state === 1 ? '未付款' : '实付款'}}</text>
+			<text wx:if='{{order.state != 6 && order.state != 1}}' class="theme-font-f">{{'实付款'}}</text>
+			<text wx:if='{{order.state == 6 || order.state == 1}}' class="theme-font-f">{{'未付款'}}</text>
 			<text class="theme-color">￥{{order.order_all_price}}</text>
 		</view>
 	</view>
@@ -41,7 +42,7 @@
 
 
 	<!-- 物流信息 -->
-	<view class="item-msg">
+	<view wx:if="{{order.state != 6 && order.state != 1}}"  class="item-msg">
 		<view wx:if='{{!order.delivery_info}}' class="item-title theme-price">物流信息</view>
 		<view wx:else class="item-title theme-price">{{order.delivery_info.d_name}} {{order.delivery_info.d_tel}}</view>
 		<view wx:if='{{!order.delivery_info}}' class="matter-log-msg theme-font-f">
