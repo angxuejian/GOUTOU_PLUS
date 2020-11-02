@@ -1,6 +1,0 @@
-<!--miniprogram/pages/PageMan/downGoods/downGoods.wxml-->
-<view>
-
-   <list-goods bindshelf='onShelf' list='{{upGoodsArray}}' type='down'></list-goods>
-
-</view>

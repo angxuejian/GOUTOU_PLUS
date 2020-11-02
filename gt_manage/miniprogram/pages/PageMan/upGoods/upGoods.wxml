@@ -1,7 +1,0 @@
-<!--miniprogram/pages/PageMan/upGoods/upGoods.wxml-->
-<view>
-
-  <list-goods bindshelf='onShelf' list='{{upGoodsArray}}' type='up'></list-goods>
-
-
-</view>

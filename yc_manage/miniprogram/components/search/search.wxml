@@ -1,0 +1,12 @@
+<!--components/search/search.wxml-->
+<view>
+  	<view class="search theme-fff">
+		<view class="input">
+			<image src="../../images/goods/search.png"></image>
+			<input value="{{searchValue}}" bindinput="getInputValue" class="theme-font" placeholder="{{title}}"></input>
+		</view>
+		<view bindconfirm='gotoSearch' bindtap="gotoSearch" hover-class="theme-hover" class="but theme-font">搜索</view>
+	</view>
+  
+
+</view>

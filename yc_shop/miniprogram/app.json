@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/Tabbar/home/home",
+    "pages/Tabbar/shopping/shopping",
+    "pages/Tabbar/me/me",
+    "pages/PageGoods/goodsDetail/goodsDetail",
+    "pages/PageGoods/goodsOrderDetail/goodsOrderDetail",
+    "pages/PageGoods/userAddress/userAddress",
+    "pages/PageGoods/userAddAddress/userAddAddress",
+    "pages/PageGoods/userOrder/userOrder",
+    "pages/PageGoods/userOrderDetail/userOrderDetail",
+    "pages/PageGoods/goodsSearch/goodsSearch",
+    "pages/PageGoods/userOrderRefund/userOrderRefund",
+    "pages/Tabbar/goods/goods",
+    "pages/PageGoods/commonProblem/commonProblem",
+    "pages/PageGoods/floorManager/floorManager",
+    "pages/PageGoods/numberDetail/numberDetail",
+    "pages/PageGoods/typeGoods/typeGoods",
+    "pages/PageGoods/gameInfo/gameInfo"
+  ],
+  "window": {
+    "backgroundColor": "#f6f6f6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6f6f6",
+    "navigationBarTitleText": "鹿安校园",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "selectedColor": "#07C160",
+    "color": "#8a8a8a",
+    "list": [
+      {
+        "pagePath": "pages/Tabbar/home/home",
+        "text": "首页",
+        "iconPath": "./images/tabbar/home.png",
+        "selectedIconPath": "./images/tabbar/home-selected.png"
+      },
+      {
+        "pagePath": "pages/Tabbar/goods/goods",
+        "text": "分类",
+        "iconPath": "./images/tabbar/goods.png",
+        "selectedIconPath": "./images/tabbar/goods-selected.png"
+      },
+      {
+        "pagePath": "pages/Tabbar/shopping/shopping",
+        "text": "购物车",
+        "iconPath": "./images/tabbar/shopping.png",
+        "selectedIconPath": "./images/tabbar/shopping-selected.png"
+      },
+      {
+        "pagePath": "pages/Tabbar/me/me",
+        "text": "我",
+        "iconPath": "./images/tabbar/me.png",
+        "selectedIconPath": "./images/tabbar/me-selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

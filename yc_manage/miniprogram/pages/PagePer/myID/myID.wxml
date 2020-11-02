@@ -1,0 +1,23 @@
+<!--miniprogram/pages/PagePer/myID/myID.wxml-->
+
+<view>
+
+  <view class="my-id">
+    <view class="item-input">
+      <view class="theme-font-f">姓名</view>
+      <input value="{{nickName}}" bindinput="getInputVal" class="theme-font" placeholder="请填写您的姓名" type="text"></input>
+    </view>
+    <view class="item-input">
+      <view class="theme-font-f">手机号码</view>
+      <button wx:if="{{!phoneNumber}}" bindgetphonenumber="getPhoneNumberVal" open-type="getPhoneNumber">获取您的手机号码</button>
+      <button class="theme-font" wx:if='{{phoneNumber}}'>{{phoneNumber}}</button>
+    </view>
+  </view>
+  <view wx:if='{{state === 1}}' class="theme-price prompt">申请中, 请耐心等待</view>
+  <view wx:if='{{state === 2}}' class="theme-price prompt">已同意, 您可以去派送了</view>
+  <view wx:if='{{state === 3}}' class="theme-price prompt">已拒绝, 拒绝理由：{{refuse}}</view>
+
+	<view  wx:if='{{state !== 2}}' bindtap="onSubmit" hover-class="theme-hover" class="bottom theme-blod theme-confirm">
+		提交申请
+	</view>
+</view>

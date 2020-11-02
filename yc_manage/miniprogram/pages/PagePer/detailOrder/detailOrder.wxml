@@ -1,0 +1,117 @@
+<!--miniprogram/pages/PagePer/detailOrder/detailOrder.wxml-->
+<wxs src='../../../utils/filter.wxs' module='filter'></wxs>
+<view>
+	<!-- 商品信息 -->
+	<view>
+		<view>
+			<block wx:for='{{order.goods_array}}'>
+				<view class="goods">
+					<image mode="aspectFill" src="{{item.goods_spec.cover}}"></image>
+					<view class="goods-info">
+						<view>
+							<text class="theme-price">{{item.title}}</text>
+							<text class="theme-font-f">￥{{item.goods_spec.price}}</text>
+						</view>
+						<view class="theme-font-f">x {{item.goods_number}}</view>
+						<view class="theme-price">{{item.goods_spec.name}}</view>
+					</view>
+				</view>
+			</block>
+		</view>
+		<view hover-class="theme-hover" class="all-price theme-fff">
+			<text wx:if='{{order.mail_price}}' class="theme-price">（邮费{{order.mail_price}}元，商品{{order.all_price}}元）</text>
+			<text class="theme-font-f">{{order.state === 1 ? '未付款' : '实付款'}}</text>
+			<text class="theme-color">￥{{order.order_all_price}}</text>
+		</view>
+	</view>
+
+	<!-- 退款信息 -->
+	<view class="item-msg" wx:if='{{order.refund_info}}' bindtap="onShowRefundInfo" hover-class="theme-hover">
+		<view class="item-title theme-price">退款信息</view>
+
+		<view wx:if='{{order.refund_info.r_state === 1 || order.refund_info.r_state === 3}}'
+			class="matter-log-msg theme-font-f">
+			{{order.refund_info.r_state === 1 ? '申请退款中' : '同意退款'}}
+		</view>
+		<view wx:if='{{order.refund_info.r_state === 2 || order.refund_info.r_state === 4}}'
+			class="matter-log-msg theme-font-f">
+			{{order.refund_info.r_state === 2 ? '拒绝退款原因：' + order.refund_info.r_refuse : '取消退款'}}
+		</view>
+	</view>
+
+
+	<!-- 物流信息 -->
+	<view class="item-msg">
+		<view wx:if='{{!order.delivery_info}}' class="item-title theme-price">物流信息</view>
+		<view wx:else class="item-title theme-price">{{order.delivery_info.d_name}} {{order.delivery_info.d_tel}}</view>
+		<view wx:if='{{!order.delivery_info}}' class="matter-log-msg theme-font-f">
+			备货中
+		</view>
+		<view wx:else class="matter-log-msg theme-font-f">
+			{{order.delivery_info.d_state === 1 ? '正在配送' : '已送达收货地址'}}
+		</view>
+		<map wx:if='{{lng}}' scale='{{6}}' style="width:100%;height:180px;" markers="{{markers}}" longitude='{{lng}}'
+			latitude='{{lat}}' name=""></map>
+	</view>
+
+	<!-- 收货人信息 -->
+	<view bindtap="onCallPhoneNumber" data-tel='{{order.shipping_info.shipping_tel}}' hover-class="theme-hover" class="item-msg">
+		<view class="item-title theme-price">{{order.shipping_info.shipping_name}} {{order.shipping_info.shipping_tel}}
+		</view>
+		<view class="matter-log-msg theme-font-f">
+
+			{{order.shipping_info.shipping_address}}
+		</view>
+	</view>
+
+
+	<!-- 订单信息 -->
+	<view class="order-msg">
+		<!-- <view class="item-title theme-price">订单信息</view> -->
+		<view class="order-number-msg">
+			<text class="theme-price">订单编号</text>
+			<text style="color:#333;" class="theme-price">{{order.order_number}}</text>
+			<text bindtap="onCopyOrderNumber" style="margin-left:10px" class="theme-price">复制</text>
+		</view>
+		<view class="order-number-msg">
+			<text class="theme-price">下单时间</text>
+			<text style="color:#333;" class="theme-price">{{filter.changeTime(order.create_time)}}</text>
+		</view>
+		<view wx:if='{{order.pay_time}}' class="order-number-msg">
+			<text class="theme-price">支付时间</text>
+			<text style="color:#333;" class="theme-price">{{filter.changeTime(order.pay_time)}}</text>
+		</view>
+		<view wx:if='{{order.refund_time}}' class="order-number-msg">
+			<text class="theme-price">退款时间</text>
+			<text style="color:#333;" class="theme-price">{{filter.changeTime(order.refund_time)}}</text>
+		</view>
+	</view>
+
+	<!-- 防止被挡 -->
+	<view style="width:5px; height:4px; margin-bottom:150rpx"></view>
+
+
+	<!-- 订单状态 + 功能 -->
+	<view class="order-confirm theme-fff">
+
+		<view bindtap="checkUserOrder" wx:if='{{order.state === 1}}' hover-class="theme-hover" class="theme-font-f border">检查支付
+		</view>
+		<view bindtap="confirmPay" wx:if='{{order.state === 1}}' hover-class="theme-hover" class="theme-font-f border">确认支付
+		</view>
+
+		<view bindtap="gotoDelivery" wx:if='{{order.state === 2}}' hover-class="theme-hover" class="theme-font-f border">去配送
+		</view>
+
+		<view bindtap="gotoUserMsg" wx:if='{{order.state === 3 && order.delivery_info.d_state === 1}}'
+			hover-class="theme-hover" class="theme-font-f border">已送达</view>
+
+		<view bindtap="onConfirmRefund" wx:if='{{order.state === 4 && order.refund_info.r_state === 1}}'
+			hover-class="theme-hover" class="theme-font-f border">同意退款</view>
+
+		<view bindtap="gotoRefuseRefund" wx:if='{{order.state === 4 && order.refund_info.r_state === 1}}'
+			hover-class="theme-hover" class="theme-font-f border">拒绝退款</view>
+
+	</view>
+
+
+</view>

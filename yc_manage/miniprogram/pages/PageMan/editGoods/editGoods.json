@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "list-goods":"../../../components/listGoods/listGoods"
+  },
+  "onReachBottomDistance": 100
+}

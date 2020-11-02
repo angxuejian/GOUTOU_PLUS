@@ -1,0 +1,33 @@
+<!--components/listOrder/listOrder.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter'></wxs>
+<view>
+	<view class="all-order">
+		<block wx:for='{{list}}' wx:key='index'>
+			<view hover-class="theme-hover" data-ordernumber='{{item.order_number}}' bindtap="gotoDetail" class="item-order theme-fff">
+				<view class="order-number">
+					<view class="theme-price">订单号：{{item.order_number}}</view>
+					<view wx:if='{{!item.delivery_info.d_id}}' class="theme-font-f">{{filter.changeState(item.state)}}</view>
+					<view wx:if='{{item.delivery_info.d_id}}' class="theme-font-f">{{item.delivery_info.d_state === 1 ? '配送中' : '已送达'}}</view>
+				</view>
+				<view>
+					<block wx:for='{{item.goods_array}}' wx:for-item='aItem' wx:for-index='aIndex' wx:key='aIndex'>
+						<view class="goods">
+							<image mode="aspectFill" src="{{aItem.goods_spec.cover}}"></image>
+							<view class="goods-info">
+								<view>
+									<text class="theme-price">{{aItem.title || ''}}</text>
+									<text class="theme-font-f">￥{{aItem.goods_spec.price}}</text>
+								</view>
+								<view class="theme-font-f">x {{aItem.goods_number || '1'}}</view>
+								<view class="theme-price">{{aItem.goods_spec.name}}</view>
+							</view>
+						</view>
+
+					</block>
+
+				</view>
+			</view>
+		</block>
+	</view>
+
+</view>

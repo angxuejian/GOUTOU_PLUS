@@ -1,0 +1,14 @@
+<!--miniprogram/pages/PageMan/refuseRefundOrder/refuseRefundOrder.wxml-->
+<view>
+
+	<view class="refund-title">
+		拒绝退款理由
+	</view>
+	<view class="refund-remark">
+		<textarea value="{{refValue}}" class="theme-price" bindinput="onChangeRefRemark" maxlength="280" placeholder="请根据详述拒绝退款理由..."></textarea>
+	</view>
+
+
+  <view bindtap="onRefuseRefund" hover-class="theme-hover" class="req-ref theme-confirm theme-font-f">拒绝退款</view>
+</view>
+

@@ -1,0 +1,15 @@
+<!--miniprogram/pages/PageMan/addGoodsType/addGoodsType.wxml-->
+<view>
+
+<view class="my-id">
+  <view class="item-input">
+    <view class="theme-font-f">分类名称</view>
+    <input value="{{goodsType}}" bindinput="getInputVal" class="theme-font" placeholder="请填写商品名称" type="text"></input>
+  </view>
+</view>
+
+<view bindtap="onSubmit" hover-class="theme-hover" class="bottom theme-blod theme-confirm">
+  保存
+</view>
+</view>
+

@@ -1,0 +1,8 @@
+<!--miniprogram/pages/PageMan/downGoods/downGoods.wxml-->
+<view>
+   <search title='请输入商品名称' bindsearch='onSearch'></search>
+
+
+   <list-goods bindedit='gotoEdit' bindhome='onSetHome' bindshelf='onShelf' list='{{downGoodsArray}}'></list-goods>
+
+</view>

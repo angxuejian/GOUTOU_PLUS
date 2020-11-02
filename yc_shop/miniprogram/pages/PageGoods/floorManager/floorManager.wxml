@@ -1,0 +1,41 @@
+<!--miniprogram/pages/PageGoods/floorManager/floorManager.wxml-->
+
+<view>
+
+<view class="my-id">
+  <view class="item-input">
+    <view class="theme-font-f">姓名</view>
+    <input value="{{formData.name}}" bindinput="getInputVal" data-key='name' class="theme-font" placeholder="请填写您的姓名" type="text"></input>
+  </view>
+  <view class="item-input">
+    <view class="theme-font-f">性别</view>
+    <picker bindchange='getPickerVal' range='{{["男", "女"]}}' class="theme-font">{{formData.sex}}</picker>
+  </view>
+  <view class="item-input">
+    <view class="theme-font-f">手机号码</view>
+    <button wx:if="{{!formData.phone}}" bindgetphonenumber="getPhoneNumberVal" open-type="getPhoneNumber">获取您的手机号码</button>
+    <button class="theme-font" wx:if='{{formData.phone}}'>{{formData.phone}}</button>
+  </view>
+  <view class="item-input">
+    <view class="theme-font-f">学校</view>
+    <input value="{{formData.school}}" bindinput="getInputVal" data-key='school' class="theme-font" placeholder="请填写您的学校" type="text"></input>
+  </view>
+  <view class="item-input">
+    <view class="theme-font-f">学号</view>
+    <input value="{{formData.school_num}}" bindinput="getInputVal" data-key='formData.school_num' class="theme-font" placeholder="请填写您的学号" type="text"></input>
+  </view>
+  <view class="item-input">
+    <view class="theme-font-f">几号楼</view>
+    <input value="{{formData.floor_num}}" bindinput="getInputVal" data-key='floor_num' class="theme-font" placeholder="请填写所属几号楼楼长" type="text"></input>
+  </view>
+  
+</view>
+<view wx:if='{{formData.f_state === 1}}' class="theme-price prompt">申请中, 请耐心等待, 会有专人联系您</view>
+<view wx:if='{{formData.f_state === 2}}' class="theme-price prompt">已同意, 您已经成为{{formData.floor_num}}楼长了</view>
+<view wx:if='{{formData.f_state === 3}}' class="theme-price prompt">已拒绝, 拒绝理由：{{formData.refuse}}</view>
+
+<view  wx:if='{{formData.f_state === 3 || !formData.f_state}}' bindtap="onSubmit" hover-class="theme-hover" class="bottom theme-blod theme-confirm">
+  提交申请
+</view>
+</view>
+

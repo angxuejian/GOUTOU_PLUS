@@ -1,0 +1,20 @@
+/* miniprogram/pages/PageGoods/numberDetail/numberDetail.wxss */
+
+.item-number{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ededed;
+  height: 40px;
+  padding: 5px 2.5%;
+  width: 95%;
+  background-color: #fff;
+}
+.item-number > view:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item-number > view:nth-of-type(2) > view:nth-of-type(1) {
+  margin-right: 10px;
+}

@@ -1,0 +1,46 @@
+<!--miniprogram/pages/PageGoods/userAddAddress/userAddAddress.wxml-->
+
+<view>
+    <!-- 输入收获人信息 -->
+    <view>
+      <block wx:for='{{peopleArr}}' wx:key='index'>
+        <view class='item-input'>
+          <view>
+            <view>{{item.name}}<text style="color:red">*</text></view>
+            <input wx:if='{{!item.isRegion && !item.isPhone}}' bindinput="getInputValue" value="{{item.value}}" data-name='{{item.inKey}}' placeholder="请输入"></input>
+
+            <input wx:if='{{item.isPhone}}' type="number" maxlength="11" bindinput="getInputValue" data-name='{{item.inKey}}'  value="{{item.value}}" placeholder="请输入"></input>
+
+            <picker bindchange="onSelectedDate" value='{{item.value}}' wx:if='{{item.isRegion}}' mode='region'>
+            {{item.key}}
+            </picker>
+
+          </view>
+          <!-- <image wx:if='{{item.isRegion}}' src="../../../images/arrow-right.png"></image> -->
+        </view>
+      </block>
+    </view>
+
+    <!-- 输入收获人信息结束 -->
+
+    <!-- 详细地址 -->
+    <view class='input-title'>详细地址 <text style="color:red">*</text></view>
+    <view class='input-desc'>
+      <textarea bindinput="getInputValue" data-name='shipping_address' placeholder="请输入内容" value="{{addressdetailvalue}}"></textarea>
+    </view>
+    <!-- 详细地址结束 --> 
+
+    <view class="defaults-address">
+      <view>设置默认为地址</view>
+      <view><switch checked='{{checkedvalue}}' bindchange='onChangeSw' color='#07C160'></switch></view>
+    </view>
+
+      <view class="bottom"></view>
+   <!-- 保存 -->
+      <view hover-class="theme-hover" bindtap="gotoAddshippingAddress" class="bottom-but theme-confirm theme-font-f">保存</view>
+</view>
+
+
+
+
+

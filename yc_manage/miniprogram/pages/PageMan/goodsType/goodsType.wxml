@@ -1,0 +1,27 @@
+<!--miniprogram/pages/PageMan/goodsType/goodsType.wxml-->
+<view>
+
+
+  <view>
+    <block wx:for="{{goodsTypeArr}}" wx:key='index'>
+      <view class="item-id-review">
+        <view class="theme-font">分类名称：<text class="theme-font-f">{{item.name}}</text></view>
+        <view class="button">
+          <view bindtap="onRemove" data-index="{{index}}" hover-class="theme-hover">删除</view>
+          <view bindtap="gotoGoodsType" data-index="{{index}}" hover-class="theme-hover">编辑</view>
+        </view>
+      </view>
+
+    </block>
+
+  </view>
+
+
+  	<!-- 防止被挡 -->
+	<view style='width:5px;height:5px;margin-bottom:60px'></view>
+
+<!-- 最后的保存 -->
+<view bindtap="addGoodsType" hover-class="theme-hover" class="bottom theme-blod theme-confirm">
+  新增
+</view>
+</view>

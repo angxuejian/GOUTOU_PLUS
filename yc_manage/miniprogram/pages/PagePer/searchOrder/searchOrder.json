@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "list-order":"../../../components/listOrder/listOrder",
+    "search": "../../../components/search/search"
+  }
+}

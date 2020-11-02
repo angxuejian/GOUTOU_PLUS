@@ -1,0 +1,38 @@
+<!--miniprogram/pages/PageMan/shopSetting/shopSetting.wxml-->
+
+<view>
+
+<view class="my-id">
+  <view class="item-input">
+    <view class="theme-font-f">满</view>
+    <input value="{{orderPrice}}" data-key='orderPrice' bindinput="getInputVal" class="theme-font" placeholder="10" type="number"></input>
+    <view class="theme-font-f">元可以下单</view>
+  </view>
+  <view class="item-input">
+    <view class="theme-font-f">支付</view>
+    <input value="{{mailPrice}}"  data-key='mailPrice' bindinput="getInputVal" class="theme-font" placeholder="10" type="number"></input>
+    <view class="theme-font-f">元邮费可以下单</view>
+  </view>
+</view>
+
+<view class="head">
+		<!-- 添加轮播图 -->
+		<swiper indicator-dots circular>
+			<block wx:for='{{!arrSwiper.length ? 1 : arrSwiper}}' wx:key='index'>
+				<swiper-item>
+					<view class="add-view">
+						<view bindtap="addSDCover" data-index='{{index}}' hover-class="theme-hover" class="theme-eee">
+							<image mode="aspectFill" class="{{item ? 'show-imag' : 'add'}}" src="{{item || '../../../images/manage/add-img.png'}}"></image>
+						</view>
+						<image bindtap="removeImage"  data-index='{{index}}'  wx:if='{{item}}' class="remove" src="../../../images/manage/remove.png"></image>
+					</view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+
+<view bindtap="beforeSave" hover-class="theme-hover" class="bottom theme-blod theme-confirm">
+  保存
+</view>
+</view>
+

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "list-order":"../../../components/listOrder/listOrder"
+  },
+  "onReachBottomDistance": 50
+}

@@ -1,0 +1,34 @@
+<!--components/listGoods/listGoods.wxml-->
+<view>
+
+	<block wx:for='{{list}}' wx:key='index'>
+		<view class="item-goods">
+			<view bindtap="gotoDetail" data-id='{{item._id}}'>
+				<view class="goods">
+					<image mode="aspectFill" src="{{item.cover}}"></image>
+					<view class="info">
+						<view>{{item.title}}</view>
+						<view>￥{{item.def_price}}</view>
+					</view>
+				</view>
+				<view class="spec">
+					<block wx:for='{{item.spec_array}}' wx:for-index='sIndex' wx:for-item='sItem' wx:key='sIndex'>
+						<text>{{sItem.name}}</text>
+					</block>
+				</view>
+			</view>
+			<view class="button">
+				<view bindtap="gotoUp" data-id='{{item._id}}' wx:if='{{item.shelf}}' hover-class="theme-hover">下架</view>
+	
+
+				<view bindtap="gotoDown" data-id='{{item._id}}' wx:if='{{!item.shelf}}' hover-class="theme-hover">上架</view>
+	
+				<view  bindtap="gotoHome" data-id='{{item._id}}' data-ishome='{{item.is_home}}' wx:if='{{!item.shelf && !item.is_home}}' hover-class="theme-hover">显示</view>
+				<view  bindtap="gotoHome" data-id='{{item._id}}' data-ishome='{{item.is_home}}' wx:if='{{type === "down" && item.is_home}}' hover-class="theme-hover">隐藏</view>
+
+
+				<view bindtap="gotoEdit" data-id='{{item._id}}' wx:if='{{!item.shelf}}' hover-class="theme-hover">编辑</view>
+			</view>
+		</view>
+	</block>
+</view>

@@ -1,0 +1,35 @@
+<!--miniprogram/pages/PageGoods/commonProblem/commonProblem.wxml-->
+<view class='boss'>
+  <view class='problem'>
+    <view class='now-prob' wx:for='{{pageProblemList}}' wx:key='index'>
+        <view class='item-up {nowIndex===index ? "item-bor":""}}' bindtap='onProblem' data-index='{{index}}'>
+          <view class="theme-font">{{item.problem}}</view>
+          <view>
+          <image wx:if="{{item.isImg}}" class='image-rot' src='../../../images/go.png'></image>
+            <image wx:if="{{!item.isImg}}" class='{{nowIndex===index ? "image-bac": ""}}' src='../../../images/go.png'></image>
+          </view>
+        </view>
+        <view class='item-down {{nowIndex===index ? "item-bac":""}}'>
+          <view class='text {{item.cssClass}}'>
+            <view class='theme-price'>{{item.answer}}</view>
+           <block wx:if="{{item.answerList}}">
+            <view class='answer-list theme-price' wx:for='{{item.answerList}}' wx:for-index='itIndex' wx:for-item='itItem' wx:key='itIndex'>{{itItem}}</view>
+          </block>
+          </view>
+        </view>
+    </view>
+    <!-- <view class='next theme-font-f' bindtap='onNext'>换一换</view> -->
+    <view class='contact'>
+    <button bindtap='onPhone'>
+      <image src='../../../images/mobile.png'></image>
+      <view class="theme-font">电话联系</view>
+    
+    </button>
+    <button open-type="contact" bindcontact="onContact">
+      <image class='wx-img' src='../../../images/wx.png'></image>
+      <view class="theme-font">微信联系</view>
+    </button>
+  </view>
+  </view>
+  
+</view>

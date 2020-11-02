@@ -1,0 +1,13 @@
+/* miniprogram/pages/PageGoods/gameInfo/gameInfo.wxss */
+
+.title{
+  width: 95%;
+  margin: 10px auto;
+  /* text-align: center; */
+}
+.info {
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-indent: 15px;
+}

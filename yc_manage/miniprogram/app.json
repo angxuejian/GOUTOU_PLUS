@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/Tabbar/manage/manage",
+    "pages/Tabbar/me/me",
+    "pages/PagePer/deliveryOrder/deliveryOrder",
+    "pages/PagePer/searchOrder/searchOrder",
+    "pages/PagePer/detailOrder/detailOrder",
+    "pages/PagePer/myDeliveryOrder/myDeliveryOrder",
+    "pages/PagePer/myID/myID"
+  ],
+  "window": {
+    "backgroundColor": "#f6f6f6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6f6f6",
+    "navigationBarTitleText": "鹿安配送",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "selectedColor": "#07C160",
+    "color": "#8a8a8a",
+    "list": [
+      {
+        "pagePath": "pages/Tabbar/manage/manage",
+        "text": "管理",
+        "iconPath": "./images/tabbar/manage.png",
+        "selectedIconPath": "./images/tabbar/manage-selected.png"
+      },
+      {
+        "pagePath": "pages/Tabbar/me/me",
+        "text": "我",
+        "iconPath": "./images/tabbar/me.png",
+        "selectedIconPath": "./images/tabbar/me-selected.png"
+      }
+    ]
+  },
+  "subpackages": [
+    {
+      "root": "pages/PageMan",
+      "pages": [
+        "addGoods/addGoods",
+        "editGoods/editGoods",
+        "downGoods/downGoods",
+        "upGoods/upGoods",
+        "detailGoods/detailGoods",
+        "refundOrder/refundOrder",
+        "refuseRefundOrder/refuseRefundOrder",
+        "idReview/idReview",
+        "refuseIDReview/refuseIDReview",
+        "goodsType/goodsType",
+        "addGoodsType/addGoodsType",
+        "shopSetting/shopSetting",
+        "floorManagerReview/floorManagerReview",
+        "refuseFloorManagerReview/refuseFloorManagerReview"
+      ]
+    }
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于展示物流配送位置"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

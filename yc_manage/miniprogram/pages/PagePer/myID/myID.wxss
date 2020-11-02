@@ -1,0 +1,52 @@
+/* miniprogram/pages/PagePer/myID/myID.wxss */
+
+.my-id{
+  width: 95%;
+  padding: 0 2.5%;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+.item-input{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  border-bottom: 1px solid #ededed;
+}
+.item-input > view{
+  width: 25%;
+}
+.item-input > input{
+  width: 70%;
+}
+.item-input button{
+  background-color: #fff;
+  text-align: start;
+  padding: 0;
+  /* width: 70%; */
+  height: 100%;
+  line-height: 40px;
+  font-size: 13px;
+}
+.item-input button:not([size='mini']){
+  width: 65%;
+}
+.prompt{
+  width: 96%;
+  margin: 0 auto;
+  padding: 0 2%;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  line-height: 50px;
+  box-shadow: 0 0 2px 2px #eee;
+}

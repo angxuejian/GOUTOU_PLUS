@@ -1,0 +1,26 @@
+<!--miniprogram/pages/Tabbar/goods/goods.wxml-->
+<view class="page-goods">
+	<!-- 左侧 -->
+	<view class="all-type">
+		<!--  -->
+		<block wx:for='{{vtabs}}' wx:key='index'>
+			<view bindtap="onSelectType" data-index='{{index}}'
+				class='theme-font {{index == activeTab ? "select-type" : ""}}'>{{item.name}}</view>
+		</block>
+	</view>
+
+
+	<!-- 右侧 -->
+	<view class="all-commodity">
+		<!--  -->
+		<block wx:for='{{goodsArray}}' wx:key='index'>
+			<view bindtap="gotoGoodsDetail" data-id='{{item._id}}' class="item-commodity" hover-class="theme-hover">
+				<image class="item-commodity-image" mode="aspectFill" src="{{item.cover}}"></image>
+				<view class="item-commodity-info">
+					<view class="theme-font">{{item.title}}</view>
+					<view class="theme-price">￥<text>{{item.def_price}}</text></view>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>

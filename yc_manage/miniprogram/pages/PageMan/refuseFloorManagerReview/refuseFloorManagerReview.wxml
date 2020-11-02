@@ -1,0 +1,13 @@
+<!--miniprogram/pages/PageMan/refuseFloorManagerReview/refuseFloorManagerReview.wxml-->
+<view>
+
+<view class="refund-title">
+  拒绝申请理由
+</view>
+<view class="refund-remark">
+  <textarea value="{{refValue}}" class="theme-price" bindinput="onChangeRefRemark" maxlength="280" placeholder="请根据详述拒绝申请理由..."></textarea>
+</view>
+
+
+<view bindtap="onRefuseRefund" hover-class="theme-hover" class="req-ref theme-confirm theme-font-f">拒绝申请</view>
+</view>

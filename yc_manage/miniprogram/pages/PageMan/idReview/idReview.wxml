@@ -1,0 +1,19 @@
+<!--miniprogram/pages/PageMan/idReview/idReview.wxml-->
+<view>
+
+  <view class="">
+
+    <view>
+      <block wx:for="{{reviewArr}}" wx:key='index'>
+        <view class="item-id-review">
+          <view class="theme-font">申请人：<text class="theme-font-f">{{item.auth_data.nick_name}}</text></view>
+          <view class="theme-font">联系电话：<text class="theme-font-f">{{item.auth_data.phone_number}}</text></view>
+          <view class="button">
+            <view bindtap="onConfirm" data-id='{{item._id}}' hover-class="theme-hover">同意</view>
+            <view bindtap="gotoRefuserIDReview" data-id="{{item._id}}" hover-class="theme-hover">拒绝</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

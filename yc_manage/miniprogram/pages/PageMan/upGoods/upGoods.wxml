@@ -1,0 +1,9 @@
+<!--miniprogram/pages/PageMan/upGoods/upGoods.wxml-->
+<view>
+  <search title='请输入商品名称' bindsearch='onSearch'></search>
+
+
+  <list-goods bindshelf='onShelf' list='{{upGoodsArray}}'></list-goods>
+
+
+</view>

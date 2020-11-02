@@ -1,0 +1,10 @@
+
+const SUBSCRBE_ID = 'Qxj_CuQy79BFSFhPuOE0Gz_imHl1ITUJJpseQ1ecoKI' // 一次性订单订阅消息模板
+
+const ADDRESS_KEY = 'WRZBZ-FTQA2-OXVUS-CUUKW-BKEU6-TNB5I' // 地理位置KEY
+
+export {
+  SUBSCRBE_ID,
+  ADDRESS_KEY
+}
+
