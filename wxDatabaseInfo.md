@@ -8,7 +8,6 @@
 
 > 下面声明的变量, 仅适用于下面集合 value 列 的 值 
 
-> 下面声明的字段前有 man_ 字段 均为目前开发缺陷，自行添加即可（文件 云id 只能在当前的小程序中使用，并不能跨程序使用，所以关于图片的上传，均在A，B小程序都上传）
 ```
 const $img = http://img.xx.jpg 或 云文件 ID
 const $date = db.serverDate() 或 集合中创建 date 类型
@@ -24,7 +23,6 @@ const $spec = [
         name: "规格一", >> 规格名称 >> string
         price: 120, >> 规格的价钱 >> number
         sum: 50, >>  规格的库存 >> number
-        man_cover:  $img, >> 规格图片 >> string
     },
     ....
 ]
@@ -108,10 +106,9 @@ const $d_state = 1
     swiper_array    | $list      | array  | 商品的轮播图
     shelf           | true       | boolean| 商品的是否上架
     title           | 超好吃的坚果| string | 商品的名称
-    man_cover       | $img       | string | B小程序图片
-    man_detail_array| $list      | arrry  | B小程序图片
-    man)swiper_array| $list      | array  | B小程序图片
-
+    is_ad           | true       | boolean| 是否为广告商品
+    count           | 0          | number | 商品销量
+    goods_type_id   | 10         | string | 商品分类
 <br>
 
 2. user表集合  >> 用户表
@@ -167,13 +164,31 @@ const $d_state = 1
 
     key         | value      | type  | desc
     ---         | ---        | ---   | ---
-    goods_numer | $order_spec| object| 订单商品规格
-    create_time | $date      | date  | 加入购物车时间
-    goods_id    | 7498b...   | string| 商品id
-    goods_numer | 1          | number| 购买数量
-    user_id     | openid     | string| 用户的openid
-    title       | 干果坚果    | string| 商品名称
+    goods_spec  | $order_spec| object | 订单商品规格
+    create_time | $date      | date   | 加入购物车时间
+    goods_id    | 7498b...   | string | 商品id
+    goods_numer | 1          | number | 购买数量
+    user_id     | openid     | string | 用户的openid
+    title       | 干果坚果    | string | 商品名称
+    select      | false      | boolean| 是否选择订单下单
+<br>
 
+6. shop-goods-type表集合 >> 商品分类表
+
+    key         | value | type   | desc
+    ---         | ---   | ---    | ---
+    caeate_time | $date | date   | 创建时间
+    name        | 零食  | string | 商品分类名称
+<br>
+
+7. shop-setting表集合 >> 店铺设置
+
+    key         | value | type   | desc
+    ---         | ---   | ---    | --- 
+    caeate_time | $date | date   | 创建时间
+    mail_price  | 0.1   | number | 邮费价格
+    order_price | 10    | number | 小于当前订单价钱 就要支付邮费
+    swiper_array| [ ]    | array  | 店铺首页轮播图
 <br>
 
 

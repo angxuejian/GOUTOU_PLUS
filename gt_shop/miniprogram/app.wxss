@@ -1,0 +1,66 @@
+page {
+  background: #f6f6f6;
+}
+
+/* FF3B7A  512DA8  bfbfbf*/
+
+/* 公共 name 字体 */
+.theme-font{
+  font-size: 13px;
+  color: #333;
+  font-weight: 400;
+}
+.theme-font-f{
+  font-size: 14px;
+  color: #333;
+  font-weight: 400;
+}
+.theme-bold{
+  font-size: 15px;
+  font-weight: 700;
+}
+.theme-price{
+  font-size: 13px;
+  color: #666;
+  font-weight: 400;
+}
+.theme-big{
+  font-size: 20px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 颜色 */
+.theme-color{
+  color: #FF3B7A;
+  font-weight: 700;
+  font-size: 16px;
+}
+.theme-image{
+  background-image: linear-gradient(to right, #512Dfd, #512DA8);
+  font-size: 14px;
+  color: #eee;
+  letter-spacing: 5px;
+  font-weight: 600;
+}
+.theme-fff{
+  background-color: #fff;
+}
+.theme-confirm{
+  background-color: #07C160;
+  color: #fff;
+}
+.theme-linear {
+  background: linear-gradient(#FED805, #FF8429);
+}
+.theme-cart{
+  background-color: #FFAB02;
+}
+.theme-order{
+  background-color: #FF5932;
+}
+/* 点击态颜色 */
+.theme-hover{
+  background-image: none;
+  background-color: #DEDEDE;
+}

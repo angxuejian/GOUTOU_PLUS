@@ -1,0 +1,56 @@
+<!--miniprogram/pages/PageGoods/orderDetail/orderDetail.wxml-->
+<view>
+	<!-- 收货地址 -->
+	<view bindtap="gotoUserAddress" hover-class="theme-hover" class="order-address theme-fff">
+		<view wx:if='{{userAddress.shipping_tel}}' class="info">
+			<view>
+				<text class="theme-font-f">{{userAddress.shipping_name}}</text>
+				<text class="theme-font-f">{{userAddress.shipping_tel}}</text>
+			</view>
+			<view class="theme-price">{{ userAddress.shipping_city}}{{userAddress.shipping_address}}</view>
+		</view>
+		<view wx:if='{{!userAddress.shipping_tel}}' class="not-address theme-font-f">选择收货地址</view>
+		<image src="../../../images/arrow-right.png" class="arrow"></image>
+	</view>
+
+	<!-- 订单商品 -->
+	<view class="order">
+		<block wx:for='{{orderArray}}' wx:key='index'>
+			<view class="item-goods">
+				<image mode="aspectFill" src="{{item.goods_spec.cover}}"></image>
+				<view class="goods-info">
+					<view>
+						<text class="theme-price">{{item.title}}</text>
+						<text class="theme-font-f">￥{{item.goods_spec.price}}</text>
+					</view>
+					<view class="theme-font-f">x {{item.goods_number}}</view>
+					<view class="theme-price">{{item.goods_spec.name}}</view>
+				</view>
+			</view>
+		</block>
+	</view>
+
+
+
+	<view wx:if='{{orderPrice > allPrice}}' class="all-price item-price">
+		<text class="theme-font-f">商品</text>
+		<text class="theme-price">￥{{allPrice}}</text>
+	</view>
+	<view wx:if='{{orderPrice > allPrice}}' class="all-price item-price">
+		<text class="theme-font-f">邮费（满{{orderPrice}}元免配送）</text>
+		<text class="theme-price">￥{{mailPrice}}</text>
+	</view>
+
+	<view hover-class="theme-hover" class="all-price theme-fff">
+		<text class="theme-font-f">订单总价</text>
+		<text class="theme-color">￥{{allDocPrice}}</text>
+	</view>
+	<view class="theme-price prompt">下单前请核验收货地址哦！</view>
+	<!-- <view class="theme-price prompt">下单后48小时未发货，记得去退款哦！</view> -->
+
+	<view style="width:5px;height:5px;margin-bottom:70px;"></view>
+	<view bindtap="onSubmitPay" hover-class="theme-hover" class="now-pay theme-confirm theme-font-f">
+		支付
+	</view>
+</view>
+<!-- theme-image -->

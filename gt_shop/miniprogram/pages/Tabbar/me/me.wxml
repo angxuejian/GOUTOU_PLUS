@@ -1,0 +1,45 @@
+<!--miniprogram/pages/Tabbar/me/me.wxml-->
+<view>
+	<view class="user-info">
+		<button wx:if='{{!userInfo.avatarUrl}}' open-type="getUserInfo" bindgetuserinfo="onUserInfo">登录注册</button>
+
+		<image wx:if='{{userInfo.avatarUrl}}' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+    <view wx:if='{{userInfo.avatarUrl}}' class="theme-bold">{{userInfo.nickName}}</view>
+	</view>
+
+	<view class="down-fun">
+		<view class="order-all">
+			<block wx:for='{{orderArray}}' wx:key='index'>
+				<view  hover-class="theme-hover" data-state='{{item.state}}' bindtap="gotoUserOrder" class="order-current">
+           <image src="../../../images/me/{{item.src}}"></image>
+           <view class="theme-font">{{ item.name }}</view>
+           <view wx:if='{{item.count}}' class="red-point">{{item.count}}</view>
+       </view>
+			</block>
+		</view>
+
+    <view hover-class="theme-hover" data-state='0' bindtap="gotoUserOrder" class="item-fun theme-fff">
+      <view >
+        <!-- <image src="../../../images/me/user-order.png"></image> -->
+        <text class="theme-font">我的订单</text>
+      </view>
+      <image src="../../../images/arrow-right.png"></image>
+    </view>
+    <view hover-class="theme-hover" bindtap="gotoUserAddress" class="item-fun theme-fff">
+      <view >
+        <!-- <image src="../../../images/me/user-address.png"></image> -->
+        <text class="theme-font">我的地址</text>
+      </view>
+      <image src="../../../images/arrow-right.png"></image>
+    </view>
+     <view hover-class="theme-hover" class="item-fun theme-fff">
+      <view >
+        <!-- <image src="../../../images/me/user-service.png"></image> -->
+        <text class="theme-font">我的客服</text>
+      </view>
+      <image src="../../../images/arrow-right.png"></image>
+      <button class="but-contact" open-type="contact"></button>
+    </view>
+
+	</view>
+</view>

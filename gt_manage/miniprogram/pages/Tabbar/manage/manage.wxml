@@ -1,0 +1,37 @@
+<!--miniprogram/pages/Tabbar/manmage/manage.wxml-->
+<view>
+
+	<view wx:if='{{userAuth}}' class="manage">
+		<view class="theme-bold">商品管理</view>
+		<view class="manage-content">
+			<block wx:for='{{shopArray}}' wx:key='index'>
+				<view bindtap="gotoNext" data-url='{{item.url}}' class="item">
+					<image src="../../../images/manage/{{item.src}}"></image>
+					<view class="theme-font">{{item.name}}</view>
+				</view>
+			</block>
+		</view>
+	</view>
+
+	<view wx:if='{{orderArray.length}}' class="manage">
+		<view class="theme-bold">订单管理</view>
+		<view class="manage-content">
+			<block wx:for='{{orderArray}}' wx:key='index'>
+				<view bindtap="gotoNext" data-url='{{item.url}}' class="item">
+					<image src="../../../images/manage/{{item.src}}"></image>
+					<view class="theme-font">{{item.name}}</view>
+				</view>
+			</block>
+		</view>
+	</view>
+
+	<view wx:if='{{userAuth}}' class="manage">
+		<view class="theme-bold">身份管理</view>
+		<view class="manage-content">
+			<view bindtap="gotoNext" data-url='/pages/PageMan/idReview/idReview' class="item">
+					<image src="../../../images/manage/ID.png"></image>
+					<view class="theme-font">身份审核</view>
+				</view>
+		</view>
+	</view>
+</view>
